@@ -6,10 +6,11 @@ const defaultProps = {
   className: "input-preview",
   input: "",
   onBackClicked: () => {},
-  inputType: "image",
+  inputType: "image", // TODO: Change this default?
 };
 
 export default function InputPreview(givenProps) {
+  console.log('InputPreview: ', givenProps)
   const props = { ...defaultProps, ...givenProps };
   const { getBlock, getElement } = useBEMNaming(props.className);
 

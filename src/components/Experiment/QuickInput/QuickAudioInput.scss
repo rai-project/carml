@@ -1,0 +1,7 @@
+@import "../../../App";
+
+.quick-audio-input {
+  @include tabs;
+  @include quick-input-container;
+
+}

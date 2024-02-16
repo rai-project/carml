@@ -1,5 +1,5 @@
 import React from "react";
-import "./QuickImageInput.scss";
+import "./QuickAudioInput.scss";
 import Task from "../../../helpers/Task";
 import useQuickInputControl from "./useQuickInputControl";
 import useBEMNaming from "../../../common/useBEMNaming";
@@ -7,7 +7,8 @@ import { QuickInputTabContent } from "./QuickInputTabContent";
 import { QuickInputTabTitle } from "./QuickInputTabTitle";
 import {QuickInputType} from "./quickInputType";
 
-export default function QuickImageInput(props) {
+export default function QuickAudioInput(props) {
+    console.log('QuickAudioInput: ', props);
   const {
     tabIsSelected,
     selectedInputs,
@@ -18,10 +19,11 @@ export default function QuickImageInput(props) {
     selectInput,
     runModel,
   } = useQuickInputControl(props);
-  const { getBlock, getElement } = useBEMNaming("quick-image-input");
+  const { getBlock, getElement } = useBEMNaming("quick-audio-input");
 
   const task = Task.getStaticTask(props.model.output.type);
-  const tabs = getTabs(QuickInputType.Image);
+  console.log('QuickAudioInput task: ', task);
+  const tabs = getTabs(QuickInputType.Audio);
   return (
     <div className={getBlock()}>
       {!props.hideHeader && (

@@ -5,4 +5,5 @@ export const semantic_segmentation = "image_semantic_segmentation";
 export const instance_segmentation = "image_instance_segmentation";
 export const textToText = "text_to_text";
 export const textToCode = "text_to_code";
+export const audioToText = "audio_to_text";
 export const pending = "pending";

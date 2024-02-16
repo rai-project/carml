@@ -7,6 +7,7 @@ import {
   semantic_segmentation,
   textToText,
   textToCode,
+  audioToText,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -86,6 +87,20 @@ TextToCode.args = {
   model: {
     output: {
       type: textToCode,
+    },
+  },
+};
+
+export const AudioToText = Template.bind({});
+AudioToText.args = {
+  sampleInputs: [
+    "https://xlab1.netlify.app/automatic-speech-recognition-input.flac",
+    "https://xlab1.netlify.app/automatic-speech-recognition-input.flac",
+    "https://xlab1.netlify.app/automatic-speech-recognition-input.flac",
+  ],
+  model: {
+    output: {
+      type: audioToText,
     },
   },
 };

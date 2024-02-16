@@ -6,6 +6,7 @@ import {
   semantic_segmentation,
   textToText,
   textToCode,
+  audioToText,
 } from "./TaskIDs";
 import React from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
@@ -127,6 +128,17 @@ export default class Task {
     tutorialDescription: "[insert text to code tutorial page description here]",
     inputType: TaskInputTypes.Text,
   });
+  static audio_to_text = new Task({
+    name: "Audio to Text",
+    description: "Used to transcribe an audio file to text. Can help you understand what is said.",
+    id: audioToText,
+    inputText: "See how well this model can recognize and transcribe an audio (voice) input.",
+    outputText: "Transcribed text:",
+    icon: (props) => <></>,
+    sampleInputs: [],
+    tutorialDescription: "Audio to text models transcribe audio files, allowing you to read what is said.",
+    inputType: TaskInputTypes.Audio,
+  });  
 
   constructor(options) {
     this.name = options.name ?? "";
@@ -163,6 +175,8 @@ export default class Task {
         return Task.text;
       case textToCode:
         return Task.text_to_code;
+      case audioToText:
+        return Task.audio_to_text;
 
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
@@ -184,6 +198,11 @@ export default class Task {
       case textToText:
         return DefaultTextModel;
 
+      case textToCode:
+        console.log('default model for text to code is ???')
+      case audioToText:
+        console.log('default model for audio to text is ???')
+
       default:
         return undefined;
     }
@@ -203,6 +222,8 @@ export default class Task {
         return TestInstanceSegmentationOutput;
       case textToText:
         return TestTextOutput;
+
+      // TODO: return test audio to text output
     }
   }
 
@@ -215,6 +236,7 @@ export default class Task {
       this.getStaticTask(instance_segmentation),
       this.getStaticTask(textToText),
       this.getStaticTask(textToCode),
+      this.getStaticTask(audioToText),
     ];
   }
 
@@ -226,6 +248,7 @@ export default class Task {
       this.getStaticTask(semantic_segmentation),
       this.getStaticTask(instance_segmentation),
       this.getStaticTask(textToText),
+      this.getStaticTask(audioToText),
     ];
   }
 }

@@ -27,7 +27,7 @@ const defaultProps = {
   input: "",
   compare: () => {},
   processFailed: false,
-  inputType: "image",
+  inputType: "image", // Todo: Change this default?
 };
 
 export default function QuickOutput(givenProps) {

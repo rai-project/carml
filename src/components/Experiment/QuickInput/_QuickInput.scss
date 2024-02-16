@@ -1,0 +1,8 @@
+@mixin quick-input-container {
+    background: $white;
+    border-radius: 5px;
+    box-shadow: 0 9px 15px -2px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    padding: 64px 40px 40px 40px;
+}

@@ -12,6 +12,7 @@ import {
   semantic_segmentation,
   textToText,
   textToCode,
+  audioToText,
 } from "../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -28,6 +29,7 @@ const ModelDetailPage = (props) => {
   const outputType = props.model?.output?.type || "";
 
   const getSampleInputs = () => {
+    // TODO: Add audio here
     switch (outputType) {
       case object_detection:
         return SampleObjectDetectionInputs;
@@ -48,6 +50,8 @@ const ModelDetailPage = (props) => {
 
   const getInputType = () => {
     switch (outputType) {
+      case audioToText:
+        return "audio";
       case textToText:
       case textToCode:
         return "text";
