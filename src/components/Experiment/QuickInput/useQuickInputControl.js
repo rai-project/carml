@@ -2,7 +2,6 @@ import {useState} from "react";
 import SampleInputsTab from "./Tabs/SampleInput/SampleInputsTab";
 import UploadInputsTab from "./Tabs/UploadInput/UploadInputsTab";
 import AudioInputTab from "./Tabs/AudioInput/AudioInputTab";
-import UploadAudioInputTab from "./Tabs/UploadInput/UploadAudioInputTab";
 import URLInputsTab from "./Tabs/URLInput/URLInputsTab";
 import clone from "../../../helpers/cloner";
 import {QuickInputType} from "./quickInputType";
@@ -58,8 +57,6 @@ export default function useQuickInputControl(props) {
         ];
       case QuickInputType.Text:
         return [{id: 'text-input', title: 'Text', component: TextInputTab}];
-      // case QuickInputType.Audio:
-      //   return {id: 'audio-input', title: 'Record', component: AudioInputTab};
       default:
         return '-';
     }
@@ -67,11 +64,10 @@ export default function useQuickInputControl(props) {
   const getUploadTabType = (type) => {
     switch (type) {
       case QuickInputType.Image:
+      case QuickInputType.Audio:
         return {id: 'upload-input', title: 'Upload', component: UploadInputsTab};
       case QuickInputType.Text:
         return {id: 'upload-input', title: 'Upload', component: UploadTextInputTab};
-      case QuickInputType.Audio:
-        return {id: 'upload-audio-input', title: 'Upload', component: UploadAudioInputTab};
       default:
         return '-';
     }

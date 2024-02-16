@@ -13,15 +13,23 @@ export default function URLInputsTab(props) {
 
   return (
     <div className={getBlock()}>
-      <div className={getElement('title')}><b>Copy an {taskName} URL ({taskName} address) and paste</b>
-        {" "}to {task.inputText.toLowerCase()}</div>
+      <div className={getElement('title')}>
+        <b>Copy an {taskName} URL ({taskName} address) and paste</b>
+        {" "}to {task.inputText.toLowerCase()}
+      </div>
       {(values).map((value, index) => (
           <div key={`input-tab-${index}`}>
-            <input className={getInputClassName(index)} placeholder={`Paste any ${taskName} URL`} type="url" value={value}
-                  onChange={(e) => urlChanged(e, index)}/>
+            <input className={getInputClassName(index)} 
+              placeholder={`Paste any ${taskName} URL`} 
+              type="url" 
+              value={value}
+              onChange={(e) => urlChanged(e, index)}
+            />
             {getUrlValidity(index) &&
-              <p className={getElement("error-text")}>Not a valid URL. Right click on an {taskName} to copy the {taskName}
-                address.</p>}
+              <p className={getElement("error-text")}>
+                Not a valid URL. Right click on an {taskName} to copy the {taskName}
+                address.
+              </p>}
           </div>
         )
       )}
