@@ -6,7 +6,7 @@ import useBEMNaming from "../../../../../common/useBEMNaming";
 import {QuickInputType} from "../../quickInputType";
 
 export default function SampleInputsTab(props) {
-    console.log('SampleInputsTab', props)
+    // console.log('SampleInputsTab', props)
 
     const {getBlock, getElement} = useBEMNaming("sample-inputs");
     const {isUnselected, isSelected, selectedIndex, selectInput, type} = useSampleInputControl(props);
@@ -25,6 +25,8 @@ export default function SampleInputsTab(props) {
                 return makeSampleImageInput(url, index);
             case QuickInputType.Text:
                 return makeSampleTextInput(url, index);
+            case QuickInputType.Audio:
+                return makeSampleAudioInput(url, index);
         }
     }
 
@@ -40,6 +42,15 @@ export default function SampleInputsTab(props) {
         return (
             <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(text))}>
                 <div>{text}</div>
+            </button>
+        )
+    }
+
+    function makeSampleAudioInput(url, index) {
+        return (
+            <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
+                 <div>{url.title}</div>
+                 <audio controls src={url.src} />
             </button>
         )
     }

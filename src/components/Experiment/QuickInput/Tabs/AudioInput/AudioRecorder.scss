@@ -1,0 +1,62 @@
+@import "src/App";
+
+.audio-container {
+    display: flex;
+    align-items: center;
+    .recorded-audio-file {
+        filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(11%);
+        height: 42px;
+        margin-right: 20px;
+    }
+
+    .download-audio-icon {
+        background: rgb(224,224,224);
+        border-radius: 11%;
+        padding: 6px;
+    }
+}
+.record-button {
+    @include headline6;
+    position: relative;
+    display: block;
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    background-color: $azul;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 rgba(#5a99d4, .5);
+    border: 2px solid $white;
+    background-color: $azul;
+    color: $white;
+    border-radius: 30px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0 25px 0;
+    transition: 0.25s;    
+    &:hover {
+        border-color: $electricGreen;
+        background-color: $azulDark;
+    }
+    
+}
+
+.pulsing {
+    -webkit-animation: pulse 1.5s infinite;
+}
+
+@-webkit-keyframes pulse {
+    0% {
+      transform: scale(.9);
+    }
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+    }
+      100% {
+      transform: scale(.9);
+      box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
+    }
+}

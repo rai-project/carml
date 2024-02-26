@@ -11,7 +11,16 @@
 
     @include tabletWidth {
       flex-direction: column;
-      align-items: center;
+      align-items: center;  // TODO: Update this so that text/audio aren't centered
+     
+      .sample-inputs {
+        &__input-image, &__input-text, &__input-audio {
+          &:not(:first-child) {
+            margin-left: 0px;
+            margin-top: 10px;
+          }
+        }
+      }
     }
   }
 
@@ -60,4 +69,29 @@
       opacity: 0.5;
     }
   }
+
+  &__input-audio {
+    border: 1px solid $gray;
+    flex: 1 1;
+    padding: 10px 15px;
+    text-align: start;
+
+    audio {
+      filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+      padding-top: 12px;
+    }
+
+    &:not(:first-child) {
+      margin-left: 4px;
+    }
+
+    &--selected {
+      border-color: $azul;
+      box-shadow: -2px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    &--unselected {
+      opacity: 0.5;
+    }
+  }  
 }

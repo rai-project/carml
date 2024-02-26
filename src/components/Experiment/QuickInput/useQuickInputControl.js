@@ -12,7 +12,7 @@ export default function useQuickInputControl(props) {
   const [selectedInputs, setSelectedInputs] = useState([""]);
   const [selectedTab, setSelectedTab] = useState(0);
 
-  console.log('useQuickInputControl', props)
+  // console.log('useQuickInputControl', props)
 
   const getTabs = (type = QuickInputType.Image) => {  // TODO: Remove this default
     const sample = {
@@ -21,29 +21,14 @@ export default function useQuickInputControl(props) {
       component: SampleInputsTab,
       props: {sampleInputs: props.sampleInputs, type: type}
     }
-    // const upload = type === QuickInputType.Image ?
-    //     {id: 'upload-input', title: 'Upload', component: UploadInputsTab} :
-    //     {id: 'upload-input', title: 'Upload', component: UploadTextInputTab};
     const upload = getUploadTabType(type);
-
-    // const input = type === QuickInputType.Image ?
-    //     {id: 'url-input', title: 'URL', component: URLInputsTab} :
-    //     {id: 'text-input', title: 'Text', component: TextInputTab};
     const input = getInputTabType(type);
-
-    // TODO: Update with Audio
-    // Audio input would be record from mic
-    // Audio upload would be upload a recording? Can skip?
-    
-    
-
     const tabs = [];
 
     if (!props.hideSample) tabs.push(sample);
     if (!props.hideUpload) tabs.push(upload);
     if (!props.hideUrl) tabs.push(...input);
 
-    console.log(tabs)
     return tabs;
   }
   const getInputTabType = (type) => {
@@ -58,6 +43,7 @@ export default function useQuickInputControl(props) {
       case QuickInputType.Text:
         return [{id: 'text-input', title: 'Text', component: TextInputTab}];
       default:
+        // TODO: Create a default "error" tab
         return '-';
     }
   }
@@ -69,6 +55,7 @@ export default function useQuickInputControl(props) {
       case QuickInputType.Text:
         return {id: 'upload-input', title: 'Upload', component: UploadTextInputTab};
       default:
+        // TODO: Create a default "error" tab
         return '-';
     }
   }  

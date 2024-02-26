@@ -94,9 +94,18 @@ TextToCode.args = {
 export const AudioToText = Template.bind({});
 AudioToText.args = {
   sampleInputs: [
-    "https://xlab1.netlify.app/automatic-speech-recognition-input.flac",
-    "https://xlab1.netlify.app/automatic-speech-recognition-input.flac",
-    "https://xlab1.netlify.app/automatic-speech-recognition-input.flac",
+    {
+      title: "automatic-speech-recognition-input.flac",
+      src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
+    },
+    {
+      title: "automatic-speech-recognition-input.flac",
+      src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
+    },
+    {
+      title: "automatic-speech-recognition-input.flac",
+      src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
+    },    
   ],
   model: {
     output: {
