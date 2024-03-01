@@ -12,8 +12,6 @@ export default function useQuickInputControl(props) {
   const [selectedInputs, setSelectedInputs] = useState([""]);
   const [selectedTab, setSelectedTab] = useState(0);
 
-  // console.log('useQuickInputControl', props)
-
   const getTabs = (type = QuickInputType.Image) => {  // TODO: Remove this default
     const sample = {
       id: 'sample-input',
@@ -44,7 +42,7 @@ export default function useQuickInputControl(props) {
         return [{id: 'text-input', title: 'Text', component: TextInputTab}];
       default:
         // TODO: Create a default "error" tab
-        return '-';
+        return '--error--';
     }
   }
   const getUploadTabType = (type) => {
@@ -56,7 +54,7 @@ export default function useQuickInputControl(props) {
         return {id: 'upload-input', title: 'Upload', component: UploadTextInputTab};
       default:
         // TODO: Create a default "error" tab
-        return '-';
+        return '--error--';
     }
   }  
   const runModel = () => {

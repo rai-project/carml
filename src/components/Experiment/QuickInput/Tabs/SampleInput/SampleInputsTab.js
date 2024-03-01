@@ -6,8 +6,6 @@ import useBEMNaming from "../../../../../common/useBEMNaming";
 import {QuickInputType} from "../../quickInputType";
 
 export default function SampleInputsTab(props) {
-    // console.log('SampleInputsTab', props)
-
     const {getBlock, getElement} = useBEMNaming("sample-inputs");
     const {isUnselected, isSelected, selectedIndex, selectInput, type} = useSampleInputControl(props);
 

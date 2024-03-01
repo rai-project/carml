@@ -6,7 +6,6 @@ import Task from "../../../../../helpers/Task";
 import { textToText } from "../../../../../helpers/TaskIDs";
 
 export function TextOutputBox(props) {
-  console.log("TextOutputBox", props)
   const { getElement } = useBEMNaming("text-output");
   const task = props.task ? Task.getStaticTask(props.task) : Task.getStaticTask(textToText);
 

@@ -21,7 +21,8 @@ import {
   SampleSegmentationInputs,
   SampleTextInputs,
   SampleTextToCodeInputs,
-} from "../../helpers/sampleImages";
+  SampleAudioToTextInputs,
+} from "../../helpers/sampleImages";  // This file should be renamed
 
 const ModelDetailPage = (props) => {
   const jumpRef = useRef();
@@ -29,7 +30,6 @@ const ModelDetailPage = (props) => {
   const outputType = props.model?.output?.type || "";
 
   const getSampleInputs = () => {
-    // TODO: Add audio here
     switch (outputType) {
       case object_detection:
         return SampleObjectDetectionInputs;
@@ -42,6 +42,8 @@ const ModelDetailPage = (props) => {
         return SampleTextInputs;
       case textToCode:
         return SampleTextToCodeInputs;
+      case audioToText:
+        return SampleAudioToTextInputs;
       case image_classification:
       default:
         return SampleImageClassificationInputs;

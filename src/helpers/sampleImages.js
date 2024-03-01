@@ -84,3 +84,14 @@ export const SampleTextToCodeInputs = [
   "Consectetur adipiscing elit",
   "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 ];
+
+export const SampleAudioToTextInputs = [
+  {
+    title: "automatic-speech-recognition-input.flac",
+    src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
+  },
+  {
+    title: "automatic-speech-recognition-input(2).flac",
+    src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
+  },   
+];
