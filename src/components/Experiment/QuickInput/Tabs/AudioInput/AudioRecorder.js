@@ -1,6 +1,8 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
-import DownloadIcon from "../../../../../resources/icons/download-icon.png"
+
+import MicrophoneIcon from "../../../../../resources/icons/icon-microphone-white.png"
+import DownloadIcon from "../../../../../resources/icons/icon-download.png"
 
 import "./AudioRecorder.scss";
 
@@ -58,25 +60,7 @@ export default function AudioRecorder(props) {
         setRecordingStatus("recording");
         console.log(stream);
         //create new Media recorder instance using the stream
-        const media = new MediaRecorder(stream, { type: mimeType });
-
-        // const types = [
-        //     "video/webm",
-        //     "audio/webm",
-        //     "video/webm;codecs=vp8",
-        //     "video/webm;codecs=daala",
-        //     "video/webm;codecs=h264",
-        //     "audio/webm;codecs=opus",
-        //     "video/mpeg",
-        //   ];
-          
-        //   for (const type of types) {
-        //     console.log(
-        //       `Is ${type} supported? ${
-        //         MediaRecorder.isTypeSupported(type) ? "Maybe!" : "Nope :("
-        //       }`,
-        //     );
-        //   }        
+        const media = new MediaRecorder(stream, { type: mimeType }); 
 
         //set the MediaRecorder instance to the mediaRecorder ref
         mediaRecorder.current = media;
@@ -120,6 +104,7 @@ export default function AudioRecorder(props) {
                         <button onClick={getMicrophonePermission} type="button"
                             className="record-button"
                         >
+                            <img className="record-audio-icon" src={MicrophoneIcon} />
                             Start Recording
                         </button>
                     ) : null }
@@ -129,6 +114,7 @@ export default function AudioRecorder(props) {
                             type="button"
                             className={"record-button" + (recordingStatus === "recording" ? " pulsing" : "")}
                         >
+                            <img className="record-audio-icon" src={MicrophoneIcon} />
                             Stop Recording
                         </button>
                     ) : null }
@@ -139,6 +125,7 @@ export default function AudioRecorder(props) {
                             type="button"
                             onClick={recordAgain}
                         >
+                            <img className="record-audio-icon" src={MicrophoneIcon} />
                             Record again
                         </button>
                     )}

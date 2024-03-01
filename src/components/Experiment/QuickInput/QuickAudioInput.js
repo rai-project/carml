@@ -8,7 +8,6 @@ import { QuickInputTabTitle } from "./QuickInputTabTitle";
 import {QuickInputType} from "./quickInputType";
 
 export default function QuickAudioInput(props) {
-    // console.log('QuickAudioInput props: ', props);
   const {
     tabIsSelected,
     selectedInputs,
@@ -22,8 +21,8 @@ export default function QuickAudioInput(props) {
   const { getBlock, getElement } = useBEMNaming("quick-audio-input");
 
   const task = Task.getStaticTask(props.model.output.type);
-//   console.log('QuickAudioInput task: ', task);
   const tabs = getTabs(QuickInputType.Audio);
+  
   return (
     <div className={getBlock()}>
       {!props.hideHeader && (

@@ -99,11 +99,11 @@ AudioToText.args = {
       src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
     },
     {
-      title: "automatic-speech-recognition-input.flac",
+      title: "automatic-speech-recognition-input(2).flac",
       src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
     },
     {
-      title: "automatic-speech-recognition-input.flac",
+      title: "automatic-speech-recognition-input(3).flac",
       src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
     },    
   ],

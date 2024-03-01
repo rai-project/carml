@@ -1,6 +1,6 @@
 @import "../../../../../App";
 
-.text-output, .text-to-code-output {
+.text-output, .text-to-code-output, .audio-to-text-output {
   display: flex;
   flex-direction: row;
   gap: 72px;
@@ -38,6 +38,18 @@
       resize: vertical;
       width: 100%;
 
+    }
+
+    &-audio-content {
+      padding-top: 12px;
+      font-size: 20px;
+      // color:red;
+      audio {
+        margin-top: 12px;
+        filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(11%);
+        height: 42px;
+        margin-right: 20px;        
+      }
     }
 
     &-submit-button {

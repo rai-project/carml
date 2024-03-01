@@ -10,7 +10,7 @@ const defaultProps = {
 };
 
 export default function InputPreview(givenProps) {
-  console.log('InputPreview: ', givenProps)
+  console.log('InputPreview: ', givenProps)  // delete
   const props = { ...defaultProps, ...givenProps };
   const { getBlock, getElement } = useBEMNaming(props.className);
 
@@ -18,7 +18,8 @@ export default function InputPreview(givenProps) {
     switch (props.inputType) {
       case "text":
         return <p className={getElement("text")}>{props.input}</p>;
-
+      case "audio":
+        console.log('audio input')
       case "image":
       default:
         return <img className={getElement("image")} src={props.input} />;

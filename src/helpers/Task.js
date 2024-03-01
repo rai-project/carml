@@ -34,6 +34,7 @@ import { TestObjectDetectionResult } from "../components/Experiment/QuickOutput/
 import { TestImageSegmentationResult } from "../components/Experiment/QuickOutput/Outputs/SemanticSegmentation/testData/TestFeatures";
 import { TestInstanceSegmentationOutput } from "../components/Experiment/QuickOutput/Outputs/InstanceSegmentation/testData/TestFeatures";
 import { TestTextOutput } from "../components/Experiment/QuickOutput/Outputs/Text/testData/testTextOutput";
+import { TestAudioToTextOutput } from "../components/Experiment/QuickOutput/Outputs/AudioToText/testData/testAudioToTextOutput";
 import { TaskInputTypes } from "./TaskInputTypes";
 
 export default class Task {
@@ -199,9 +200,10 @@ export default class Task {
         return DefaultTextModel;
 
       case textToCode:
-        console.log('default model for text to code is ???')
+        // Should this be different from text-to-text?
+        return DefaultTextModel;
       case audioToText:
-        console.log('default model for audio to text is ???')
+        console.log('DefaultAudioToTextModel does not exist');
 
       default:
         return undefined;
@@ -222,8 +224,8 @@ export default class Task {
         return TestInstanceSegmentationOutput;
       case textToText:
         return TestTextOutput;
-
-      // TODO: return test audio to text output
+      case audioToText:
+        return TestAudioToTextOutput;
     }
   }
 
