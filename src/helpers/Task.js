@@ -107,7 +107,7 @@ export default class Task {
     tutorialDescription:
       "Image enhancement models improve the resolution of an image, making it crisper and clearer.",
   });
-  static text = new Task({
+  static text_to_text = new Task({
     name: "Text to Text",
     description: "[insert text description here]",
     id: textToText,
@@ -141,6 +141,7 @@ export default class Task {
     inputType: TaskInputTypes.Audio,
   });  
 
+
   constructor(options) {
     this.name = options.name ?? "";
     this.id = options.id ?? this.name;
@@ -173,12 +174,11 @@ export default class Task {
       case Task.image_instance_segmentation.name:
         return Task.image_instance_segmentation;
       case textToText:
-        return Task.text;
+        return Task.text_to_text;
       case textToCode:
         return Task.text_to_code;
       case audioToText:
         return Task.audio_to_text;
-
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }

@@ -55,6 +55,7 @@ const ModelDetailPage = (props) => {
       case audioToText:
         return "audio";
       case textToText:
+        return "text";
       case textToCode:
         return "text";
       case object_detection:
