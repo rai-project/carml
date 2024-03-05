@@ -5,17 +5,27 @@ import MicrophoneIcon from "../../../../../resources/icons/icon-microphone-white
 import DownloadIcon from "../../../../../resources/icons/icon-download.png"
 
 import "./AudioRecorder.scss";
-
+import useUploadInputControl from "../UploadInput/useUploadInputControl";
+import { Dashboard } from "@uppy/react";
 
 const mimeType = "audio/webm";
 
 export default function AudioRecorder(props) {
+    // TODO: still need to handle setSelectedInput and enable runModel button
+    // console.log(props)
+
+    const {uppy} = useUploadInputControl(props);
+
     const [permission, setPermission] = useState(false);
     const [stream, setStream] = useState(null);
     const mediaRecorder = useRef(null);
     const [recordingStatus, setRecordingStatus] = useState("inactive");
     const [audioChunks, setAudioChunks] = useState([]);
     const [audio, setAudio] = useState(null);   
+
+
+    const [audioBlob, setAudioBlob] = useState(null);  
+    const [uppyFileId, setUppyFileId] = useState(null);
     
     
     useEffect(() => {
@@ -24,6 +34,12 @@ export default function AudioRecorder(props) {
         }
         
     }, [stream]);
+
+    useEffect(() => {
+        if (audioBlob) {
+            uploadAudio();
+        }
+    }, [audioBlob]);
 
     const getMicrophonePermission = async () => {
         if ("MediaRecorder" in window) {
@@ -43,22 +59,16 @@ export default function AudioRecorder(props) {
     };
 
     const removeMicrophonePermission = async (stream) => {
-        console.log(stream);
         setPermission(false)
         stream.getTracks().forEach(track => {
             track.stop()
             track.enabled = false
         });
-
-        // const audioContext = new AudioContext()
-        // audioContext.close()
-        // const microphone = audioContext.createMediaStreamSource(stream)
-        // microphone.disconnect()   
     }
 
     const startRecording = async () => {
         setRecordingStatus("recording");
-        console.log(stream);
+
         //create new Media recorder instance using the stream
         const media = new MediaRecorder(stream, { type: mimeType }); 
 
@@ -81,19 +91,42 @@ export default function AudioRecorder(props) {
         mediaRecorder.current.stop();
         mediaRecorder.current.onstop = () => {
             //creates a blob file from the audiochunks data
-            const audioBlob = new Blob(audioChunks, { type: mimeType });
+            const blob = new Blob(audioChunks, { type: mimeType });
+            setAudioBlob(blob);
+
             //creates a playable URL from the blob file.
-            const audioUrl = URL.createObjectURL(audioBlob);
+            const audioUrl = URL.createObjectURL(blob);
             setAudio(audioUrl);
             setAudioChunks([]);
 
+            // Remove microphone permissions
             removeMicrophonePermission(mediaRecorder.current.stream);
         };
     };
 
     const recordAgain = async () => {
+        uppy.removeFile(uppyFileId)
         await getMicrophonePermission();
     }
+
+    const uploadAudio = async () => {
+        const uppyFile = uppy.addFile({
+            name: `temp-audio-${Date.now()}.webm`,
+            type: mimeType,
+            data: audioBlob,
+            source: 'Local'
+        });
+
+        // console.log('uppyFile: ', uppyFile)
+        setUppyFileId(uppyFile)
+
+        // TODO: Can/do we want to automatically upload the file?
+        // const result = await uppy.upload(uppyFile);
+        // console.log(result)
+
+        // TODO: props.setSelectedInput so that we can props.runFile
+    }
+
 
     return (
         <div>
@@ -128,6 +161,15 @@ export default function AudioRecorder(props) {
                             <img className="record-audio-icon" src={MicrophoneIcon} />
                             Record again
                         </button>
+                    )}
+                    
+                    {/* Uppy Dashboard (move below audio) */}
+                    { (audio && recordingStatus === "inactive") && (
+                        <Dashboard 
+                            uppy={uppy} 
+                            width={"100%"} 
+                            height={"50%"} 
+                        />
                     )}
                 </div>
                 {audio ? (

@@ -13,7 +13,7 @@ export default function AudioInputTab(props) {
             <div className={getElement("title")}>
                 <b>Record audio with your microphone</b> to {task.inputText.toLowerCase()}
             </div>
-            <AudioRecorder />
+            <AudioRecorder {...props} />
         </div>
     );
 }
