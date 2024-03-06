@@ -683,6 +683,11 @@
 
         path {
           fill: $white !important;
+          // Note: Stroke is used for new icons, fill for old Pixo-created icons
+          stroke: $azul !important;
+        }
+        line {
+          stroke: $azul !important;
         }
       }
     }

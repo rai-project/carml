@@ -14,6 +14,8 @@ import { ReactComponent as ObjectDetection } from "../resources/icons/icon-objec
 import { ReactComponent as SemanticSegmentation } from "../resources/icons/icon-semanticSegmentation.svg";
 import { ReactComponent as InstanceSegmentation } from "../resources/icons/icon-instanceSegmentation.svg";
 import { ReactComponent as ImageEnhancement } from "../resources/icons/icon-imageEnhancement.svg";
+import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToText.svg";
+
 import {
   DefaultImageClassificationModel,
   DefaultImageEnhancementModel,
@@ -136,7 +138,7 @@ export default class Task {
     id: audioToText,
     inputText: "See how well this model can recognize and transcribe an audio (voice) input.",
     outputText: "Transcribed text:",
-    icon: (props) => <></>,
+    icon: (props) => <AudioToText {...props} />,
     sampleInputs: [],
     tutorialDescription: "Audio to text models transcribe audio files, allowing you to read what is said.",
     inputType: TaskInputTypes.Audio,
