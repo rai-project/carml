@@ -5,29 +5,24 @@ import MicrophoneIcon from "../../../../../resources/icons/icon-microphone-white
 import DownloadIcon from "../../../../../resources/icons/icon-download.png"
 
 import "./AudioRecorder.scss";
-import useUploadInputControl from "../UploadInput/useUploadInputControl";
+import {getAllowedFileTypes, useUploadInputControl} from "../UploadInput/useUploadInputControl";
 import { Dashboard } from "@uppy/react";
 
 const mimeType = "audio/webm";
 
 export default function AudioRecorder(props) {
-    // TODO: still need to handle setSelectedInput and enable runModel button
-    // console.log(props)
-
-    const {uppy} = useUploadInputControl(props);
-
     const [permission, setPermission] = useState(false);
     const [stream, setStream] = useState(null);
     const mediaRecorder = useRef(null);
     const [recordingStatus, setRecordingStatus] = useState("inactive");
     const [audioChunks, setAudioChunks] = useState([]);
     const [audio, setAudio] = useState(null);   
-
-
     const [audioBlob, setAudioBlob] = useState(null);  
     const [uppyFileId, setUppyFileId] = useState(null);
-    
-    
+
+    const allowedFileTypes = getAllowedFileTypes(props.task);
+    const {uppy} = useUploadInputControl({allowedFileTypes: allowedFileTypes, ...props});
+
     useEffect(() => {
         if (stream) {
             startRecording();
@@ -120,11 +115,12 @@ export default function AudioRecorder(props) {
         // console.log('uppyFile: ', uppyFile)
         setUppyFileId(uppyFile)
 
-        // TODO: Can/do we want to automatically upload the file?
+        // Note: Can/do we actually want to automatically upload the file?
         // const result = await uppy.upload(uppyFile);
-        // console.log(result)
+        // console.log(result);
 
-        // TODO: props.setSelectedInput so that we can props.runFile
+        // TODO: Check this on Staging, but useUploadInputControl should handle 
+        // setting props.setSelectedInput, which will then enable the "Run Model" button
     }
 
 

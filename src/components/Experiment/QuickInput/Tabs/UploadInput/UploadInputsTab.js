@@ -5,11 +5,13 @@ import "@uppy/dashboard/dist/style.css";
 import "./UploadInputsTab.scss";
 import Task from "../../../../../helpers/Task";
 import useBEMNaming from "../../../../../common/useBEMNaming";
-import useUploadInputControl from "./useUploadInputControl";
+import {getAllowedFileTypes, useUploadInputControl} from "./useUploadInputControl";
 
 export default function UploadInputsTab(props) {
   const {getBlock, getElement} = useBEMNaming("upload-inputs");
-  const {uppy} = useUploadInputControl(props);
+
+  const allowedFileTypes = getAllowedFileTypes(props.task);
+  const {uppy} = useUploadInputControl({allowedFileTypes: allowedFileTypes, ...props});
 
   const task = Task.getStaticTask(props.task);
   const taskName = task.inputType.toLowerCase();

@@ -3,7 +3,24 @@ import Uppy from '@uppy/core';
 import AwsS3Multipart from "@uppy/aws-s3-multipart";
 import {useEffect, useMemo, useState} from "react";
 
-export default function useUploadInputControl(props) {
+import { audioToText, image_classification, image_enhancement, object_detection, semantic_segmentation } from '../../../../../helpers/TaskIDs';
+
+export const getAllowedFileTypes = (task) => {
+  switch (task) {
+    case audioToText:
+      return ['audio/*', 'video/*'];
+    case image_classification:
+    case image_enhancement:
+    case object_detection:
+    case semantic_segmentation:
+      return ['image/*'];
+    default:
+      // Allow all file types
+      return ['*/*'];
+  }
+}
+
+export const useUploadInputControl = (props) => {
   const [activeUser, setActiveUser] = useState("anonymous");
 
   const onBeforeUpload = (files) => {
@@ -37,7 +54,10 @@ export default function useUploadInputControl(props) {
   const uppy = useMemo(() => {
     let u = Uppy({
       autoProceed: true,
-      restrictions: {maxNumberOfFiles: props.multiple ? 99 : 1},
+      restrictions: {
+        allowedFileTypes: props.allowedFileTypes,
+        maxNumberOfFiles: props.multiple ? 99 : 1,
+      },
       onBeforeUpload: onBeforeUpload
     })
     u.use(AwsS3Multipart, {
@@ -45,8 +65,7 @@ export default function useUploadInputControl(props) {
       companionUrl: process.env.REACT_APP_COMPANION_URL
     });
     u.on("complete", onComplete);
-
-
+    
     return u;
   }, [])
 
