@@ -159,14 +159,7 @@ export default function AudioRecorder(props) {
                         </button>
                     )}
                     
-                    {/* Uppy Dashboard (move below audio) */}
-                    { (audio && recordingStatus === "inactive") && (
-                        <Dashboard 
-                            uppy={uppy} 
-                            width={"100%"} 
-                            height={"50%"} 
-                        />
-                    )}
+
                 </div>
                 {audio ? (
                     <div className="audio-container">
@@ -175,7 +168,15 @@ export default function AudioRecorder(props) {
                             <img className="download-audio-icon" src={DownloadIcon} />
                         </a>
                     </div>
-                ) : null}                
+                ) : null}       
+                {/* Uppy Dashboard */}
+                { (audio && recordingStatus === "inactive") && (
+                    <Dashboard 
+                        uppy={uppy} 
+                        width={"100%"} 
+                        height={"50%"} 
+                    />
+                )}                         
             </main>
         </div>
     )

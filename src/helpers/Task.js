@@ -21,6 +21,7 @@ import {
   DefaultObjectDetectionModel,
   DefaultSemanticSegmentationModel,
   DefaultTextModel,
+  DefaultAudioToTextModel
 } from "./DefaultModels";
 import {
   SampleImageClassificationInputs,
@@ -203,7 +204,7 @@ export default class Task {
         // Should this be different from text-to-text?
         return DefaultTextModel;
       case audioToText:
-        console.log('DefaultAudioToTextModel does not exist');
+        return DefaultAudioToTextModel;
 
       default:
         return undefined;
