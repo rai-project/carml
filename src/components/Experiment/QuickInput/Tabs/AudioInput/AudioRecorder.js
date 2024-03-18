@@ -112,15 +112,7 @@ export default function AudioRecorder(props) {
             source: 'Local'
         });
 
-        // console.log('uppyFile: ', uppyFile)
         setUppyFileId(uppyFile)
-
-        // Note: Can/do we actually want to automatically upload the file?
-        // const result = await uppy.upload(uppyFile);
-        // console.log(result);
-
-        // TODO: Check this on Staging, but useUploadInputControl should handle 
-        // setting props.setSelectedInput, which will then enable the "Run Model" button
     }
 
 
