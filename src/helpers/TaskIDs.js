@@ -7,3 +7,4 @@ export const textToText = "text_to_text";
 export const textToCode = "text_to_code";
 export const audioToText = "audio_to_text";
 export const pending = "pending";
+export const videoClassification = "video_classification";

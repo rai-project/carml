@@ -13,6 +13,7 @@ import {
   textToText,
   textToCode,
   audioToText,
+  videoClassification
 } from "../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -22,6 +23,7 @@ import {
   SampleTextInputs,
   SampleTextToCodeInputs,
   SampleAudioToTextInputs,
+  SampleVideoClassificationInputs
 } from "../../helpers/sampleImages";  // This file should be renamed
 
 const ModelDetailPage = (props) => {
@@ -44,6 +46,8 @@ const ModelDetailPage = (props) => {
         return SampleTextToCodeInputs;
       case audioToText:
         return SampleAudioToTextInputs;
+      case videoClassification:
+        return SampleVideoClassificationInputs;
       case image_classification:
       default:
         return SampleImageClassificationInputs;

@@ -8,12 +8,14 @@ import {
   textToText,
   textToCode,
   audioToText,
+  videoClassification,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
   SampleImageEnhancementInputs,
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
+  SampleVideoClassificationInputs
 } from "../../../helpers/sampleImages";
 
 export default {
@@ -105,11 +107,20 @@ AudioToText.args = {
     {
       title: "automatic-speech-recognition-input(3).flac",
       src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
-    },    
+    },
   ],
   model: {
     output: {
       type: audioToText,
+    },
+  },
+};
+export const VideoClassification = Template.bind({});
+VideoClassification.args = {
+  sampleInputs: SampleVideoClassificationInputs,
+  model: {
+    output: {
+      type: videoClassification,
     },
   },
 };

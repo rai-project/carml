@@ -7,6 +7,7 @@ import {
   textToText,
   textToCode,
   audioToText,
+  videoClassification
 } from "./TaskIDs";
 import React from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
@@ -15,7 +16,7 @@ import { ReactComponent as SemanticSegmentation } from "../resources/icons/icon-
 import { ReactComponent as InstanceSegmentation } from "../resources/icons/icon-instanceSegmentation.svg";
 import { ReactComponent as ImageEnhancement } from "../resources/icons/icon-imageEnhancement.svg";
 import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToText.svg";
-
+import { ReactComponent as VideoClassification } from "../resources/icons/icon-videoClassification.svg";
 import {
   DefaultImageClassificationModel,
   DefaultImageEnhancementModel,
@@ -30,6 +31,7 @@ import {
   SampleImageEnhancementInputs,
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
+  SampleVideoClassificationInputs,
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
 import { TestImageEnhancementData } from "../components/Experiment/QuickOutput/Outputs/ImageEnhancement/testData/TestFeatures";
@@ -142,8 +144,23 @@ export default class Task {
     sampleInputs: [],
     tutorialDescription: "Audio to text models transcribe audio files, allowing you to read what is said.",
     inputType: TaskInputTypes.Audio,
-  });  
+  });
 
+  static video_classification = new Task({
+    name: "Video Classification",
+    description:
+      "Used for automated categorization of video inputs.",
+    modelDescription:
+      "Used for automated categorization of video inputs.",
+    id: videoClassification,
+    inputText: "See how well this model can categorize a video.",
+    outputText: "Class labels for the input video:",
+    icon: (props) => <VideoClassification {...props} />,
+    inputType: TaskInputTypes.Video,
+    sampleInputs: SampleVideoClassificationInputs,
+    tutorialDescription:
+      "Video classification models can recognize a single object in an image.",
+  });
 
   constructor(options) {
     this.name = options.name ?? "";
@@ -182,6 +199,9 @@ export default class Task {
         return Task.text_to_code;
       case audioToText:
         return Task.audio_to_text;
+      case videoClassification:
+        return Task.video_classification;
+
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }
@@ -201,6 +221,8 @@ export default class Task {
         return DefaultInstanceSegmentationModel;
       case textToText:
         return DefaultTextModel;
+      case videoClassification:
+        return DefaultImageClassificationModel;
 
       case textToCode:
         // Should this be different from text-to-text?
@@ -230,7 +252,7 @@ export default class Task {
       case audioToText:
         return TestAudioToTextOutput;
       default:
-        return undefined
+        return undefined;
     }
   }
 
@@ -244,6 +266,7 @@ export default class Task {
       this.getStaticTask(textToText),
       this.getStaticTask(textToCode),
       this.getStaticTask(audioToText),
+      this.getStaticTask(videoClassification),
     ];
   }
 
@@ -256,6 +279,7 @@ export default class Task {
       this.getStaticTask(instance_segmentation),
       this.getStaticTask(textToText),
       this.getStaticTask(audioToText),
+      this.getStaticTask(videoClassification),
     ];
   }
 }
