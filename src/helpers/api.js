@@ -119,7 +119,7 @@ class Api {
     return trial;
   }
 
-  async runTrial(model, input, experimentId = null) {
+  async runTrial(model, input, experimentId = null, context = null) {
     let inputs = typeof (input) === 'string' ? [input] : input;
     const requestBody = {
       architecture: "amd64",
@@ -133,6 +133,10 @@ class Api {
 
     if (experimentId) {
       requestBody['experiment'] = experimentId;
+    }
+
+    if (context) {
+      requestBody['context'] = context;
     }
 
     const response = await fetch(`${this.apiUrl}/predict`, {

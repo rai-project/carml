@@ -95,3 +95,9 @@ export const SampleAudioToTextInputs = [
     src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
   },   
 ];
+
+export const SampleTextConversationInputs = [
+  "Show me a recipe for pizza",
+  "What is the weather tomorrow?",
+  "What is the meaning of life?",
+];

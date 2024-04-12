@@ -13,14 +13,18 @@ export function ModelDetailContainer(props) {
     const [experiment, setExperiment] = useState(null);
     const [trialOutput, setTrialOutput] = useState(undefined);
 
+    console.log("ModelDetailContainer")
+
     let {modelId, experimentId} = props.match.params;
 
     const backToModel = () => {
         props.history.push(`/model/${modelId}`);
     }
 
-    const runModel = async (inputUrl) => {
-        const response = await api.runTrial(model, inputUrl);
+    const runModel = async (inputUrl, context=null) => {
+        // Note: Adding context param for Conversation task; unsure if needed here
+        // Check and confirm later - Alex, 4/10/2024
+        const response = await api.runTrial(model, inputUrl, context);
         props.history.push(`/model/${modelId}/experiment/${response.experimentId}`);
     }
 

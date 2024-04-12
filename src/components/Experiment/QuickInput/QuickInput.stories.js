@@ -8,6 +8,7 @@ import {
   textToText,
   textToCode,
   audioToText,
+  textConversation,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -110,6 +111,21 @@ AudioToText.args = {
   model: {
     output: {
       type: audioToText,
+    },
+  },
+};
+
+export const TextConversation = Template.bind({});
+TextConversation.args = {
+  sampleInputs: [
+    "Show me a recipe for pizza",
+    "What is the weather tomorrow?",
+    "What is the meaning of life?",
+  ],
+  hideUpload: true,
+  model: {
+    output: {
+      type: textConversation,
     },
   },
 };

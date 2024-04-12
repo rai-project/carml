@@ -110,10 +110,12 @@ export default function ExperimentDetailContainer(props) {
     const getUniqueModels = () => {
         return state.trials.filter((t, i, a) => a.findIndex(tr => tr.model.id === t.model.id) === i).map(trial => trial.model.id);
     }
-    const runTrial = async (modelId, input) => {
+    const runTrial = async (modelId, input, context=null) => {
         let fauxModel = {id: modelId, output: {type: getModelOutputType()}};
 
-        let trial = await api.runTrial(fauxModel, input, state.experiment.id);
+        // Note: Adding context param for Conversation task; unsure if needed here
+        // Check and confirm later - Alex, 4/10/2024
+        let trial = await api.runTrial(fauxModel, input, state.experiment.id, context);
 
         addTrial(trial.trialId);
     }

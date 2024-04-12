@@ -7,6 +7,7 @@ import {
   textToText,
   textToCode,
   audioToText,
+  textConversation
 } from "./TaskIDs";
 import React from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
@@ -15,6 +16,7 @@ import { ReactComponent as SemanticSegmentation } from "../resources/icons/icon-
 import { ReactComponent as InstanceSegmentation } from "../resources/icons/icon-instanceSegmentation.svg";
 import { ReactComponent as ImageEnhancement } from "../resources/icons/icon-imageEnhancement.svg";
 import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToText.svg";
+import { ReactComponent as TextConversation } from "../resources/icons/icon-textConversation.svg";
 
 import {
   DefaultImageClassificationModel,
@@ -23,7 +25,8 @@ import {
   DefaultObjectDetectionModel,
   DefaultSemanticSegmentationModel,
   DefaultTextModel,
-  DefaultAudioToTextModel
+  DefaultAudioToTextModel,
+  DefaultTextConversationModel
 } from "./DefaultModels";
 import {
   SampleImageClassificationInputs,
@@ -38,6 +41,7 @@ import { TestImageSegmentationResult } from "../components/Experiment/QuickOutpu
 import { TestInstanceSegmentationOutput } from "../components/Experiment/QuickOutput/Outputs/InstanceSegmentation/testData/TestFeatures";
 import { TestTextOutput } from "../components/Experiment/QuickOutput/Outputs/Text/testData/testTextOutput";
 import { TestAudioToTextOutput } from "../components/Experiment/QuickOutput/Outputs/AudioToText/testData/testAudioToTextOutput";
+import { TestTextConversationOutput } from "../components/Experiment/QuickOutput/Outputs/TextConversation/testData/testTextConversationOutput";
 import { TaskInputTypes } from "./TaskInputTypes";
 
 export default class Task {
@@ -142,7 +146,18 @@ export default class Task {
     sampleInputs: [],
     tutorialDescription: "Audio to text models transcribe audio files, allowing you to read what is said.",
     inputType: TaskInputTypes.Audio,
-  });  
+  });
+  static text_conversation = new Task({
+    name: "Conversation",
+    description: "Converse with a virtual assistant in real-time",
+    id: textConversation,
+    inputText: "begin a conversation.",
+    outputText: "Conversational responses from the virtual assistant",
+    icon: (props) => <TextConversation {...props} />,
+    sampleInputs: [],
+    tutorialDescription: "Type a question and receive a response from a virtual assistant",
+    inputType: TaskInputTypes.Text,
+  });
 
 
   constructor(options) {
@@ -182,6 +197,8 @@ export default class Task {
         return Task.text_to_code;
       case audioToText:
         return Task.audio_to_text;
+      case textConversation:
+        return Task.text_conversation;
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }
@@ -201,12 +218,13 @@ export default class Task {
         return DefaultInstanceSegmentationModel;
       case textToText:
         return DefaultTextModel;
-
       case textToCode:
         // Should this be different from text-to-text?
         return DefaultTextModel;
       case audioToText:
         return DefaultAudioToTextModel;
+      case textConversation:
+        return DefaultTextConversationModel;
 
       default:
         return undefined;
@@ -229,6 +247,8 @@ export default class Task {
         return TestTextOutput;
       case audioToText:
         return TestAudioToTextOutput;
+      case textConversation:
+        return TestTextConversationOutput;
       default:
         return undefined
     }
@@ -244,6 +264,7 @@ export default class Task {
       this.getStaticTask(textToText),
       this.getStaticTask(textToCode),
       this.getStaticTask(audioToText),
+      this.getStaticTask(textConversation)
     ];
   }
 
@@ -254,8 +275,8 @@ export default class Task {
       this.getStaticTask(image_enhancement),
       this.getStaticTask(semantic_segmentation),
       this.getStaticTask(instance_segmentation),
-      this.getStaticTask(textToText),
-      this.getStaticTask(audioToText),
+      // Note: Don't add new tasks here; 
+      // These are just examples on the Home Page
     ];
   }
 }

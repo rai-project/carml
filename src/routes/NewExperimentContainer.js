@@ -23,8 +23,10 @@ export default function NewExperimentContainer(props) {
     setModels(selectedModels);
   }
 
-  const runModel = (model, inputs, experimentId) => {
-    return inputs.map(input => api.runTrial(model, input, experimentId));
+  const runModel = (model, inputs, experimentId, context=null) => {
+    // Note: Adding context param for Conversation task; unsure if needed here
+    // Check and confirm later - Alex, 4/10/2024
+    return inputs.map(input => api.runTrial(model, input, experimentId, context));
   }
 
   const fabricateModel = (model) => ({

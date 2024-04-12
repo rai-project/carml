@@ -54,10 +54,12 @@ export default function useExperimentDetailControl() {
     }).filter(trial => trial);
   }
 
-  const runTrial = async (modelId, input) => {
+  const runTrial = async (modelId, input, context=null) => {
+    // Note: Adding context param for Conversation task; unsure if needed here
+    // Check and confirm later - Alex, 4/10/2024
     let fauxModel = {id: modelId, output: {type: modelOutputType}};
 
-    let trial = await api.runTrial(fauxModel, input, experimentId);
+    let trial = await api.runTrial(fauxModel, input, experimentId, context);
 
     addTrial(trial.trialId);
   }

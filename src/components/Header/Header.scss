@@ -683,10 +683,13 @@
 
         path {
           fill: $white !important;
-          // Note: Stroke is used for new icons, fill for old Pixo-created icons
-          stroke: $azul !important;
         }
         line {
+          stroke: $azul !important;
+        }
+        .a {
+          // Currently only used for audioToText icon
+          // Get more icons at https://www.svgrepo.com/
           stroke: $azul !important;
         }
       }
