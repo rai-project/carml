@@ -99,17 +99,19 @@ export default function TextConversationOutput(props) {
                                 key={index}
                                 className={getElement(`chat-${message.role}-message`)}
                             >
-                                { message.role === "assistant" && (
-                                    <div className="assistant-icon-container">
-                                        <div className="assistant-icon">
-                                            ML
-                                        </div>
+                                { message.role === ROLE.ASSISTANT && (
+                                    <div className="chat-profile-icon assistant-icon">
+                                        ML
                                     </div>
-
                                 )}
                                 <div className="speech-bubble">
                                     {message.content}
                                 </div>
+                                { message.role === ROLE.USER && (
+                                    <div className="chat-profile-icon user-icon">
+                                        U
+                                    </div>
+                                )}
                             </div>
                         )
                     })

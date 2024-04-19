@@ -10,6 +10,16 @@
         flex-direction: column;
         padding: 16px 32px;
         height: 200px;
+        .chat-profile-icon {
+            color: white;
+            height: 38px;
+            width: 38px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5px;      
+        }
         .speech-bubble {
             padding: 15px;
             border-radius: 15px;    
@@ -20,6 +30,10 @@
         display: flex;
         justify-content: flex-end;
         padding-left: 10%;
+        .user-icon {
+            background-color: $azulDarkest;
+            margin-left: 10px;
+        }
         .speech-bubble {
             background-color: $azul;
             color: white;
@@ -31,15 +45,7 @@
         padding-right: 5%;
         .assistant-icon {
             background-color: $grayDark;
-            color: white;
-            height: 38px;
-            width: 38px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             margin-right: 10px;
-            margin-top: 5px;
         }
         .speech-bubble {
             background-color: $smokeDarker;
