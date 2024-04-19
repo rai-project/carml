@@ -10,8 +10,6 @@ export function AudioOutputBox(props) {
   const { getElement } = useBEMNaming("text-to-audio-output");
   const task = props.task ? Task.getStaticTask(props.task) : Task.getStaticTask(textToText);
 
-
-  console.log(props)
   return (
     <div className={getElement("results")}>
       <div className={getElement("title-row")}>
