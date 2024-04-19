@@ -24,7 +24,7 @@ export default function useQuickInputControl(props) {
     const tabs = [];
 
     if (!props.hideSample) tabs.push(sample);
-    if (!props.hideUpload) tabs.push(upload);
+    if (!props.hideUpload) tabs.push(upload);  // Currently only hideUpload is being used
     if (!props.hideUrl) tabs.push(...input);
 
     return tabs;

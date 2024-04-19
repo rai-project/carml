@@ -1,9 +1,7 @@
 import React from "react";
 import useBEMNaming from "../../../../../common/useBEMNaming";
-
+import "./AudioToText.scss"
 export default function AudioToTextOutputInputSection(props) {
-  console.log("AudioToTextOutputInputSection: ", props)
-
   const { getElement } = useBEMNaming("audio-to-text-output");
   const input = props.input;
 

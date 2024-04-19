@@ -25,7 +25,8 @@ export default function useTextOutput(trial) {
         return trial.results.responses[0].features[0].generated_tokens
           .map((token) => token.token)
           .join(" ");
-
+      case "AUDIO":
+        return trial?.results?.responses[0]?.features[0] ?? "";
       case "TEXT":
       default:
         return trial?.results?.responses[0]?.features[0]?.text ?? "";

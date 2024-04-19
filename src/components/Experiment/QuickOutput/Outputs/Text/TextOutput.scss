@@ -1,6 +1,8 @@
 @import "../../../../../App";
 
-.text-output, .text-to-code-output, .audio-to-text-output, .text-conversation-output {
+.text-output, .text-to-code-output, 
+.audio-to-text-output, .text-to-audio-output,
+.text-conversation-output {
   display: flex;
   flex-direction: row;
   gap: 72px;
@@ -43,12 +45,6 @@
     &-audio-content {
       padding-top: 12px;
       font-size: 20px;
-      audio {
-        margin-top: 12px;
-        filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(11%);
-        height: 42px;
-        margin-right: 20px;        
-      }
     }
 
     &-submit-button {
@@ -100,6 +96,11 @@
     &-background {
       background-color: $azulLightest;
       padding: 16px 12px 12px;
+    }
+
+    .output-audio-content {
+      padding-top: 12px;
+      font-size: 20px;
     }
   }
 

@@ -7,12 +7,13 @@ import Task from "../../../helpers/Task";
 import { TaskInputTypes } from "../../../helpers/TaskInputTypes";
 
 export default function QuickInput(props) {
-  const inputType = Task.getStaticTask(props.model.output.type).inputType;
-  switch (inputType) {
+  const task = Task.getStaticTask(props.model.output.type)
+  
+  switch (task.inputType) {
     case TaskInputTypes.Text:
-      return <QuickTextInput {...props} />;
+      return <QuickTextInput hideUpload={task.hideUpload} {...props} />;
     case TaskInputTypes.Audio:
-      return <QuickAudioInput {...props} />;      
+      return <QuickAudioInput  {...props} />;      
 
     case TaskInputTypes.Image:
     default:

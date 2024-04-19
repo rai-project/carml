@@ -7,6 +7,7 @@ import {
   textToText,
   textToCode,
   audioToText,
+  textToAudio,
   textConversation
 } from "./TaskIDs";
 import React from "react";
@@ -16,6 +17,7 @@ import { ReactComponent as SemanticSegmentation } from "../resources/icons/icon-
 import { ReactComponent as InstanceSegmentation } from "../resources/icons/icon-instanceSegmentation.svg";
 import { ReactComponent as ImageEnhancement } from "../resources/icons/icon-imageEnhancement.svg";
 import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToText.svg";
+import { ReactComponent as TextToAudio } from "../resources/icons/icon-textToAudio.svg";
 import { ReactComponent as TextConversation } from "../resources/icons/icon-textConversation.svg";
 
 import {
@@ -26,6 +28,7 @@ import {
   DefaultSemanticSegmentationModel,
   DefaultTextModel,
   DefaultAudioToTextModel,
+  DefaultTextToAudioModel,
   DefaultTextConversationModel
 } from "./DefaultModels";
 import {
@@ -41,6 +44,7 @@ import { TestImageSegmentationResult } from "../components/Experiment/QuickOutpu
 import { TestInstanceSegmentationOutput } from "../components/Experiment/QuickOutput/Outputs/InstanceSegmentation/testData/TestFeatures";
 import { TestTextOutput } from "../components/Experiment/QuickOutput/Outputs/Text/testData/testTextOutput";
 import { TestAudioToTextOutput } from "../components/Experiment/QuickOutput/Outputs/AudioToText/testData/testAudioToTextOutput";
+import { TestTextToAudioOutput } from "../components/Experiment/QuickOutput/Outputs/TextToAudio/testData/testTextToAudioOutput";
 import { TestTextConversationOutput } from "../components/Experiment/QuickOutput/Outputs/TextConversation/testData/testTextConversationOutput";
 import { TaskInputTypes } from "./TaskInputTypes";
 
@@ -140,13 +144,25 @@ export default class Task {
     name: "Audio to Text",
     description: "Used to transcribe an audio file to text. Can help you understand what is said.",
     id: audioToText,
-    inputText: "See how well this model can recognize and transcribe an audio (voice) input.",
+    inputText: "see how well this model can recognize and transcribe an audio (voice) input.",
     outputText: "Transcribed text:",
     icon: (props) => <AudioToText {...props} />,
     sampleInputs: [],
     tutorialDescription: "Audio to text models transcribe audio files, allowing you to read what is said.",
     inputType: TaskInputTypes.Audio,
   });
+  static text_to_audio = new Task({
+    name: "Text to Audio",
+    description: "Used to generate an audio file from a text request.",
+    id: textToAudio,
+    inputText: "See how well this model can generate audio from inputted text.",
+    outputText: "Play the file below to listen to the generated audio file.",
+    icon: (props) => <TextToAudio {...props} />,
+    sampleInputs: [],
+    tutorialDescription: "Text to audio models bring your written words to life.",
+    inputType: TaskInputTypes.Text,
+    hideUpload: true,
+  });  
   static text_conversation = new Task({
     name: "Conversation",
     description: "Converse with a virtual assistant in real-time",
@@ -157,6 +173,7 @@ export default class Task {
     sampleInputs: [],
     tutorialDescription: "Type a question and receive a response from a virtual assistant",
     inputType: TaskInputTypes.Text,
+    hideUpload: true,
   });
 
 
@@ -172,6 +189,7 @@ export default class Task {
     this.sampleInputs = options.sampleInputs ?? [];
     this.tutorialDescription = options.tutorialDescription ?? this.description;
     this.inputType = options.inputType ?? TaskInputTypes.Image;
+    this.hideUpload = options.hideUpload ?? false;
   }
 
   static getStaticTask(taskId) {
@@ -197,6 +215,8 @@ export default class Task {
         return Task.text_to_code;
       case audioToText:
         return Task.audio_to_text;
+      case textToAudio:
+        return Task.text_to_audio;
       case textConversation:
         return Task.text_conversation;
       default:
@@ -223,6 +243,8 @@ export default class Task {
         return DefaultTextModel;
       case audioToText:
         return DefaultAudioToTextModel;
+      case textToAudio:
+        return DefaultTextToAudioModel;
       case textConversation:
         return DefaultTextConversationModel;
 
@@ -247,6 +269,8 @@ export default class Task {
         return TestTextOutput;
       case audioToText:
         return TestAudioToTextOutput;
+      case textToAudio:
+        return TestTextToAudioOutput;
       case textConversation:
         return TestTextConversationOutput;
       default:
@@ -264,6 +288,7 @@ export default class Task {
       this.getStaticTask(textToText),
       this.getStaticTask(textToCode),
       this.getStaticTask(audioToText),
+      this.getStaticTask(textToAudio),
       this.getStaticTask(textConversation)
     ];
   }

@@ -6,5 +6,6 @@ export const instance_segmentation = "image_instance_segmentation";
 export const textToText = "text_to_text";
 export const textToCode = "text_to_code";
 export const audioToText = "audio_to_text";
+export const textToAudio = "text_to_audio";
 export const textConversation = "text_conversation";
 export const pending = "pending";

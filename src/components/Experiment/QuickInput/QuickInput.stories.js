@@ -9,6 +9,7 @@ import {
   textToCode,
   audioToText,
   textConversation,
+  textToAudio,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -115,6 +116,18 @@ AudioToText.args = {
   },
 };
 
+export const TextToAudio = Template.bind({});
+TextToAudio.args = {
+  sampleInputs: [
+    "a chill song with influences from lofi, chillstep and downtempo",
+  ],
+  model: {
+    output: {
+      type: textToAudio,
+    },
+  },
+};
+
 export const TextConversation = Template.bind({});
 TextConversation.args = {
   sampleInputs: [
@@ -122,7 +135,6 @@ TextConversation.args = {
     "What is the weather tomorrow?",
     "What is the meaning of life?",
   ],
-  hideUpload: true,
   model: {
     output: {
       type: textConversation,

@@ -154,3 +154,9 @@ h3 {
   @include headline3;
   color: $almaMater;
 }
+
+audio {
+  filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(11%);
+  height: 42px;
+  margin-right: 20px;   
+}
