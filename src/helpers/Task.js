@@ -4,6 +4,7 @@ import {
   instance_segmentation,
   object_detection,
   semantic_segmentation,
+  styleTransfer,
   textToText,
   textToCode,
   audioToText,
@@ -16,6 +17,9 @@ import { ReactComponent as ObjectDetection } from "../resources/icons/icon-objec
 import { ReactComponent as SemanticSegmentation } from "../resources/icons/icon-semanticSegmentation.svg";
 import { ReactComponent as InstanceSegmentation } from "../resources/icons/icon-instanceSegmentation.svg";
 import { ReactComponent as ImageEnhancement } from "../resources/icons/icon-imageEnhancement.svg";
+import { ReactComponent as StyleTransfer } from "../resources/icons/icon-styleTransfer.svg";
+import { ReactComponent as TextToText } from "../resources/icons/icon-textToText.svg";
+import { ReactComponent as TextToCode } from "../resources/icons/icon-textToCode.svg";
 import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToText.svg";
 import { ReactComponent as TextToAudio } from "../resources/icons/icon-textToAudio.svg";
 import { ReactComponent as TextConversation } from "../resources/icons/icon-textConversation.svg";
@@ -29,13 +33,15 @@ import {
   DefaultTextModel,
   DefaultAudioToTextModel,
   DefaultTextToAudioModel,
-  DefaultTextConversationModel
+  DefaultTextConversationModel,
+  DefaultStyleTransferModel
 } from "./DefaultModels";
 import {
   SampleImageClassificationInputs,
   SampleImageEnhancementInputs,
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
+  SampleStyleTransferInputs,
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
 import { TestImageEnhancementData } from "../components/Experiment/QuickOutput/Outputs/ImageEnhancement/testData/TestFeatures";
@@ -118,13 +124,25 @@ export default class Task {
     tutorialDescription:
       "Image enhancement models improve the resolution of an image, making it crisper and clearer.",
   });
+  static style_transfer = new Task({
+    name: "Style Transfer",
+    description:
+      "Used to convert one image into the artistic style of a second image",
+    id: styleTransfer,
+    inputText: "***",
+    outputText: "Stylized image:",
+    icon: (props) => <StyleTransfer {...props} />,
+    sampleInputs: SampleStyleTransferInputs,
+    tutorialDescription:
+      "###",
+  });
   static text_to_text = new Task({
     name: "Text to Text",
     description: "[insert text description here]",
     id: textToText,
     inputText: "[insert text input help text here]",
     outputText: "[insert text output help text here]",
-    icon: (props) => <></>,
+    icon: (props) => <TextToText {...props} />,
     sampleInputs: [],
     tutorialDescription: "[insert text tutorial page description here]",
     inputType: TaskInputTypes.Text,
@@ -135,7 +153,7 @@ export default class Task {
     id: textToCode,
     inputText: "[insert text to code input help text here]",
     outputText: "[insert text to code output help text here]",
-    icon: (props) => <></>,
+    icon: (props) => <TextToCode {...props} />,
     sampleInputs: [],
     tutorialDescription: "[insert text to code tutorial page description here]",
     inputType: TaskInputTypes.Text,
@@ -209,6 +227,8 @@ export default class Task {
       case instance_segmentation:
       case Task.image_instance_segmentation.name:
         return Task.image_instance_segmentation;
+      case styleTransfer:
+        return Task.style_transfer;
       case textToText:
         return Task.text_to_text;
       case textToCode:
@@ -236,6 +256,8 @@ export default class Task {
         return DefaultSemanticSegmentationModel;
       case instance_segmentation:
         return DefaultInstanceSegmentationModel;
+      case styleTransfer:
+        return DefaultStyleTransferModel;
       case textToText:
         return DefaultTextModel;
       case textToCode:
@@ -265,6 +287,9 @@ export default class Task {
         return TestImageSegmentationResult;
       case instance_segmentation:
         return TestInstanceSegmentationOutput;
+      case styleTransfer:
+        // TODO: Update this with better data?
+        return TestImageEnhancementData;
       case textToText:
         return TestTextOutput;
       case audioToText:
@@ -285,11 +310,14 @@ export default class Task {
       this.getStaticTask(image_enhancement),
       this.getStaticTask(semantic_segmentation),
       this.getStaticTask(instance_segmentation),
+      this.getStaticTask(styleTransfer),
       this.getStaticTask(textToText),
       this.getStaticTask(textToCode),
+      this.getStaticTask(textConversation),     
+      this.getStaticTask(textToAudio),       
       this.getStaticTask(audioToText),
-      this.getStaticTask(textToAudio),
-      this.getStaticTask(textConversation)
+
+
     ];
   }
 
