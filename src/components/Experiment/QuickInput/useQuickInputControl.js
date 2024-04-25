@@ -9,6 +9,8 @@ import TextInputTab from "./Tabs/TextInput/TextInputTab";
 import UploadTextInputTab from "./Tabs/UploadTextInput/UploadTextInputTab";
 
 export default function useQuickInputControl(props) {
+  console.log('useQuickInputControl', props)
+
   const [selectedInputs, setSelectedInputs] = useState([""]);
   const [selectedTab, setSelectedTab] = useState(0);
 
@@ -63,6 +65,7 @@ export default function useQuickInputControl(props) {
   }
   const selectInput = (url, index) => {
     let selected = selectedInputs;
+    console.log('selectInput............')
     if (index)
       selected[index] = url;
     else

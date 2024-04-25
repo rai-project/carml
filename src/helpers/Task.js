@@ -129,12 +129,28 @@ export default class Task {
     description:
       "Used to convert one image into the artistic style of a second image",
     id: styleTransfer,
-    inputText: "***",
+
+    // inputText: "[Old inputText]",
+    // inputType: TaskInputTypes.Image,
+
+    inputs: [
+      {
+        inputText: 'have its style changed',
+        inputType: TaskInputTypes.Image,
+      },
+      {
+        inputText: 'use the style from',
+        inputType: TaskInputTypes.Image,        
+      }
+    ],
+    useMultiInput: true,
+
     outputText: "Stylized image:",
+
     icon: (props) => <StyleTransfer {...props} />,
     sampleInputs: SampleStyleTransferInputs,
     tutorialDescription:
-      "###",
+      "Style transfer models convert one image into the artistic style of the second image.",
   });
   static text_to_text = new Task({
     name: "Text to Text",
@@ -201,6 +217,9 @@ export default class Task {
     this.description = options.description ?? "";
     this.modelDescription = options.modelDescription ?? this.description;
     this.inputText = options.inputText ?? "";
+    this.inputs = options.inputs ?? [];  // TODO: Update this to be only input field
+    this.useMultiInput = options.useMultiInput ?? false;
+    this.multiple = options.multiple ?? false;
     this.outputText = options.outputText ?? "";
     this.Icon = options.icon ?? ((props) => <></>);
     this.defaultModel = Task.getDefaultModel(this.id);
@@ -316,8 +335,6 @@ export default class Task {
       this.getStaticTask(textConversation),     
       this.getStaticTask(textToAudio),       
       this.getStaticTask(audioToText),
-
-
     ];
   }
 

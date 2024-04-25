@@ -10,6 +10,7 @@ import {
   instance_segmentation,
   object_detection,
   semantic_segmentation,
+  styleTransfer,
   textToText,
   textToCode,
   audioToText,
@@ -24,6 +25,7 @@ import {
   SampleTextToCodeInputs,
   SampleAudioToTextInputs,
   SampleTextConversationInputs,
+  SampleStyleTransferInputs,
 } from "../../helpers/sampleImages";  // This file should be renamed
 
 const ModelDetailPage = (props) => {
@@ -40,6 +42,8 @@ const ModelDetailPage = (props) => {
       case semantic_segmentation:
       case instance_segmentation:
         return SampleSegmentationInputs;
+      case styleTransfer:
+        return SampleStyleTransferInputs;
       case textToText:
         return SampleTextInputs;
       case textToCode:
@@ -69,6 +73,7 @@ const ModelDetailPage = (props) => {
       case image_classification:
       case semantic_segmentation:
       case instance_segmentation:
+      case styleTransfer:
       default:
         return "image";
     }
