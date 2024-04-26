@@ -15,7 +15,9 @@ export default function useSampleInputControl(props) {
   const selectInput = (index) => {
     let input = '';
     if (task.useMultiInput) {
-      input = props.type === QuickInputType.Image ? props.sampleInputs[props.inputIndex][index].src : props.sampleInputs[props.inputIndex][index];
+      input = props.type === QuickInputType.Image ? 
+        props.sampleInputs[props.inputIndex][index].src : 
+        props.sampleInputs[props.inputIndex][index];
     } else {
       input = props.type === QuickInputType.Image ?
           props.sampleInputs[index].src :

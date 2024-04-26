@@ -130,23 +130,28 @@ export default class Task {
       "Used to convert one image into the artistic style of a second image",
     id: styleTransfer,
 
-    // inputText: "[Old inputText]",
+    // inputText: "Old inputText",
     // inputType: TaskInputTypes.Image,
 
     inputs: [
       {
         inputText: 'have its style changed',
         inputType: TaskInputTypes.Image,
+
       },
       {
         inputText: 'use the style from',
         inputType: TaskInputTypes.Image,        
       }
+
     ],
     useMultiInput: true,
+    // Note: This is just an example of what a config field could look like, not currently used
+    config: {
+      numWarmups: 0
+    },
 
     outputText: "Stylized image:",
-
     icon: (props) => <StyleTransfer {...props} />,
     sampleInputs: SampleStyleTransferInputs,
     tutorialDescription:
@@ -217,7 +222,7 @@ export default class Task {
     this.description = options.description ?? "";
     this.modelDescription = options.modelDescription ?? this.description;
     this.inputText = options.inputText ?? "";
-    this.inputs = options.inputs ?? [];  // TODO: Update this to be only input field
+    this.inputs = options.inputs ?? [];  // TODO: Update this to be only input-related field, and remove inputText and inputType
     this.useMultiInput = options.useMultiInput ?? false;
     this.multiple = options.multiple ?? false;
     this.outputText = options.outputText ?? "";
