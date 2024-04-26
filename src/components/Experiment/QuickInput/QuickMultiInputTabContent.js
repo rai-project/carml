@@ -1,9 +1,6 @@
 import React from "react";
 
 export function QuickMultiInputTabContent(props) {
-    console.log('QuickMultiInputTabContent props', props)
-    // console.log(props.input)
-
   let {index, tab} = props;
   let Component = tab.component || (() => {
     return <div/>

@@ -8,7 +8,7 @@ export function QuickInputTabContent(props) {
   let className = 'tab';
   if (props.tabIsSelected(index)) className += " tab--selected";
 
-  // Note: Multiple here refers to URL tab allowing multiple uploads
+  // Note: 'multiple' here just refers to URL tab allowing multiple uploads
   return (
     <div key={index} className={props.getElement(className)} role="tabpanel" aria-labelledby={`${tab.id}`}
          id={`${tab.id}-panel`}>

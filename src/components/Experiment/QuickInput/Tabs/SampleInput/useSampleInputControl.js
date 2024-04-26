@@ -5,7 +5,6 @@ import Task from "../../../../../helpers/Task";
 export default function useSampleInputControl(props) {
   console.log('useSampleInputControl', props)
   const task = Task.getStaticTask(props.task);
-  // console.log('task', task)
 
   const [selectedIndex, setSelectedIndex] = useState([]);
 

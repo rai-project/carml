@@ -70,13 +70,11 @@ ImageEnhancement.args = {
 export const StyleTransfer = Template.bind({});
 StyleTransfer.args = {
   sampleInputs: SampleStyleTransferInputs,
-  // sampleInputs: SampleImageEnhancementInputs,  // TODO: Switch this over to StyleTransfer and fix broken images
   model: {
     output: {
       type: styleTransfer,
     },
   },
-  // multiple: true
 };
 
 export const Text = Template.bind({});

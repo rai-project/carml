@@ -21,15 +21,7 @@ export default function QuickMultiInput(props) {
   const { getBlock, getElement } = useBEMNaming("quick-image-input");
 
   const task = Task.getStaticTask(props.model.output.type);
-  // Just printing out a list of the inputs, delete later
-  // for (let i = 0; i < task.inputs.length; i++) {
-  //   console.log(`input ${i}`, task.inputs[i]);
-  // }
-
   const tabs = getTabs(QuickInputType.Image);
-  // console.log('tabs', tabs)
-
-
 
   return (
     <div className={getBlock()}>
@@ -55,7 +47,7 @@ export default function QuickMultiInput(props) {
         {tabs.map((tab, index) => (
           <div key={index}>
             {task.inputs.map((input, inputIndex) => (
-              // Note: check what index does here
+              // Note: check what index is used for here
               <QuickMultiInputTabContent
                 key={inputIndex}
                 tab={tab}

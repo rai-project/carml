@@ -73,7 +73,7 @@ export const SampleInstanceSegmentationInputs = [
   },
 ];
 
-export const SampleStyleTransferInputs = [  // TODO: Probably need two sets of images?
+export const SampleStyleTransferInputs = [
   [
     {
       src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/person-dog.jpg",

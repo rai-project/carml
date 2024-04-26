@@ -64,12 +64,7 @@ export default function SampleInputsTab(props) {
     }
 
     const task = Task.getStaticTask(props.task);
-    // const sampleInputs = props.sampleInputs ?? [];
-    console.log('Task useMultiInput', task.useMultiInput);
     const sampleInputs = task.useMultiInput ? props.sampleInputs[props.inputIndex] : (props.sampleInputs ?? []);
-    // console.log('sampleInputs', props.sampleInputs[props.inputIndex])
-    // console.log(props.inputIndex !== null)
-
     const inputText = task.inputText || props.input.inputText;
 
     return (
