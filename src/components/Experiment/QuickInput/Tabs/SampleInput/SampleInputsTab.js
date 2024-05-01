@@ -32,10 +32,11 @@ export default function SampleInputsTab(props) {
         }
     }
 
+    // TODO: Rename "url" to "input" or similar
     function makeSampleImageInput(url, index) {
         return (
             <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
-                <img src={url.src} alt={url.alt}/>
+                <img src={url.src} alt={url.alt}/> index:{index}
             </button>
         )
     }
@@ -64,6 +65,7 @@ export default function SampleInputsTab(props) {
     }
 
     const task = Task.getStaticTask(props.task);
+    // Currently using both new and old way of handling inputs but should refactor in the future
     const sampleInputs = task.useMultiInput ? props.sampleInputs[props.inputIndex] : (props.sampleInputs ?? []);
     const inputText = task.inputText || props.input.inputText;
 

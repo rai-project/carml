@@ -224,7 +224,7 @@ export default class Task {
     this.inputText = options.inputText ?? "";
     this.inputs = options.inputs ?? [];  // TODO: Update this to be only input-related field, and remove inputText and inputType
     this.useMultiInput = options.useMultiInput ?? false;
-    this.multiple = options.multiple ?? false;
+    this.multiple = options.multiple ?? false;  // This is used to allow multiple selections from one input
     this.outputText = options.outputText ?? "";
     this.Icon = options.icon ?? ((props) => <></>);
     this.defaultModel = Task.getDefaultModel(this.id);

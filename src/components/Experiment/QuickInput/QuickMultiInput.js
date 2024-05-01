@@ -21,6 +21,8 @@ export default function QuickMultiInput(props) {
   const { getBlock, getElement } = useBEMNaming("quick-image-input");
 
   const task = Task.getStaticTask(props.model.output.type);
+  // console.log(task)
+  console.log('inputs count', task.inputs.length)
   const tabs = getTabs(QuickInputType.Image);
 
   return (
@@ -69,7 +71,7 @@ export default function QuickMultiInput(props) {
       </div>
       <button
         className={getElement("run-model")}
-        disabled={selectedInputs.length === 0 || selectedInputs[0] === ""}
+        disabled={selectedInputs.length < task.inputs.length || selectedInputs[0] === ""}
         onClick={() => runModel()}
       >
         Run model and see results

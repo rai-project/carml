@@ -16,10 +16,12 @@ export default function UploadInputsTab(props) {
 
   const task = Task.getStaticTask(props.task);
   const taskName = task.inputType.toLowerCase();
+  // Currently using both new and old way of handling inputs but should refactor in the future
+  const inputText = task.inputText || props.input.inputText;  
 
   return (
     <div className={getBlock()}>
-      <p className={getElement("help-text")}><b>Upload an {taskName} file</b> to {task.inputText.toLowerCase()} </p>
+      <p className={getElement("help-text")}><b>Upload an {taskName} file</b> to {inputText.toLowerCase()} </p>
       <Dashboard uppy={uppy} width={"100%"}/>
     </div>
   );

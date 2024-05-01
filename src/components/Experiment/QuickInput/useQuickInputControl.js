@@ -7,9 +7,10 @@ import clone from "../../../helpers/cloner";
 import {QuickInputType} from "./quickInputType";
 import TextInputTab from "./Tabs/TextInput/TextInputTab";
 import UploadTextInputTab from "./Tabs/UploadTextInput/UploadTextInputTab";
+import Task from "../../../helpers/Task";
 
 export default function useQuickInputControl(props) {
-  console.log('useQuickInputControl', props)
+  const task = Task.getStaticTask(props.model.output.type);
 
   const [selectedInputs, setSelectedInputs] = useState([""]);
   const [selectedTab, setSelectedTab] = useState(0);
@@ -60,17 +61,33 @@ export default function useQuickInputControl(props) {
     }
   }  
   const runModel = () => {
+    // console.log('runModel selectedInputs', selectedInputs)
     if (typeof (props.onRunModelClicked) === 'function')
       props.onRunModelClicked(selectedInputs.filter(url => url));
   }
   const selectInput = (url, index) => {
+    console.log('selectInput--------')
     let selected = selectedInputs;
-    console.log('selectInput............')
+
     if (index)
       selected[index] = url;
     else
       selected = Array.isArray(url) ? url : [url];
     setSelectedInputs(selected);
+  }
+  const selectMultiInput = (url, index) => {
+    console.log('selectMultiInput********')
+    console.log('url', url)
+    console.log('index', index)  // Why is this always the same? Is it always the same for selectInput also?
+    let selected = selectedInputs;
+
+    console.log('selected', selected)
+
+    if (index)
+      selected[index] = url;
+    else
+      selected = Array.isArray(url) ? url : [url];
+    setSelectedInputs(selected);    
   }
   const addInput = (url = "") => {
     let state = clone(selectedInputs);
@@ -91,5 +108,14 @@ export default function useQuickInputControl(props) {
   const tabIsSelected = (index) => selectedTab === index;
 
 
-  return {selectedInputs, getTabs, runModel, selectInput, addInput, removeInput, selectTab, tabIsSelected};
+  return {
+    selectedInputs, 
+    getTabs, 
+    runModel, 
+    selectInput: !task.useMultiInput ? selectInput : selectMultiInput, 
+    addInput, 
+    removeInput, 
+    selectTab, 
+    tabIsSelected
+  };
 }

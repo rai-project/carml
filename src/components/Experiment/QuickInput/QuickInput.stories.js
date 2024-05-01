@@ -75,6 +75,10 @@ StyleTransfer.args = {
       type: styleTransfer,
     },
   },
+  // multiple: true,
+  runModel: (params) => {
+    console.log('params', params)
+  }
 };
 
 export const Text = Template.bind({});
