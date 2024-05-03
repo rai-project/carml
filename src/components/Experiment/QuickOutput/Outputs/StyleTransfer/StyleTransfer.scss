@@ -1,0 +1,95 @@
+@import "../../../../../App";
+
+.style-transfer {
+    &__content {
+        // border: 4px solid orange;
+        display: flex;
+        flex-direction: row;
+
+        .multi-input-preview {
+            // border: 1px solid green;
+            flex-grow: 1;
+            &__container {
+                // border: 1px solid orange;
+                display: flex;
+                flex-direction: column;
+                // justify-content: space-between;
+                img {
+                    margin-bottom: 16px;
+                    max-width: 300px;
+                    // max-height: 200px;
+                    // margin-right: 50px;
+                }      
+                @include maxWidth(700px) {
+                    //   margin-left: 0;
+                    // border: 1px solid red;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    img {
+                        max-height: 200px;
+                    }
+                }                              
+            }
+        }
+        @include maxWidth(700px) {
+            // border: 4px solid black;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &__output {
+        // border: 1px solid purple;
+        flex-grow: 1;
+
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.25);
+        display: flex;
+        // flex: 1 1;
+        flex-direction: column;
+        margin-left: 16px;
+      
+        padding: 32px;
+        // width: 0;
+      
+        @include maxWidth(700px) {
+          margin-left: 0;
+            // border: 1px solid purple;
+        }     
+        
+        &-title-row {
+            // border: 1px solid green;
+            margin-bottom: 0;
+        
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+    
+            @include maxWidth(575px) {
+            h3 {
+                margin-top: 8px;
+            }
+            }
+        }
+        &-subtitle {
+            @include body;
+            border-bottom: 1px solid $smokeDarkest;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+        
+            @include mobileWidth-lg {
+              @include bodySmall;
+            }
+        }   
+        &-image {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+            img {
+                width: 70%;
+            }
+        }           
+    }      
+}

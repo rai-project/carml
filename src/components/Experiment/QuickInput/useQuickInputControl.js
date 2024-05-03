@@ -66,7 +66,6 @@ export default function useQuickInputControl(props) {
       props.onRunModelClicked(selectedInputs.filter(url => url));
   }
   const selectInput = (url, index) => {
-    console.log('selectInput--------')
     let selected = selectedInputs;
 
     if (index)
@@ -76,12 +75,11 @@ export default function useQuickInputControl(props) {
     setSelectedInputs(selected);
   }
   const selectMultiInput = (url, index) => {
-    console.log('selectMultiInput********')
-    console.log('url', url)
-    console.log('index', index)  // Why is this always the same? Is it always the same for selectInput also?
+    // console.log('useQuickInputControl url', url)
+    console.log('useQuickInputControl multiInput index', index)  // Why is this always the same? Is it always the same for selectInput also?
     let selected = selectedInputs;
 
-    console.log('selected', selected)
+    // console.log('selected', selected)
 
     if (index)
       selected[index] = url;

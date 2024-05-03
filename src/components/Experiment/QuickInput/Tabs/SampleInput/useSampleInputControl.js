@@ -18,14 +18,14 @@ export default function useSampleInputControl(props) {
         props.sampleInputs[props.inputIndex][index].src : 
         props.sampleInputs[props.inputIndex][index];
 
-    console.log(index)
+    console.log('sampleInputControl multiInput index', index)
     // console.log()  // NEXT: How to get more than one thing in the array at a time
     
     // Everything below here is directly copied
-    const selected = Array.from(selectedIndex);
-    console.log('selected', selected);
-    let storedIndex = selected.indexOf(input);
-    console.log('storedIndex', storedIndex);
+    const selected = Array.from(selectedIndex);  // This is the array of selected image urls
+    // console.log('selected', selected);
+    let storedIndex = selected.indexOf(input);  // This is always -1
+    // console.log('storedIndex', storedIndex);
 
 
     if (props.multiple) {

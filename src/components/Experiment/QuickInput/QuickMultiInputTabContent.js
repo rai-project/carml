@@ -1,16 +1,16 @@
 import React from "react";
 
 export function QuickMultiInputTabContent(props) {
-  let {index, tab} = props;
+  let {tabIndex, tab} = props;
   let Component = tab.component || (() => {
     return <div/>
   });
   let className = 'tab';
-  if (props.tabIsSelected(index)) className += " tab--selected";
+  if (props.tabIsSelected(tabIndex)) className += " tab--selected";
 
   return (
     <div 
-        key={index} 
+        key={tabIndex} 
         className={props.getElement(className)} 
         role="tabpanel" 
         aria-labelledby={`${tab.id}`}

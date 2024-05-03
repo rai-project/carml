@@ -21,9 +21,9 @@ export default function QuickMultiInput(props) {
   const { getBlock, getElement } = useBEMNaming("quick-image-input");
 
   const task = Task.getStaticTask(props.model.output.type);
-  // console.log(task)
-  console.log('inputs count', task.inputs.length)
-  const tabs = getTabs(QuickInputType.Image);
+  // console.log('inputs count', task.inputs.length)
+  // Note: This feels pretty hacky and TaskInputType/QuickInputType should probably be refactored?
+  const tabs = getTabs(task.inputType.toLowerCase());
 
   return (
     <div className={getBlock()}>
@@ -46,14 +46,14 @@ export default function QuickMultiInput(props) {
             />
           ))}
         </div>
-        {tabs.map((tab, index) => (
-          <div key={index}>
+        {tabs.map((tab, tabIndex) => (
+          <div key={tabIndex}>
             {task.inputs.map((input, inputIndex) => (
-              // Note: check what index is used for here
+              // Note: check what index is used for here, somehow it's being passed to selectInput and breaking things?
               <QuickMultiInputTabContent
                 key={inputIndex}
                 tab={tab}
-                index={index}
+                tabIndex={tabIndex}
                 getElement={getElement}
                 {...props}
                 removeInput={removeInput}
