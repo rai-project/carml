@@ -1,6 +1,6 @@
 import React from 'react';
-import StyleTransfer from "./StyleTransfer";
-import {TestImageEnhancementData, TestImageEnhancementData2} from "./testData/TestFeatures";
+import StyleTransfer from "./StyleTransferOutput";
+import { TestStyleTransferOutput } from './testData/testStyleTransferOutput';
 
 export default {
   title: "Experiments/Quick Output/Style Transfer",
@@ -11,7 +11,5 @@ const Template = (args) => <StyleTransfer {...args}/>
 
 export const Default = Template.bind({});
 
-Default.args = {trial: TestImageEnhancementData};
+Default.args = {trial: TestStyleTransferOutput};
 
-// export const Vertical = Template.bind({});
-// Vertical.args = {trial: TestImageEnhancementData2};

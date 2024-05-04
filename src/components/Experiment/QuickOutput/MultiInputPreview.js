@@ -33,8 +33,8 @@ export default function MultiInputPreview(givenProps) {
         </h3>
         <div className={getElement("container")}>
             {
-                props.inputs.map((input) => (
-                    <div className={getElement("single-input")}>
+                props.inputs.map((input, index) => (
+                    <div className={getElement("single-input")} key={index}>
                         {getInputs(input)}
                     </div>
                 )
