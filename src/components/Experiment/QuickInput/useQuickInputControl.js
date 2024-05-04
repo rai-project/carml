@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import SampleInputsTab from "./Tabs/SampleInput/SampleInputsTab";
 import UploadInputsTab from "./Tabs/UploadInput/UploadInputsTab";
 import AudioInputTab from "./Tabs/AudioInput/AudioInputTab";
@@ -14,6 +14,10 @@ export default function useQuickInputControl(props) {
 
   const [selectedInputs, setSelectedInputs] = useState([""]);
   const [selectedTab, setSelectedTab] = useState(0);
+
+  useEffect(() => {
+    console.log('printing selectedInputs', selectedInputs)
+  }, [selectedInputs])
 
   const getTabs = (type = QuickInputType.Image) => {  // TODO: Remove this default
     const sample = {
@@ -61,7 +65,8 @@ export default function useQuickInputControl(props) {
     }
   }  
   const runModel = () => {
-    // console.log('runModel selectedInputs', selectedInputs)
+    console.log('runModel selectedInputs', selectedInputs)
+
     if (typeof (props.onRunModelClicked) === 'function')
       props.onRunModelClicked(selectedInputs.filter(url => url));
   }
@@ -74,19 +79,20 @@ export default function useQuickInputControl(props) {
       selected = Array.isArray(url) ? url : [url];
     setSelectedInputs(selected);
   }
-  const selectMultiInput = (url, index) => {
+  const selectMultiInput = (url, inputIndex) => {
     // console.log('useQuickInputControl url', url)
-    console.log('useQuickInputControl multiInput index', index)  // Why is this always the same? Is it always the same for selectInput also?
-    let selected = selectedInputs;
+    console.log('useQuickInputControl multiInput inputIndex', inputIndex)
+    let selected = [...selectedInputs];
 
     // console.log('selected', selected)
 
-    if (index)
-      selected[index] = url;
+    if (inputIndex >= 0)
+      selected[inputIndex] = url;
     else
       selected = Array.isArray(url) ? url : [url];
     setSelectedInputs(selected);    
   }
+
   const addInput = (url = "") => {
     let state = clone(selectedInputs);
     if (typeof url !== "string") url = "";
