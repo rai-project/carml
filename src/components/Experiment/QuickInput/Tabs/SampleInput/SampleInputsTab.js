@@ -37,7 +37,7 @@ export default function SampleInputsTab(props) {
     function makeSampleImageInput(url, index) {
         return (
             <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
-                <img src={url.src} alt={url.alt}/> index:{index}
+                <img src={url.src} alt={url.alt}/>
             </button>
         )
     }

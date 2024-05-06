@@ -13,10 +13,11 @@ export default function useQuickInputControl(props) {
   const task = Task.getStaticTask(props.model.output.type);
 
   const [selectedInputs, setSelectedInputs] = useState([""]);
-  const [selectedTab, setSelectedTab] = useState(0);
+  // const [selectedTab, setSelectedTab] = useState(0);
+  const [selectedTab, setSelectedTab] = useState(2);
 
   useEffect(() => {
-    console.log('printing selectedInputs', selectedInputs)
+    console.log('selectedInputs', selectedInputs)
   }, [selectedInputs])
 
   const getTabs = (type = QuickInputType.Image) => {  // TODO: Remove this default
@@ -71,6 +72,7 @@ export default function useQuickInputControl(props) {
       props.onRunModelClicked(selectedInputs.filter(url => url));
   }
   const selectInput = (url, index) => {
+    console.log('selectInput')
     let selected = selectedInputs;
 
     if (index)
@@ -80,6 +82,7 @@ export default function useQuickInputControl(props) {
     setSelectedInputs(selected);
   }
   const selectMultiInput = (url, inputIndex) => {
+    console.log('selectMultiInput')
     // console.log('useQuickInputControl url', url)
     console.log('useQuickInputControl multiInput inputIndex', inputIndex)
     let selected = [...selectedInputs];

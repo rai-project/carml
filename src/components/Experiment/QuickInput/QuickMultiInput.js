@@ -49,7 +49,6 @@ export default function QuickMultiInput(props) {
         {tabs.map((tab, tabIndex) => (
           <div key={tabIndex}>
             {task.inputs.map((input, inputIndex) => (
-              // Note: check what index is used for here, somehow it's being passed to selectInput and breaking things?
               <QuickMultiInputTabContent
                 key={inputIndex}
                 tab={tab}
@@ -60,8 +59,7 @@ export default function QuickMultiInput(props) {
                 addInput={addInput}
                 selectInput={selectInput}
                 tabIsSelected={tabIsSelected}
-                selectedInputs={selectedInputs}    
-
+                selectedInputs={selectedInputs}
                 input={input}
                 inputIndex={inputIndex}  
               />
