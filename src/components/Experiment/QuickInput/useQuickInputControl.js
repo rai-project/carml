@@ -13,8 +13,7 @@ export default function useQuickInputControl(props) {
   const task = Task.getStaticTask(props.model.output.type);
 
   const [selectedInputs, setSelectedInputs] = useState([""]);
-  // const [selectedTab, setSelectedTab] = useState(0);
-  const [selectedTab, setSelectedTab] = useState(2);
+  const [selectedTab, setSelectedTab] = useState(0);
 
   useEffect(() => {
     console.log('selectedInputs', selectedInputs)
@@ -72,7 +71,6 @@ export default function useQuickInputControl(props) {
       props.onRunModelClicked(selectedInputs.filter(url => url));
   }
   const selectInput = (url, index) => {
-    console.log('selectInput')
     let selected = selectedInputs;
 
     if (index)
@@ -82,17 +80,13 @@ export default function useQuickInputControl(props) {
     setSelectedInputs(selected);
   }
   const selectMultiInput = (url, inputIndex) => {
-    console.log('selectMultiInput')
-    // console.log('useQuickInputControl url', url)
-    console.log('useQuickInputControl multiInput inputIndex', inputIndex)
     let selected = [...selectedInputs];
-
-    // console.log('selected', selected)
 
     if (inputIndex >= 0)
       selected[inputIndex] = url;
     else
       selected = Array.isArray(url) ? url : [url];
+    // Note: Need to use a useEffect to accurately see what selectedInputs is
     setSelectedInputs(selected);    
   }
 
