@@ -24,8 +24,8 @@ export default function useURLInputControl(props) {
     setIsInvalidUrl(currentInvalidUrl);
 
     if (typeof (props.inputSelected) === 'function') {
-      console.log('about to set inputSelected..')
-      console.log('isInvalidUrl', isInvalidUrl)
+      // console.log('about to set inputSelected..')
+      // console.log('isInvalidUrl', isInvalidUrl)
       // if (isInvalidUrl[index]) {
       //   console.log('this url is invalid....')
       //   console.log(isInvalidUrl[index])
@@ -35,7 +35,7 @@ export default function useURLInputControl(props) {
       //   props.inputSelected(url, index);
       // }
 
-      
+
       // Todo: How to not add this to inputSelected if invalid url?
       props.inputSelected(url, index);
     }

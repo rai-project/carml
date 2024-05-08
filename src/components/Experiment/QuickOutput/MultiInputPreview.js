@@ -13,7 +13,6 @@ export default function MultiInputPreview(givenProps) {
   const { getBlock, getElement } = useBEMNaming(props.className);
 
   const getInputs = (input) => {
-    console.log(input)
     switch (input.inputType) {
       case "text":
         return <p className={getElement("text")}>{input}</p>;

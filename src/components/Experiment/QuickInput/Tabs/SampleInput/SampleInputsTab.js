@@ -7,7 +7,6 @@ import {QuickInputType} from "../../quickInputType";
 
 export default function SampleInputsTab(props) {
     // Note: This is the content for the Sample Input Tab, below the header
-    // console.log('SampleInputsTab', props)
 
     const {getBlock, getElement} = useBEMNaming("sample-inputs");
     const {isUnselected, isSelected, selectInput, type} = useSampleInputControl(props);
@@ -68,7 +67,6 @@ export default function SampleInputsTab(props) {
     const task = Task.getStaticTask(props.task);
     // Currently using both new and old way of handling inputs but should refactor in the future
     const sampleInputs = task.useMultiInput ? props.sampleInputs[props.inputIndex] : (props.sampleInputs ?? []);
-    // console.log("sampleInputs", sampleInputs)
     const inputText = task.inputText || props.input.inputText;
 
     return (

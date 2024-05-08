@@ -12,7 +12,6 @@ import "./StyleTransfer.scss";
 
 
 export default function StyleTransferOutput(props) {
-    console.log('StyleTransfer props', props)
     const { getElement, getBlock } = useBEMNaming('style-transfer');
 
     const task = Task.getStaticTask(styleTransfer);

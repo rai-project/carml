@@ -21,7 +21,6 @@ export default function QuickMultiInput(props) {
   const { getBlock, getElement } = useBEMNaming("quick-image-input");
 
   const task = Task.getStaticTask(props.model.output.type);
-  // console.log('inputs count', task.inputs.length)
   // Note: This feels pretty hacky and TaskInputType/QuickInputType should probably be refactored?
   const tabs = getTabs(task.inputType.toLowerCase());
 

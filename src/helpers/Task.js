@@ -53,6 +53,7 @@ import { TestAudioToTextOutput } from "../components/Experiment/QuickOutput/Outp
 import { TestTextToAudioOutput } from "../components/Experiment/QuickOutput/Outputs/TextToAudio/testData/testTextToAudioOutput";
 import { TestTextConversationOutput } from "../components/Experiment/QuickOutput/Outputs/TextConversation/testData/testTextConversationOutput";
 import { TaskInputTypes } from "./TaskInputTypes";
+import { TestStyleTransferOutput } from "../components/Experiment/QuickOutput/Outputs/StyleTransfer/testData/testStyleTransferOutput";
 
 export default class Task {
   static image_classification = new Task({
@@ -312,8 +313,7 @@ export default class Task {
       case instance_segmentation:
         return TestInstanceSegmentationOutput;
       case styleTransfer:
-        // TODO: Update this with better data?
-        return TestImageEnhancementData;
+        return TestStyleTransferOutput;
       case textToText:
         return TestTextOutput;
       case audioToText:

@@ -15,9 +15,10 @@ export default function useQuickInputControl(props) {
   const [selectedInputs, setSelectedInputs] = useState([""]);
   const [selectedTab, setSelectedTab] = useState(0);
 
-  useEffect(() => {
-    console.log('selectedInputs', selectedInputs)
-  }, [selectedInputs])
+  // Note: Uncomment for debugging
+  // useEffect(() => {
+  //   console.log('selectedInputs', selectedInputs)
+  // }, [selectedInputs])
 
   const getTabs = (type = QuickInputType.Image) => {  // TODO: Remove this default
     const sample = {
@@ -65,8 +66,6 @@ export default function useQuickInputControl(props) {
     }
   }  
   const runModel = () => {
-    console.log('runModel selectedInputs', selectedInputs)
-
     if (typeof (props.onRunModelClicked) === 'function')
       props.onRunModelClicked(selectedInputs.filter(url => url));
   }

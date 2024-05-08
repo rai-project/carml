@@ -9,10 +9,6 @@ export default function URLInputsTab(props) {
   const {getBlock, getElement} = useBEMNaming("url-inputs");
   const {urlChanged, getUrlValidity, task, values} = useURLInputControl(props);
   const taskName = task.inputType.toLowerCase();
-  // console.log("props", props)
-  // console.log('URLTab task', task)
-  // console.log('URLTab Input', props.input)
-  // console.log('URLTab values', values)
   // Note: Currently using both new and old way of handling inputs but should refactor in the future
   const inputText = task.inputText || props.input.inputText;  
   const getInputClassName = (index) => getElement(getUrlValidity(index) ? "url url-error" : "url")

@@ -75,7 +75,6 @@ StyleTransfer.args = {
       type: styleTransfer,
     },
   },
-  // multiple: true,
 };
 
 export const Text = Template.bind({});
