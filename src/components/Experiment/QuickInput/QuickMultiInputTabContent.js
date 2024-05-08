@@ -14,8 +14,8 @@ export function QuickMultiInputTabContent(props) {
         className={props.getElement(className)} 
         role="tabpanel" 
         aria-labelledby={`${tab.id}`}
-        id={`${tab.id}-panel`}>
-        {/* Note: 'multiple' below refers to URL tab allowing multiple uploads */}
+        id={`${tab.id}-panel-${props.inputIndex}`}>
+        {/* Note: 'multiple' below refers to URL tab allowing multiple urls for a single input */}
         <Component 
             multiple={props.multiple ?? false} 
             addInput={props.addInput} 
