@@ -135,12 +135,12 @@ export default class Task {
 
     inputs: [
       {
-        inputText: 'have its style changed',
+        inputText: 'have its style changed.',
         inputType: TaskInputTypes.Image,
 
       },
       {
-        inputText: 'use the style from',
+        inputText: 'use the style from.',
         inputType: TaskInputTypes.Image,        
       }
 
