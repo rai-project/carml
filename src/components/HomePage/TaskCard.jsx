@@ -26,6 +26,7 @@ export function TaskCard(props) {
       trialOutput={trial}
       hideHeader
       showLearnMoreLink
+      runTrial={runTrial}
     />
   }
 

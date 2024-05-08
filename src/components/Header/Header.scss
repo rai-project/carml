@@ -675,6 +675,12 @@
         path {
           fill: $azul !important;
         }
+        rect {
+          stroke: $azul !important;
+        }
+        circle {
+          stroke: $azul !important;
+        }        
       }
 
       &:hover, &-selected {
@@ -688,9 +694,17 @@
           stroke: $azul !important;
         }
         .a {
-          // Currently only used for audioToText icon
+          // Currently not used
           // Get more icons at https://www.svgrepo.com/
           stroke: $azul !important;
+        }
+        rect {
+          // Currently only used for audioToText icon
+          stroke: $white !important;
+        }
+        circle {
+          // Currently only used for audioToText icon
+          stroke: $white !important;
         }
       }
     }

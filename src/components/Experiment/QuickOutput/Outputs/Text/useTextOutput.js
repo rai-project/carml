@@ -33,8 +33,6 @@ export default function useTextOutput(trial) {
     }
   };
 
-
-
   return {
     output: getOutput(),
     input,

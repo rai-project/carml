@@ -4,9 +4,19 @@ import AwsS3Multipart from "@uppy/aws-s3-multipart";
 import {useEffect, useMemo, useState} from "react";
 
 import UppyFileTypeCheckerPlugin from "../../../../../helpers/UppyFileTypeCheckerPlugin";
+import Task from "../../../../../helpers/Task";
 
 export const useUploadInputControl = (props) => {
+  const task = Task.getStaticTask(props.task);
+
   const [activeUser, setActiveUser] = useState("anonymous");
+  const [initialUppy, setInitialUppy] = useState(null);
+
+  useEffect(() => {
+    // Note: useMemo only saves the value once, during the inital render, 
+    // but we need onComplete to update with new values for multiInput tasks
+    initialUppy.on("complete", onComplete);
+  }, [props.values])
 
   const onBeforeUpload = (files) => {
     Object.keys(files).forEach(key => {
@@ -21,18 +31,28 @@ export const useUploadInputControl = (props) => {
   }
 
   const onComplete = (result) => {
-    const urls = result.successful.map(x => x.uploadURL);
-    if (typeof (props.inputSelected) === 'function') {
-      let values = Array.from(props.values);
-      if (values.length === 0 || values[0] === "")
-        values = urls;
-      else
-        values = [...values, ...urls];
-      props.inputSelected(values);
+    // COMMENT THIS OUT BEFORE COMMITTING
+    // Note: Uncomment in order to test w/o server, adding a fake uploadURL:
+    // result.successful.map(x => x.uploadURL = `test_${props.inputIndex}.com`)
 
+    const urls = result.successful.map(x => x.uploadURL);
+
+    if (!task.useMultiInput) {
+      if (typeof (props.inputSelected) === 'function') {
+        let values = Array.from(props.values);
+        if (values.length === 0 || values[0] === "")
+          values = urls;
+        else
+          values = [...values, ...urls];
+        
+        props.inputSelected(values);
+      }      
+    } else {
+      if (typeof (props.inputSelected) === 'function') {
+        props.inputSelected(urls[0], props.inputIndex);
+      }
     }
   }
-
 
   const api = GetApiHelper();
   const uppy = useMemo(() => {
@@ -47,6 +67,8 @@ export const useUploadInputControl = (props) => {
       onBeforeUpload: onBeforeUpload
     });
 
+    // UNCOMMENT THIS BEFORE COMMITTING
+    // Note: Comment this out in order to test w/o server
     u.use(AwsS3Multipart, {
       limit: 5,
       companionUrl: process.env.REACT_APP_COMPANION_URL
@@ -56,7 +78,7 @@ export const useUploadInputControl = (props) => {
     // extentions from being maliciously uploaded
     u.use(UppyFileTypeCheckerPlugin, {allowedFileTypes: props.allowedFileTypes.fileTypes});
 
-    u.on("complete", onComplete);
+    setInitialUppy(u);
     
     return u;
   }, [])

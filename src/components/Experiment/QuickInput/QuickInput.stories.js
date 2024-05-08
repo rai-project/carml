@@ -5,6 +5,7 @@ import {
   image_enhancement,
   object_detection,
   semantic_segmentation,
+  styleTransfer,
   textToText,
   textToCode,
   audioToText,
@@ -16,6 +17,7 @@ import {
   SampleImageEnhancementInputs,
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
+  SampleStyleTransferInputs,
 } from "../../../helpers/sampleImages";
 
 export default {
@@ -61,6 +63,16 @@ ImageEnhancement.args = {
   model: {
     output: {
       type: image_enhancement,
+    },
+  },
+};
+
+export const StyleTransfer = Template.bind({});
+StyleTransfer.args = {
+  sampleInputs: SampleStyleTransferInputs,
+  model: {
+    output: {
+      type: styleTransfer,
     },
   },
 };

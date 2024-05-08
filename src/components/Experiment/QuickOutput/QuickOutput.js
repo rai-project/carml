@@ -10,6 +10,10 @@ import {
   semantic_segmentation,
   textToText,
   textToCode,
+  styleTransfer,
+  audioToText,
+  textToAudio,
+  textConversation
 } from "../../../helpers/TaskIDs";
 import ObjectDetection from "./Outputs/ObjectDetection/ObjectDetection";
 import ImageEnhancement from "./Outputs/ImageEnhancement/ImageEnhancement";
@@ -20,6 +24,8 @@ import useBEMNaming from "../../../common/useBEMNaming";
 import TextOutput from "./Outputs/Text/TextOutput";
 // import { TextToCode } from "../../ModelDetailPage/ModelDetailPage.stories"; Unused
 import TextToCodeOutput from "./Outputs/TextToCode/TextToCodeOutput";
+import TextConversationOutput from "./Outputs/TextConversation/TextConversationOutput";
+import StyleTransferOutput from "./Outputs/StyleTransfer/StyleTransferOutput";
 
 const defaultProps = {
   className: "quick-output",
@@ -101,6 +107,24 @@ export default function QuickOutput(givenProps) {
               trial={props.trialOutput}
             />
           );
+
+        // TODO: Need to add audioToText etc
+
+
+        case textConversation:
+          return (
+            <TextConversationOutput 
+              trial={props.trialOutput}
+              onSubmit={props.runTrial}
+            />
+          )
+        case styleTransfer:
+          return (
+            <StyleTransferOutput 
+              onBackClicked={props.onBackClicked}
+              trial={props.trialOutput}
+            />
+          )
         default:
           return (
             <>

@@ -73,6 +73,37 @@ export const SampleInstanceSegmentationInputs = [
   },
 ];
 
+export const SampleStyleTransferInputs = [
+  [
+    {
+      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/person-dog.jpg",
+      alt: "person with a dog",
+    },
+    {
+      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/puppies.jpg",
+      alt: "puppies",
+    },
+    {
+      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/plane-blue.jpg",
+      alt: "airplane",
+    },
+  ],
+  [
+    {
+      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/birdy.png",
+      alt: "bird",
+    },
+    {
+      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/kitty.png",
+      alt: "cat",
+    },
+    {
+      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/crabby.png",
+      alt: "crab",
+    },    
+  ]
+];
+
 export const SampleTextInputs = [
   "Lorem ipsum dolor sit amet",
   "Consectetur adipiscing elit",

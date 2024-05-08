@@ -6,6 +6,8 @@ import useBEMNaming from "../../../../../common/useBEMNaming";
 import {QuickInputType} from "../../quickInputType";
 
 export default function SampleInputsTab(props) {
+    // Note: This is the content for the Sample Input Tab, below the header
+
     const {getBlock, getElement} = useBEMNaming("sample-inputs");
     const {isUnselected, isSelected, selectInput, type} = useSampleInputControl(props);
 
@@ -30,6 +32,7 @@ export default function SampleInputsTab(props) {
         }
     }
 
+    // TODO: Rename "url" to "input" or similar
     function makeSampleImageInput(url, index) {
         return (
             <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
@@ -62,10 +65,13 @@ export default function SampleInputsTab(props) {
     }
 
     const task = Task.getStaticTask(props.task);
-    const sampleInputs = props.sampleInputs ?? [];
+    // Currently using both new and old way of handling inputs but should refactor in the future
+    const sampleInputs = task.useMultiInput ? props.sampleInputs[props.inputIndex] : (props.sampleInputs ?? []);
+    const inputText = task.inputText || props.input.inputText;
+
     return (
         <div className={getBlock()}>
-            <div className={getElement('title')}><b>{makeTaskTitle(props)}</b> to {task.inputText.toLowerCase()}</div>
+            <div className={getElement('title')}><b>{makeTaskTitle(props)}</b> to {inputText.toLowerCase()}</div>
             <div className={getElement('list')}>
                 {sampleInputs.map(makeSampleInput)}
             </div>
