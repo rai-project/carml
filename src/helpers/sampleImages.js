@@ -1,3 +1,7 @@
+import StyleTransferContent from "../resources/taskSample/styleTransferContent.jpg";
+import StyleTransferStyle from "../resources/taskSample/styleTransferStyle.jpg";
+
+
 export const SampleImageEnhancementInputs = [
   {
     src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/license-plate.png",
@@ -76,31 +80,15 @@ export const SampleInstanceSegmentationInputs = [
 export const SampleStyleTransferInputs = [
   [
     {
-      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/person-dog.jpg",
-      alt: "person with a dog",
-    },
-    {
-      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/puppies.jpg",
-      alt: "puppies",
-    },
-    {
-      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/plane-blue.jpg",
-      alt: "airplane",
+      src: StyleTransferContent,
+      alt: "yellow dog",
     },
   ],
   [
     {
-      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/birdy.png",
-      alt: "bird",
+      src: StyleTransferStyle,
+      alt: "painting"
     },
-    {
-      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/kitty.png",
-      alt: "cat",
-    },
-    {
-      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/crabby.png",
-      alt: "crab",
-    },    
   ]
 ];
 
@@ -120,11 +108,7 @@ export const SampleAudioToTextInputs = [
   {
     title: "automatic-speech-recognition-input.flac",
     src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
-  },
-  {
-    title: "automatic-speech-recognition-input(2).flac",
-    src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
-  },   
+  } 
 ];
 
 export const SampleTextConversationInputs = [

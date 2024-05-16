@@ -37,6 +37,7 @@ import {
   DefaultStyleTransferModel
 } from "./DefaultModels";
 import {
+  SampleAudioToTextInputs,
   SampleImageClassificationInputs,
   SampleImageEnhancementInputs,
   SampleObjectDetectionInputs,
@@ -187,7 +188,7 @@ export default class Task {
     inputText: "see how well this model can recognize and transcribe an audio (voice) input.",
     outputText: "Transcribed text:",
     icon: (props) => <AudioToText {...props} />,
-    sampleInputs: [],
+    sampleInputs: SampleAudioToTextInputs,
     tutorialDescription: "Audio to text models transcribe audio files, allowing you to read what is said.",
     inputType: TaskInputTypes.Audio,
   });
