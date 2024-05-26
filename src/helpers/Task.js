@@ -9,9 +9,10 @@ import {
   textToCode,
   audioToText,
   textToAudio,
-  textConversation
+  textConversation,
+  visualQuestionAnswering
 } from "./TaskIDs";
-import React from "react";
+import React, { Component } from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
 import { ReactComponent as ObjectDetection } from "../resources/icons/icon-objectDetection.svg";
 import { ReactComponent as SemanticSegmentation } from "../resources/icons/icon-semanticSegmentation.svg";
@@ -23,6 +24,7 @@ import { ReactComponent as TextToCode } from "../resources/icons/icon-textToCode
 import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToText.svg";
 import { ReactComponent as TextToAudio } from "../resources/icons/icon-textToAudio.svg";
 import { ReactComponent as TextConversation } from "../resources/icons/icon-textConversation.svg";
+import { ReactComponent as VisualQuestionAnswering } from "../resources/icons/icon-visualQuestionAnswering.svg";
 
 import {
   DefaultImageClassificationModel,
@@ -34,7 +36,8 @@ import {
   DefaultAudioToTextModel,
   DefaultTextToAudioModel,
   DefaultTextConversationModel,
-  DefaultStyleTransferModel
+  DefaultStyleTransferModel,
+  DefaultVisualQuestionAnsweringModel
 } from "./DefaultModels";
 import {
   SampleImageClassificationInputs,
@@ -42,6 +45,7 @@ import {
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
   SampleStyleTransferInputs,
+  SampleVisualQuestionAnsweringInputs,
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
 import { TestImageEnhancementData } from "../components/Experiment/QuickOutput/Outputs/ImageEnhancement/testData/TestFeatures";
@@ -54,6 +58,7 @@ import { TestTextToAudioOutput } from "../components/Experiment/QuickOutput/Outp
 import { TestTextConversationOutput } from "../components/Experiment/QuickOutput/Outputs/TextConversation/testData/testTextConversationOutput";
 import { TaskInputTypes } from "./TaskInputTypes";
 import { TestStyleTransferOutput } from "../components/Experiment/QuickOutput/Outputs/StyleTransfer/testData/testStyleTransferOutput";
+import TextInputTab from "../components/Experiment/QuickInput/Tabs/TextInput/TextInputTab";
 
 export default class Task {
   static image_classification = new Task({
@@ -142,7 +147,7 @@ export default class Task {
       },
       {
         inputText: 'use the style from.',
-        inputType: TaskInputTypes.Image,        
+        inputType: TaskInputTypes.Image,
       }
 
     ],
@@ -202,7 +207,7 @@ export default class Task {
     tutorialDescription: "Text to audio models bring your written words to life.",
     inputType: TaskInputTypes.Text,
     hideUpload: true,
-  });  
+  });
   static text_conversation = new Task({
     name: "Conversation",
     description: "Converse with a virtual assistant in real-time",
@@ -214,6 +219,42 @@ export default class Task {
     tutorialDescription: "Type a question and receive a response from a virtual assistant",
     inputType: TaskInputTypes.Text,
     hideUpload: true,
+  });
+  static visual_question_answering = new Task({
+    name: "Visual Question Answering",
+    description: "Used to answer questions based on visual input.",
+    id: visualQuestionAnswering,
+
+    inputs: [
+      {
+        inputText: 'Visual Input.',
+        inputType: TaskInputTypes.Image,
+
+      },
+      {
+        inputText: 'Questions here',
+        inputType: TaskInputTypes.Text,
+        inputUpload: false,
+        inputUrl: false,
+        defaultTab: {
+          "id": "text-input",
+          "title": "Text",
+          "component": TextInputTab
+      }
+      }
+
+    ],
+    useMultiInput: true,
+    // Note: This is just an example of what a config field could look like, not currently used
+    config: {
+      numWarmups: 0
+    },
+
+    outputText: "Response to the question:",
+    icon: (props) => <VisualQuestionAnswering {...props} />,
+    sampleInputs: SampleVisualQuestionAnsweringInputs,
+    tutorialDescription:
+      "Visual Question Answering models answer questions based on visual input.",
   });
 
 
@@ -264,6 +305,8 @@ export default class Task {
         return Task.text_to_audio;
       case textConversation:
         return Task.text_conversation;
+      case visualQuestionAnswering:
+        return Task.visual_question_answering;
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }
@@ -294,7 +337,8 @@ export default class Task {
         return DefaultTextToAudioModel;
       case textConversation:
         return DefaultTextConversationModel;
-
+      case visualQuestionAnswering:
+        return DefaultVisualQuestionAnsweringModel;
       default:
         return undefined;
     }
@@ -322,8 +366,10 @@ export default class Task {
         return TestTextToAudioOutput;
       case textConversation:
         return TestTextConversationOutput;
+      case visualQuestionAnswering:
+        return undefined; // TODO: Add test data
       default:
-        return undefined
+        return undefined;
     }
   }
 
@@ -337,9 +383,10 @@ export default class Task {
       this.getStaticTask(styleTransfer),
       this.getStaticTask(textToText),
       this.getStaticTask(textToCode),
-      this.getStaticTask(textConversation),     
-      this.getStaticTask(textToAudio),       
+      this.getStaticTask(textConversation),
+      this.getStaticTask(textToAudio),
       this.getStaticTask(audioToText),
+      this.getStaticTask(visualQuestionAnswering),
     ];
   }
 

@@ -1,6 +1,6 @@
 import Uppy from '@uppy/core';
 
-import { audioToText, image_classification, image_enhancement, object_detection, semantic_segmentation, styleTransfer } from './TaskIDs';
+import { audioToText, image_classification, image_enhancement, object_detection, semantic_segmentation, styleTransfer, visualQuestionAnswering } from './TaskIDs';
 
 import fileTypeChecker from "file-type-checker";
 
@@ -12,6 +12,7 @@ export const getAllowedFileTypes = (task) => {
           mimeTypes: ['audio/*', 'video/*'],
         };
       case image_classification:
+      case visualQuestionAnswering:
       case image_enhancement:
       case object_detection:
       case semantic_segmentation:

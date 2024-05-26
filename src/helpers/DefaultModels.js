@@ -489,3 +489,8 @@ export const DefaultTextConversationModel = {
   },
   version: "1.0",
 };
+
+
+export const DefaultVisualQuestionAnsweringModel = {
+  // TO BE ADDED HERE
+};

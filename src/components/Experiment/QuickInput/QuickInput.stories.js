@@ -11,6 +11,7 @@ import {
   audioToText,
   textConversation,
   textToAudio,
+  visualQuestionAnswering,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -18,6 +19,7 @@ import {
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
   SampleStyleTransferInputs,
+  SampleVisualQuestionAnsweringInputs,
 } from "../../../helpers/sampleImages";
 
 export default {
@@ -73,6 +75,16 @@ StyleTransfer.args = {
   model: {
     output: {
       type: styleTransfer,
+    },
+  },
+};
+
+export const VisualQuestionAnswering = Template.bind({});
+VisualQuestionAnswering.args = {
+  sampleInputs: SampleVisualQuestionAnsweringInputs,
+  model: {
+    output: {
+      type: visualQuestionAnswering,
     },
   },
 };

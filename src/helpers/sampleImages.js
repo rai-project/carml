@@ -100,7 +100,7 @@ export const SampleStyleTransferInputs = [
     {
       src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/crabby.png",
       alt: "crab",
-    },    
+    },
   ]
 ];
 
@@ -124,11 +124,32 @@ export const SampleAudioToTextInputs = [
   {
     title: "automatic-speech-recognition-input(2).flac",
     src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
-  },   
+  },
 ];
 
 export const SampleTextConversationInputs = [
   "Show me a recipe for pizza",
   "What is the weather tomorrow?",
   "What is the meaning of life?",
+];
+
+export const SampleVisualQuestionAnsweringInputs = [
+  [{
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/birdy.png",
+    alt: "bird"
+  },
+  {
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/kitty.png",
+    alt: "cat"
+  },
+  {
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/crabby.png",
+    alt: "crab"
+  }
+  ],
+  [
+    "Lorem ipsum dolor sit amet",
+    "Consectetur adipiscing elit",
+    "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+  ]
 ];

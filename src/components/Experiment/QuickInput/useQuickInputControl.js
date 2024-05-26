@@ -20,7 +20,8 @@ export default function useQuickInputControl(props) {
   //   console.log('selectedInputs', selectedInputs)
   // }, [selectedInputs])
 
-  const getTabs = (type = QuickInputType.Image) => {  // TODO: Remove this default
+  const getTabs = (type = QuickInputType.Text) => {  // TODO: Remove this default
+    if(task.useMultiInput) return getMultiInputTabs(task.inputs);
     const sample = {
       id: 'sample-input',
       title: 'Sample inputs',
@@ -35,6 +36,27 @@ export default function useQuickInputControl(props) {
     if (!props.hideUpload) tabs.push(upload);  // Currently only hideUpload is being used
     if (!props.hideUrl) tabs.push(...input);
 
+    return tabs;
+  }
+  const getMultiInputTabs = (types) => {
+    const sample = {
+      id: 'sample-input',
+      title: 'Sample inputs',
+      component: SampleInputsTab,
+      props: { sampleInputs: props.sampleInputs, type: types }
+    };
+    const upload = [];
+    const input = [];
+    const tabs = [];
+    types.forEach(type => {
+      if (!(type?.inputUpload === false)) upload.push(getUploadTabType(type.inputType.toLowerCase()));
+      if (!(type?.inputUrl === false)) input.push(...getInputTabType(type.inputType.toLowerCase()));
+      
+    });
+
+    if (!props.hideSample) tabs.push(sample);
+    if (!props.hideUpload) tabs.push(...upload);
+    if (!props.hideUrl) tabs.push(...input);
     return tabs;
   }
   const getInputTabType = (type) => {
