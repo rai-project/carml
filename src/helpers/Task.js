@@ -240,7 +240,7 @@ export default class Task {
           "id": "text-input",
           "title": "Text",
           "component": TextInputTab
-      }
+        }
       }
 
     ],
