@@ -153,3 +153,23 @@ export const SampleVisualQuestionAnsweringInputs = [
     "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
   ]
 ];
+export const SampleTextGuidedImagetoImageInputs = [
+  [{
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/birdy.png",
+    alt: "bird"
+  },
+  {
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/kitty.png",
+    alt: "cat"
+  },
+  {
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/crabby.png",
+    alt: "crab"
+  }
+  ],
+  [
+    "Replace the background with a beach.",
+    "Make the animal look like a cartoon.",
+    "Make the image look like a painting."
+  ]
+];

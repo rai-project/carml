@@ -10,4 +10,5 @@ export const audioToText = "audio_to_text";
 export const textToAudio = "text_to_audio";
 export const textConversation = "text_conversation";
 export const visualQuestionAnswering = "visual_question_answering";
+export const textGuidedImagetoImage = "text_guided_image_to_image";
 export const pending = "pending";

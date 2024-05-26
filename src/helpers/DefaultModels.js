@@ -494,3 +494,7 @@ export const DefaultTextConversationModel = {
 export const DefaultVisualQuestionAnsweringModel = {
   // TO BE ADDED HERE
 };
+
+export const DefaultTextGuidedImagetoImageModel = {
+  // TO BE ADDED HERE
+};

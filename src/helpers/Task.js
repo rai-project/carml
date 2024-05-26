@@ -10,7 +10,8 @@ import {
   audioToText,
   textToAudio,
   textConversation,
-  visualQuestionAnswering
+  visualQuestionAnswering,
+  textGuidedImagetoImage
 } from "./TaskIDs";
 import React, { Component } from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
@@ -25,6 +26,7 @@ import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToTe
 import { ReactComponent as TextToAudio } from "../resources/icons/icon-textToAudio.svg";
 import { ReactComponent as TextConversation } from "../resources/icons/icon-textConversation.svg";
 import { ReactComponent as VisualQuestionAnswering } from "../resources/icons/icon-visualQuestionAnswering.svg";
+import { ReactComponent as TextGuidedImagetoImage } from "../resources/icons/icon-textGuidedImagetoImage.svg";
 
 import {
   DefaultImageClassificationModel,
@@ -37,7 +39,8 @@ import {
   DefaultTextToAudioModel,
   DefaultTextConversationModel,
   DefaultStyleTransferModel,
-  DefaultVisualQuestionAnsweringModel
+  DefaultVisualQuestionAnsweringModel,
+  DefaultTextGuidedImagetoImageModel
 } from "./DefaultModels";
 import {
   SampleImageClassificationInputs,
@@ -45,6 +48,7 @@ import {
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
   SampleStyleTransferInputs,
+  SampleTextGuidedImagetoImageInputs,
   SampleVisualQuestionAnsweringInputs,
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
@@ -240,7 +244,7 @@ export default class Task {
           "id": "text-input",
           "title": "Text",
           "component": TextInputTab
-        }
+      }
       }
 
     ],
@@ -255,6 +259,44 @@ export default class Task {
     sampleInputs: SampleVisualQuestionAnsweringInputs,
     tutorialDescription:
       "Visual Question Answering models answer questions based on visual input.",
+  });
+
+
+  static text_guided_image_to_image = new Task({
+    name: "Text Guided Image to Image",
+    description: "Generate images based on a source image and a given text prompt.",
+    id: textGuidedImagetoImage,
+
+    inputs: [
+      {
+        inputText: 'Visual Input.',
+        inputType: TaskInputTypes.Image,
+
+      },
+      {
+        inputText: 'Questions here',
+        inputType: TaskInputTypes.Text,
+        inputUpload: false,
+        inputUrl: false,
+        defaultTab: {
+          "id": "text-input",
+          "title": "Text",
+          "component": TextInputTab
+      }
+      }
+
+    ],
+    useMultiInput: true,
+    // Note: This is just an example of what a config field could look like, not currently used
+    config: {
+      numWarmups: 0
+    },
+
+    outputText: "Generated Image",
+    icon: (props) => <TextGuidedImagetoImage {...props} />,
+    sampleInputs: SampleTextGuidedImagetoImageInputs,
+    tutorialDescription:
+      "Text Guided Image to Image models generate images based on a source image and a given text prompt.",
   });
 
 
@@ -307,6 +349,8 @@ export default class Task {
         return Task.text_conversation;
       case visualQuestionAnswering:
         return Task.visual_question_answering;
+      case textGuidedImagetoImage:
+        return Task.text_guided_image_to_image;
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }
@@ -339,6 +383,8 @@ export default class Task {
         return DefaultTextConversationModel;
       case visualQuestionAnswering:
         return DefaultVisualQuestionAnsweringModel;
+      case textGuidedImagetoImage:
+        return DefaultTextGuidedImagetoImageModel;
       default:
         return undefined;
     }
@@ -368,6 +414,8 @@ export default class Task {
         return TestTextConversationOutput;
       case visualQuestionAnswering:
         return undefined; // TODO: Add test data
+      case textGuidedImagetoImage:
+        return undefined; // TODO: Add test data
       default:
         return undefined;
     }
@@ -387,6 +435,7 @@ export default class Task {
       this.getStaticTask(textToAudio),
       this.getStaticTask(audioToText),
       this.getStaticTask(visualQuestionAnswering),
+      this.getStaticTask(textGuidedImagetoImage),
     ];
   }
 

@@ -45,7 +45,7 @@ export default function SampleInputsTab(props) {
 
     function makeSampleTextInput(text, index) {
         return (
-            <button onClick={() => {  selectInput(index)}} key={index} className={getElement(getInputClassName(text))}>
+            <button onClick={() => { selectInput(index); }} key={index} className={getElement(getInputClassName(text))}>
                 <div>{text}</div>
             </button>
         );
@@ -70,7 +70,7 @@ export default function SampleInputsTab(props) {
     const sampleInputs = task.useMultiInput ? props.sampleInputs[props.inputIndex] : (props.sampleInputs ?? []);
     const inputText = task.inputText || props.input.inputText;
 
-
+    { console.log(props.sampleInputs); }
     return (
         <div className={getBlock()}>
             <div className={getElement('title')}><b>{makeTaskTitle(props)}</b> to {inputText.toLowerCase()}</div>
