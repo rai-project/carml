@@ -17,6 +17,7 @@ import {
   textConversation,
   visualQuestionAnswering,
   textGuidedImagetoImage,
+  documentQuestionAnswering,
 } from "../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -29,7 +30,8 @@ import {
   SampleTextConversationInputs,
   SampleStyleTransferInputs,
   SampleVisualQuestionAnsweringInputs,
-  SampleTextGuidedImagetoImageInputs
+  SampleTextGuidedImagetoImageInputs,
+  SampleDocumentQuestionAnsweringInputs
 } from "../../helpers/sampleImages";  // This file should be renamed
 
 const ModelDetailPage = (props) => {
@@ -60,6 +62,8 @@ const ModelDetailPage = (props) => {
         return SampleVisualQuestionAnsweringInputs;
       case textGuidedImagetoImage:
         return SampleTextGuidedImagetoImageInputs;
+      case documentQuestionAnswering:
+        return SampleDocumentQuestionAnsweringInputs;
       case image_classification:
       default:
         return SampleImageClassificationInputs;

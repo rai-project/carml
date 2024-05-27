@@ -11,7 +11,8 @@ import {
   textToAudio,
   textConversation,
   visualQuestionAnswering,
-  textGuidedImagetoImage
+  textGuidedImagetoImage,
+  documentQuestionAnswering
 } from "./TaskIDs";
 import React, { Component } from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
@@ -40,7 +41,8 @@ import {
   DefaultTextConversationModel,
   DefaultStyleTransferModel,
   DefaultVisualQuestionAnsweringModel,
-  DefaultTextGuidedImagetoImageModel
+  DefaultTextGuidedImagetoImageModel,
+  DefaultDocumentQuestionAnsweringModel
 } from "./DefaultModels";
 import {
   SampleImageClassificationInputs,
@@ -50,6 +52,7 @@ import {
   SampleStyleTransferInputs,
   SampleTextGuidedImagetoImageInputs,
   SampleVisualQuestionAnsweringInputs,
+  SampleDocumentQuestionAnsweringInputs
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
 import { TestImageEnhancementData } from "../components/Experiment/QuickOutput/Outputs/ImageEnhancement/testData/TestFeatures";
@@ -299,6 +302,43 @@ export default class Task {
       "Text Guided Image to Image models generate images based on a source image and a given text prompt.",
   });
 
+  static document_question_answering = new Task({
+    name: "Document Question Answering",
+    description: "Answer questions based on a document.",
+    id: documentQuestionAnswering,
+
+    inputs: [
+      {
+        inputText: 'Training Document',
+        inputType: TaskInputTypes.Document,
+
+      },
+      {
+        inputText: 'Questions here',
+        inputType: TaskInputTypes.Text,
+        inputUpload: false,
+        inputUrl: false,
+        defaultTab: {
+          "id": "text-input",
+          "title": "Text",
+          "component": TextInputTab
+      }
+      }
+
+    ],
+    useMultiInput: true,
+    // Note: This is just an example of what a config field could look like, not currently used
+    config: {
+      numWarmups: 0
+    },
+
+    outputText: "Response to the question:",
+    icon: (props) => <TextGuidedImagetoImage {...props} />,
+    sampleInputs: SampleDocumentQuestionAnsweringInputs,
+    tutorialDescription:
+      "Document Question Answering models answer questions based on a document.",
+  });
+
 
   constructor(options) {
     this.name = options.name ?? "";
@@ -351,6 +391,8 @@ export default class Task {
         return Task.visual_question_answering;
       case textGuidedImagetoImage:
         return Task.text_guided_image_to_image;
+      case documentQuestionAnswering:
+        return Task.document_question_answering;
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }
@@ -385,6 +427,8 @@ export default class Task {
         return DefaultVisualQuestionAnsweringModel;
       case textGuidedImagetoImage:
         return DefaultTextGuidedImagetoImageModel;
+      case documentQuestionAnswering:
+        return DefaultDocumentQuestionAnsweringModel;
       default:
         return undefined;
     }
@@ -416,6 +460,8 @@ export default class Task {
         return undefined; // TODO: Add test data
       case textGuidedImagetoImage:
         return undefined; // TODO: Add test data
+      case documentQuestionAnswering:
+        return undefined; // TODO: Add test data
       default:
         return undefined;
     }
@@ -436,6 +482,7 @@ export default class Task {
       this.getStaticTask(audioToText),
       this.getStaticTask(visualQuestionAnswering),
       this.getStaticTask(textGuidedImagetoImage),
+      this.getStaticTask(documentQuestionAnswering),
     ];
   }
 

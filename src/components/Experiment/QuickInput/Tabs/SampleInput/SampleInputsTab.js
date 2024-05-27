@@ -4,6 +4,8 @@ import Task from "../../../../../helpers/Task";
 import useSampleInputControl from "./useSampleInputControl";
 import useBEMNaming from "../../../../../common/useBEMNaming";
 import { QuickInputType } from "../../quickInputType";
+import { ReactComponent as DocuemntIcon } from "../../../../../resources/icons/icon-document.svg";
+
 
 export default function SampleInputsTab(props) {
     // Note: This is the content for the Sample Input Tab, below the header
@@ -12,7 +14,7 @@ export default function SampleInputsTab(props) {
     const { isUnselected, isSelected, selectInput, type } = useSampleInputControl(props);
     const task = Task.getStaticTask(props.task);
     const sampleInputType = task.useMultiInput ? (Task.getStaticTask(props.task).inputs[props.inputIndex]?.inputType).toLowerCase() : props.type;
-
+    console.log(sampleInputType);
     const getInputClassName = (url) => {
         let className = `input-${sampleInputType}`;
         if (isSelected(url)) className += ` ${className}--selected`;
@@ -29,6 +31,8 @@ export default function SampleInputsTab(props) {
                 return makeSampleTextInput(url, index);
             case QuickInputType.Audio:
                 return makeSampleAudioInput(url, index);
+            case QuickInputType.Document:
+                return makeSampleDocumentInput(url, index);
             default:
                 return makeDefaultErrorInput();
         }
@@ -56,6 +60,17 @@ export default function SampleInputsTab(props) {
             <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
                 <div>{url.title}</div>
                 <audio controls src={url.src} />
+            </button>
+        );
+    }
+
+    function makeSampleDocumentInput(url, index) {
+        return (
+            <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
+                <DocuemntIcon className='icon'/>
+                <a href={url.src} target='_blank' >
+                    <span>{url.description ?? "Document"}</span>
+                </a>
             </button>
         );
     }
@@ -88,6 +103,8 @@ export default function SampleInputsTab(props) {
                 return "Select text";
             case QuickInputType.Audio:
                 return "Select an audio file";
+            case QuickInputType.Document:
+                return "Select a document";
             default:
                 return "Error: no input type set";
         }

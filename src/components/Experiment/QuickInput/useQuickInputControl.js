@@ -69,7 +69,9 @@ export default function useQuickInputControl(props) {
           {id: 'audio-input', title: 'Record', component: AudioInputTab}
         ];
       case QuickInputType.Text:
-        return [{id: 'text-input', title: 'Text', component: TextInputTab}];
+        return [{ id: 'text-input', title: 'Text', component: TextInputTab }];
+      case QuickInputType.Document:
+        return [{id: 'url-input', title: 'URL', component: URLInputsTab}];
       default:
         // TODO: Create a default "error" tab
         return '--error--';
@@ -79,6 +81,7 @@ export default function useQuickInputControl(props) {
     switch (type) {
       case QuickInputType.Image:
       case QuickInputType.Audio:
+      case QuickInputType.Document:
         return {id: 'upload-input', title: 'Upload', component: UploadInputsTab};
       case QuickInputType.Text:
         return {id: 'upload-input', title: 'Upload', component: UploadTextInputTab};

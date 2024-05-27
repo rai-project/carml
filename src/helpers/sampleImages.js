@@ -173,3 +173,23 @@ export const SampleTextGuidedImagetoImageInputs = [
     "Make the image look like a painting."
   ]
 ];
+export const SampleDocumentQuestionAnsweringInputs = [
+  [{
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/birdy.png",
+    description: "Bird"
+  },
+  {
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/kitty.png",
+    description: "Cat"
+  },
+  {
+    src: "https://xlab1.netlify.app/samples/PDF/invoice.pdf",
+    description: "Sample Invoice"
+  }
+  ],
+  [
+    "Lorem ipsum dolor sit amet",
+    "Consectetur adipiscing elit",
+    "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+  ]
+];

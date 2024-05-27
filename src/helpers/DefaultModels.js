@@ -498,3 +498,7 @@ export const DefaultVisualQuestionAnsweringModel = {
 export const DefaultTextGuidedImagetoImageModel = {
   // TO BE ADDED HERE
 };
+
+export const DefaultDocumentQuestionAnsweringModel = {
+  // TO BE ADDED HERE
+};
