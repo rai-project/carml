@@ -5,6 +5,7 @@ import {
   object_detection,
   semantic_segmentation,
   styleTransfer,
+  styleTransfer,
   textToText,
   textToCode,
   audioToText,
@@ -20,6 +21,9 @@ import { ReactComponent as ObjectDetection } from "../resources/icons/icon-objec
 import { ReactComponent as SemanticSegmentation } from "../resources/icons/icon-semanticSegmentation.svg";
 import { ReactComponent as InstanceSegmentation } from "../resources/icons/icon-instanceSegmentation.svg";
 import { ReactComponent as ImageEnhancement } from "../resources/icons/icon-imageEnhancement.svg";
+import { ReactComponent as StyleTransfer } from "../resources/icons/icon-styleTransfer.svg";
+import { ReactComponent as TextToText } from "../resources/icons/icon-textToText.svg";
+import { ReactComponent as TextToCode } from "../resources/icons/icon-textToCode.svg";
 import { ReactComponent as StyleTransfer } from "../resources/icons/icon-styleTransfer.svg";
 import { ReactComponent as TextToText } from "../resources/icons/icon-textToText.svg";
 import { ReactComponent as TextToCode } from "../resources/icons/icon-textToCode.svg";
@@ -45,6 +49,7 @@ import {
   DefaultDocumentQuestionAnsweringModel
 } from "./DefaultModels";
 import {
+  SampleAudioToTextInputs,
   SampleImageClassificationInputs,
   SampleImageEnhancementInputs,
   SampleObjectDetectionInputs,
@@ -177,6 +182,7 @@ export default class Task {
     inputText: "[insert text input help text here]",
     outputText: "[insert text output help text here]",
     icon: (props) => <TextToText {...props} />,
+    icon: (props) => <TextToText {...props} />,
     sampleInputs: [],
     tutorialDescription: "[insert text tutorial page description here]",
     inputType: TaskInputTypes.Text,
@@ -187,6 +193,7 @@ export default class Task {
     id: textToCode,
     inputText: "[insert text to code input help text here]",
     outputText: "[insert text to code output help text here]",
+    icon: (props) => <TextToCode {...props} />,
     icon: (props) => <TextToCode {...props} />,
     sampleInputs: [],
     tutorialDescription: "[insert text to code tutorial page description here]",
@@ -199,7 +206,7 @@ export default class Task {
     inputText: "see how well this model can recognize and transcribe an audio (voice) input.",
     outputText: "Transcribed text:",
     icon: (props) => <AudioToText {...props} />,
-    sampleInputs: [],
+    sampleInputs: SampleAudioToTextInputs,
     tutorialDescription: "Audio to text models transcribe audio files, allowing you to read what is said.",
     inputType: TaskInputTypes.Audio,
   });
@@ -349,6 +356,9 @@ export default class Task {
     this.inputs = options.inputs ?? [];  // TODO: Update this to be only input-related field, and remove inputText and inputType
     this.useMultiInput = options.useMultiInput ?? false;
     this.multiple = options.multiple ?? false;  // This is used to allow multiple selections from one input
+    this.inputs = options.inputs ?? [];  // TODO: Update this to be only input-related field, and remove inputText and inputType
+    this.useMultiInput = options.useMultiInput ?? false;
+    this.multiple = options.multiple ?? false;  // This is used to allow multiple selections from one input
     this.outputText = options.outputText ?? "";
     this.Icon = options.icon ?? ((props) => <></>);
     this.defaultModel = Task.getDefaultModel(this.id);
@@ -375,6 +385,8 @@ export default class Task {
       case instance_segmentation:
       case Task.image_instance_segmentation.name:
         return Task.image_instance_segmentation;
+      case styleTransfer:
+        return Task.style_transfer;
       case styleTransfer:
         return Task.style_transfer;
       case textToText:
@@ -410,6 +422,8 @@ export default class Task {
         return DefaultSemanticSegmentationModel;
       case instance_segmentation:
         return DefaultInstanceSegmentationModel;
+      case styleTransfer:
+        return DefaultStyleTransferModel;
       case styleTransfer:
         return DefaultStyleTransferModel;
       case textToText:
@@ -448,6 +462,8 @@ export default class Task {
         return TestInstanceSegmentationOutput;
       case styleTransfer:
         return TestStyleTransferOutput;
+      case styleTransfer:
+        return TestStyleTransferOutput;
       case textToText:
         return TestTextOutput;
       case audioToText:
@@ -474,6 +490,7 @@ export default class Task {
       this.getStaticTask(image_enhancement),
       this.getStaticTask(semantic_segmentation),
       this.getStaticTask(instance_segmentation),
+      this.getStaticTask(styleTransfer),
       this.getStaticTask(styleTransfer),
       this.getStaticTask(textToText),
       this.getStaticTask(textToCode),

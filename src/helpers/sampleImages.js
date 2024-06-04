@@ -1,3 +1,7 @@
+import StyleTransferContent from "../resources/taskSample/styleTransferContent.jpg";
+import StyleTransferStyle from "../resources/taskSample/styleTransferStyle.jpg";
+
+
 export const SampleImageEnhancementInputs = [
   {
     src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/license-plate.png",

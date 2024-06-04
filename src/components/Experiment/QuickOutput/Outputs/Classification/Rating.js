@@ -13,13 +13,13 @@ export default function Rating(givenProps) {
 
     const [ratings, setRatings] = React.useState([
         {
-            title: "Correct",
+            title: "Yes",
             element: "correct",
             icon: "check",
             checked: false
         },
         {
-            title: "Incorrect",
+            title: "No",
             element: "incorrect",
             icon: "x",
             checked: false
@@ -55,7 +55,7 @@ export default function Rating(givenProps) {
 
     return (
         <div className={getBlock()}>
-            <div className={getElement('title')}>Is this prediction correct?</div>
+            <div className={getElement('title')}>Are you satisfied with this result?</div>
             <div className={getElement('buttons')} role="radiogroup">
                 {
                     ratings.map(makeRadioButton)

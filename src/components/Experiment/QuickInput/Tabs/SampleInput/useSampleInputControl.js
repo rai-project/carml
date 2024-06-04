@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {QuickInputType} from "../../quickInputType";
 import Task from "../../../../../helpers/Task";
+import Task from "../../../../../helpers/Task";
 
 export default function useSampleInputControl(props) {
   const task = Task.getStaticTask(props.task);
@@ -65,6 +66,12 @@ export default function useSampleInputControl(props) {
 
   const {type} = props;
 
+  return {
+    selectedIndex, 
+    selectInput: !task.useMultiInput ? selectInput : selectMultiInput, 
+    isSelected, 
+    isUnselected, 
+    type};
   return {
     selectedIndex, 
     selectInput: !task.useMultiInput ? selectInput : selectMultiInput, 
