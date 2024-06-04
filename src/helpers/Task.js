@@ -5,7 +5,6 @@ import {
   object_detection,
   semantic_segmentation,
   styleTransfer,
-  styleTransfer,
   textToText,
   textToCode,
   audioToText,
@@ -21,9 +20,6 @@ import { ReactComponent as ObjectDetection } from "../resources/icons/icon-objec
 import { ReactComponent as SemanticSegmentation } from "../resources/icons/icon-semanticSegmentation.svg";
 import { ReactComponent as InstanceSegmentation } from "../resources/icons/icon-instanceSegmentation.svg";
 import { ReactComponent as ImageEnhancement } from "../resources/icons/icon-imageEnhancement.svg";
-import { ReactComponent as StyleTransfer } from "../resources/icons/icon-styleTransfer.svg";
-import { ReactComponent as TextToText } from "../resources/icons/icon-textToText.svg";
-import { ReactComponent as TextToCode } from "../resources/icons/icon-textToCode.svg";
 import { ReactComponent as StyleTransfer } from "../resources/icons/icon-styleTransfer.svg";
 import { ReactComponent as TextToText } from "../resources/icons/icon-textToText.svg";
 import { ReactComponent as TextToCode } from "../resources/icons/icon-textToCode.svg";

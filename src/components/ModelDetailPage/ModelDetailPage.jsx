@@ -11,7 +11,6 @@ import {
   object_detection,
   semantic_segmentation,
   styleTransfer,
-  styleTransfer,
   textToText,
   textToCode,
   audioToText,

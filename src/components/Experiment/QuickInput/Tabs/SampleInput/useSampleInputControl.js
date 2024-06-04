@@ -1,7 +1,6 @@
 import {useState} from "react";
 import {QuickInputType} from "../../quickInputType";
 import Task from "../../../../../helpers/Task";
-import Task from "../../../../../helpers/Task";
 
 export default function useSampleInputControl(props) {
   const task = Task.getStaticTask(props.task);

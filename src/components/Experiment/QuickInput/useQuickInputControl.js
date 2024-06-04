@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import {useEffect, useState} from "react";
 import SampleInputsTab from "./Tabs/SampleInput/SampleInputsTab";
 import UploadInputsTab from "./Tabs/UploadInput/UploadInputsTab";
 import AudioInputTab from "./Tabs/AudioInput/AudioInputTab";
@@ -9,11 +8,8 @@ import {QuickInputType} from "./quickInputType";
 import TextInputTab from "./Tabs/TextInput/TextInputTab";
 import UploadTextInputTab from "./Tabs/UploadTextInput/UploadTextInputTab";
 import Task from "../../../helpers/Task";
-import Task from "../../../helpers/Task";
 
 export default function useQuickInputControl(props) {
-  const task = Task.getStaticTask(props.model.output.type);
-
   const task = Task.getStaticTask(props.model.output.type);
 
   const [selectedInputs, setSelectedInputs] = useState([""]);
@@ -108,17 +104,6 @@ export default function useQuickInputControl(props) {
       selected = Array.isArray(url) ? url : [url];
     setSelectedInputs(selected);
   }
-  const selectMultiInput = (url, inputIndex) => {
-    let selected = [...selectedInputs];
-
-    if (inputIndex >= 0)
-      selected[inputIndex] = url;
-    else
-      selected = Array.isArray(url) ? url : [url];
-    // Note: Need to use a useEffect to accurately see what selectedInputs is
-    setSelectedInputs(selected);    
-  }
-
   const selectMultiInput = (url, inputIndex) => {
     let selected = [...selectedInputs];
 
