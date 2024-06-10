@@ -7,7 +7,7 @@ import {ReactComponent as ChevDown} from "../../resources/icons/chevron-down-whi
 import Task from "../../helpers/Task";
 
 
-export default function Header(props) {
+export default function Header({splash=false, ...props}) {
   const {
     showMenu,
     toggleMenu,
@@ -66,7 +66,9 @@ export default function Header(props) {
                 <p className={getElement("compare-models-title")}>Choose task to use for your comparison</p>
                 <div className={getElement("compare-models-tasks")}>
                   {tasks.map(task => <button onClick={() => setSelectedTask(task.id)}
-                                             className={getElement(`compare-models-task ${task.id === selectedTask && "compare-models-task-selected"}`)}>
+                                             key={`task${task.id}`}
+                                             className={getElement(`compare-models-task ${task.id === selectedTask && "compare-models-task-selected"}`)}
+                                      >
                     <task.Icon className={getElement("compare-models-task-icon")}/>
                     {task.name} </button>)}
                 </div>
@@ -94,8 +96,4 @@ export default function Header(props) {
     </>
 
   );
-}
-
-Header.defaultProps = {
-  splash: false,
 }

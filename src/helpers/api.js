@@ -99,7 +99,7 @@ class Api {
       fn: this._getTrial,
       params: trialId,
       validate: trial => trial.completed_at !== undefined,
-      // maxAttempts: 10,
+      // maxAttempts: 10,  // This should be on, but it totally breaks the page currently
       subject: trialSubject
     });
 
@@ -152,8 +152,8 @@ class Api {
 
   async poll({fn, params, validate, maxAttempts, subject}) {
     let attempts = 0;
-    // let timeout = 250;
-    let timeout = 1000;
+    // let timeout = 250; // This was already commented out
+    // let timeout = 1000;
 
     const executePoll = async (resolve, reject) => {
       const result = await fn(params);
@@ -166,8 +166,14 @@ class Api {
         } else if (maxAttempts && attempts === maxAttempts) {
           return reject(new Error('max polling attempts exceeded'));
         } else if (subject && subject.observers.length > 0) {
-          setTimeout(executePoll, timeout, resolve, reject);
-          // timeout += timeout;
+          // 6/6/2024 - Alex - Note: This timeout isn't actually delaying anything and is probably
+          // implemented wrong. Additionally, attempts isn't incrementing correctly
+          // and maxAttempts is sometimes undefined.
+
+          // setTimeout(executePoll, timeout, resolve, reject);
+          // timeout += timeout;  // This was already commented out
+        } else {
+          return resolve("Canceled")
         }
       }
     };

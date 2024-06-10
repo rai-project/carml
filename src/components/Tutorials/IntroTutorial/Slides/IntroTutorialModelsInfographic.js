@@ -22,7 +22,7 @@ export default function IntroTutorialModelsInfographic(props) {
             </button>
         </div>
         <div className={getElement("models-area")}>
-            {models.map(model => <ModelCard model={model}/>)}
+            {models.map(model => <ModelCard key={`key-${model.id}`} model={model}/>)}
         </div>
     </>
 }

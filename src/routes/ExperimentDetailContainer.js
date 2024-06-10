@@ -4,6 +4,7 @@ import GetApiHelper from "../helpers/api";
 import Task from "../helpers/Task";
 import {image_classification} from "../helpers/TaskIDs";
 import MultipleSort from "../helpers/MultipleSort";
+import { useParams } from "react-router-dom/dist";
 
 
 export const ExperimentDetailModalTypes = {
@@ -20,6 +21,7 @@ let experimentSubscription = null;
 
 export default function ExperimentDetailContainer(props) {
     const api = GetApiHelper();
+    const { experimentId } = useParams();
 
     const [state, updateState] = useState({
         experiment: null,
@@ -224,7 +226,6 @@ export default function ExperimentDetailContainer(props) {
                 experiment: {id: props.experiment.id}
             })
         } else {
-            let {experimentId} = props.match.params;
             experimentSubscription = api.getExperiment(experimentId).subscribe({
                 next: experiment => {
                     getTrials(experiment);

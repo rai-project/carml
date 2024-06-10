@@ -1,7 +1,7 @@
 import React, {useMemo, useState} from "react";
 import ModelListContainer from "./ModelListContainer";
 import GetApiHelper from "../helpers/api";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Task from "../helpers/Task";
 import ExperimentDetailContainer from "./ExperimentDetailContainer";
 import {getTaskFromQueryString} from "../helpers/QueryParsers";
@@ -14,7 +14,7 @@ export default function NewExperimentContainer(props) {
   const [models, setModels] = useState([]);
 
   const api = useMemo(() => GetApiHelper(), []);
-  const History = useHistory();
+  const history = useNavigate();
   const task = getTaskFromQueryString(window.location.search);
 
   const {id: taskId} = Task.getStaticTask(task);
@@ -54,8 +54,8 @@ export default function NewExperimentContainer(props) {
     let flattenedPromises = trialPromises.flat();
 
     Promise.all(flattenedPromises).then(final => {
-      if (History)
-        History.push(`/experiment/${experimentId}`);
+      if (history)
+        history(`/experiment/${experimentId}`);
     })
   }
 

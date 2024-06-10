@@ -55,8 +55,13 @@ export default function SideNavigation(props) {
     <div ref={mainRef} className={getElement("main-content")}>
 
       <div className={"content"}>
-        {links.map(link => <Step goToSection={props.goToSection} isSelected={props.currentSection >= link.index}
-                                 link={link}/>)}
+        {links.map(link => <Step key={`key-${link.index}`} 
+                                 goToSection={props.goToSection} 
+                                 isSelected={props.currentSection >= link.index}
+                                 link={link}
+                           />
+                  )
+        }
       </div>
     </div>
   </div>

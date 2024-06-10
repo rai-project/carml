@@ -40,8 +40,6 @@ const primaryColor = "#19263a";
 module.exports = override(
   addDecoratorsLegacy(),
   disableEsLint(),
-  // useBabelRc(),
-  // rewireSVGR({ icon: true }),
   fixBabelImports("lodash", {
     libraryName: "lodash",
     libraryDirectory: "",

@@ -9,40 +9,40 @@ import IntroTutorial from "../components/Tutorials/IntroTutorial/IntroTutorial";
 const routes = [
   {
     path: "/",
-    component: HomePage,
+    component: <HomePage/>,
   },
   {
     path: "/models",
-    component: ModelListContainer,
+    component: <ModelListContainer/>,
   },
   {
     path: "/model/:modelId/experiment/:experimentId",
-    component: ModelDetailContainer,
+    component: <ModelDetailContainer/>,
     exact: false,
   },
   {
     path: "/model/:modelId",
-    component: ModelDetailContainer,
+    component: <ModelDetailContainer/>,
     exact: false,
   },
   {
     path: "/experiment/:experimentId/add-models",
-    component: AddModelListContainer,
+    component: <AddModelListContainer/>,
     exact: false,
   },
   {
     path: "/experiment/new",
-    component: NewExperimentContainer,
+    component: <NewExperimentContainer/>,
     exact: false
   },
   {
     path: "/experiment/:experimentId",
-    component: ExperimentDetailContainer,
+    component: <ExperimentDetailContainer/>,
     exact: false,
   },
   {
     path: "/intro-tutorial",
-    component: IntroTutorial,
+    component: <IntroTutorial/>,
     exact: false
   }
 ];

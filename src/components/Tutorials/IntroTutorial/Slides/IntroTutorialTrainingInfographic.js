@@ -19,7 +19,7 @@ function ImageGroup(props) {
     const {getBlock, getElement} = useBEMNaming("intro-tutorial-training-infographic-image-group");
 
     return <div className={getBlock() + " " + props.className}>
-        {props.images.map(img => <img src={img} alt={"plant"} className={getElement("img")}/>)}
+        {props.images.map(img => <img key={`key-${img}`} src={img} alt={"plant"} className={getElement("img")}/>)}
     </div>
 }
 

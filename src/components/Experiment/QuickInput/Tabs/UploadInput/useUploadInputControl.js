@@ -56,7 +56,7 @@ export const useUploadInputControl = (props) => {
 
   const api = GetApiHelper();
   const uppy = useMemo(() => {
-    let u = Uppy({
+    let u = new Uppy({
       autoProceed: true,
       restrictions: {
         // Uppy file-type restrictions will default the upload pop-up to the 

@@ -7,7 +7,11 @@ export default {
   component: PageNavigation,
 };
 
-const Template = (args) => <PageNavigation {...args} />;
+const storySelectPage = (page) => {
+  console.log(`Select page ${page}`);
+}
+
+const Template = (args) => <PageNavigation key={args.key} pageCount={args.pageCount} selectPage={storySelectPage} selectedPage={args.selectedPage} />;
 
 export const Page1Of2 = Template.bind({});
 Page1Of2.args = {

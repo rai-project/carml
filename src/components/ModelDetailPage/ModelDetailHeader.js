@@ -33,7 +33,7 @@ export default function ModelDetailHeader(props) {
     let machineTagKey = 0;
     let machineTags = <dd>N/A</dd>
     if (!!model.framework.architectures) {
-      machineTags = model.framework.architectures.map(machine => <dd><ModelTag key={machineTagKey++} type="machine"
+      machineTags = model.framework.architectures.map(machine => <dd key={machineTagKey++}><ModelTag type="machine"
                                                                                content={machine.name}/></dd>);
     }
 

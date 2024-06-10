@@ -6,7 +6,7 @@ import Task from "../../../../../helpers/Task";
 export default function useUploadTextInputControl(props) {
     const task = Task.getStaticTask(props.task);
     const uppy = useMemo(() => {
-        let u = Uppy({
+        let u = new Uppy({
             autoProceed: true, restrictions: {
                 maxNumberOfFiles: props.multiple ? 99 : 1,
                 allowedFileTypes: ['text/*']

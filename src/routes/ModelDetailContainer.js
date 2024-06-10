@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ModelDetailPage from "../components/ModelDetailPage/ModelDetailPage"
-import {withRouter} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import GetApiHelper from "../helpers/api";
 
 let experimentSubscription = null;
@@ -13,23 +13,26 @@ export function ModelDetailContainer(props) {
     const [experiment, setExperiment] = useState(null);
     const [trialOutput, setTrialOutput] = useState(undefined);
 
-    console.log("ModelDetailContainer")
+    const history = useNavigate();
 
-    let {modelId, experimentId} = props.match.params;
+    const {modelId, experimentId} = useParams();
 
     const backToModel = () => {
-        props.history.push(`/model/${modelId}`);
+        trialSubscription.unsubscribe();
+        experimentSubscription.unsubscribe();
+        modelSubscription.unsubscribe();
+        history(`/model/${modelId}`, { state: { experiment: setExperiment(null), trialOutput: setTrialOutput(undefined) }});
     }
 
     const runModel = async (inputUrl, context=null) => {
         // Note: Adding context param for Conversation task; unsure if needed here
         // Check and confirm later - Alex, 4/10/2024
         const response = await api.runTrial(model, inputUrl, context);
-        props.history.push(`/model/${modelId}/experiment/${response.experimentId}`);
+        history(`/model/${modelId}/experiment/${response.experimentId}`);
     }
 
     const compareModels = () => {
-        props.history.push(`/experiment/${experiment.id}`);
+        history(`/experiment/${experiment.id}`);
     }
 
     const getTrial = async (trialId) => {
@@ -89,4 +92,4 @@ export function ModelDetailContainer(props) {
     )
 }
 
-export default withRouter(ModelDetailContainer);
+export default ModelDetailContainer;
