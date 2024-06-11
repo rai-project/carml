@@ -11,6 +11,7 @@ import {
   object_detection,
   semantic_segmentation,
   styleTransfer,
+  imageTo3D,
   textToText,
   textToCode,
   audioToText,
@@ -44,6 +45,7 @@ const ModelDetailPage = (props) => {
         return SampleSegmentationInputs;
       case styleTransfer:
         return SampleStyleTransferInputs;
+      
       case textToText:
         return SampleTextInputs;
       case textToCode:
@@ -74,6 +76,7 @@ const ModelDetailPage = (props) => {
       case semantic_segmentation:
       case instance_segmentation:
       case styleTransfer:
+      case imageTo3D:
       default:
         return "image";
     }

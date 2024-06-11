@@ -11,10 +11,12 @@ import {
   audioToText,
   textConversation,
   textToAudio,
+  imageTo3D,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
   SampleImageEnhancementInputs,
+  SampleImageTo3DInputs,
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
   SampleStyleTransferInputs,
@@ -73,6 +75,16 @@ StyleTransfer.args = {
   model: {
     output: {
       type: styleTransfer,
+    },
+  },
+};
+
+export const ImageTo3D = Template.bind({});
+ImageTo3D.args = {
+  sampleInputs: SampleImageTo3DInputs,
+  model: {
+    output: {
+      type: imageTo3D,
     },
   },
 };

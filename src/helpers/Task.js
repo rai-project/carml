@@ -5,6 +5,7 @@ import {
   object_detection,
   semantic_segmentation,
   styleTransfer,
+  imageTo3D,
   textToText,
   textToCode,
   audioToText,
@@ -18,6 +19,7 @@ import { ReactComponent as SemanticSegmentation } from "../resources/icons/icon-
 import { ReactComponent as InstanceSegmentation } from "../resources/icons/icon-instanceSegmentation.svg";
 import { ReactComponent as ImageEnhancement } from "../resources/icons/icon-imageEnhancement.svg";
 import { ReactComponent as StyleTransfer } from "../resources/icons/icon-styleTransfer.svg";
+
 import { ReactComponent as TextToText } from "../resources/icons/icon-textToText.svg";
 import { ReactComponent as TextToCode } from "../resources/icons/icon-textToCode.svg";
 import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToText.svg";
@@ -30,11 +32,12 @@ import {
   DefaultInstanceSegmentationModel,
   DefaultObjectDetectionModel,
   DefaultSemanticSegmentationModel,
+  DefaultStyleTransferModel,  
+
   DefaultTextModel,
   DefaultAudioToTextModel,
   DefaultTextToAudioModel,
-  DefaultTextConversationModel,
-  DefaultStyleTransferModel
+  DefaultTextConversationModel
 } from "./DefaultModels";
 import {
   SampleAudioToTextInputs,
@@ -43,6 +46,7 @@ import {
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
   SampleStyleTransferInputs,
+
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
 import { TestImageEnhancementData } from "../components/Experiment/QuickOutput/Outputs/ImageEnhancement/testData/TestFeatures";
@@ -55,6 +59,7 @@ import { TestTextToAudioOutput } from "../components/Experiment/QuickOutput/Outp
 import { TestTextConversationOutput } from "../components/Experiment/QuickOutput/Outputs/TextConversation/testData/testTextConversationOutput";
 import { TaskInputTypes } from "./TaskInputTypes";
 import { TestStyleTransferOutput } from "../components/Experiment/QuickOutput/Outputs/StyleTransfer/testData/testStyleTransferOutput";
+
 
 export default class Task {
   static image_classification = new Task({
@@ -159,6 +164,32 @@ export default class Task {
     tutorialDescription:
       "Style transfer models convert one image into the artistic style of the second image.",
   });
+
+  static image_to_3D = new Task({
+    name: "Image to 3D",
+    description: "Convert a 2D image or collection of images into a 3D model",
+    id: imageTo3D,
+
+    inputText: 'delete me',
+
+    inputs: [
+      {
+        inputText: 'first image for modeling.',
+        inputType: TaskInputTypes.Image,
+
+      },
+      {
+        inputText: 'second image for modeling.',
+        inputType: TaskInputTypes.Image,        
+      }
+
+    ],
+    useMultiInput: true,
+    outputText: "3D model generated from the uploaded images",
+    icon: (props) => <TextToText {...props} />,
+    sampleInputs: [],
+    tutorialDescription: "3D conversion models produce a 3D version of the user's input.",
+  });
   static text_to_text = new Task({
     name: "Text to Text",
     description: "[insert text description here]",
@@ -255,6 +286,8 @@ export default class Task {
         return Task.image_instance_segmentation;
       case styleTransfer:
         return Task.style_transfer;
+      case imageTo3D:
+        return Task.image_to_3D;
       case textToText:
         return Task.text_to_text;
       case textToCode:
@@ -284,6 +317,8 @@ export default class Task {
         return DefaultInstanceSegmentationModel;
       case styleTransfer:
         return DefaultStyleTransferModel;
+      case imageTo3D:
+        return DefaultStyleTransferModel;  // TODO UPDATE THIS
       case textToText:
         return DefaultTextModel;
       case textToCode:
@@ -315,6 +350,8 @@ export default class Task {
         return TestInstanceSegmentationOutput;
       case styleTransfer:
         return TestStyleTransferOutput;
+      case imageTo3D:
+        return TestStyleTransferOutput; // TODO: UPDATE THIS
       case textToText:
         return TestTextOutput;
       case audioToText:
@@ -336,6 +373,7 @@ export default class Task {
       this.getStaticTask(semantic_segmentation),
       this.getStaticTask(instance_segmentation),
       this.getStaticTask(styleTransfer),
+      this.getStaticTask(imageTo3D),
       this.getStaticTask(textToText),
       this.getStaticTask(textToCode),
       this.getStaticTask(textConversation),     

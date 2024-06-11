@@ -1,5 +1,6 @@
 import StyleTransferContent from "../resources/taskSample/styleTransferContent.jpg";
 import StyleTransferStyle from "../resources/taskSample/styleTransferStyle.jpg";
+import DiamondRing from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/diamondRing.png"
 
 
 export const SampleImageEnhancementInputs = [
@@ -90,6 +91,21 @@ export const SampleStyleTransferInputs = [
       alt: "painting"
     },
   ]
+];
+
+export const SampleImageTo3DInputs = [
+  [
+    {
+      src: DiamondRing,
+      alt: "diamond ring",
+    },
+  ],
+  [
+    {
+      src: DiamondRing,
+      alt: "diamond ring",
+    },
+  ]  
 ];
 
 export const SampleTextInputs = [
