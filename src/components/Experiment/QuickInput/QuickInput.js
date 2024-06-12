@@ -10,8 +10,10 @@ import QuickMultiInput from "./QuickMultiInput";
 
 export default function QuickInput(props) {
   const task = Task.getStaticTask(props.model.output.type)
+  console.log("QuickInput props", props)
+  console.log('task: ', task)
 
-  if (task.inputs.length > 1) {
+  if (task.useMultiInput) {
     // TODO: At some point this should replace the switch statement below
     return <QuickMultiInput {...props} />
   }

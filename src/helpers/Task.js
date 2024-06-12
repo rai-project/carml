@@ -170,23 +170,23 @@ export default class Task {
     description: "Convert a 2D image or collection of images into a 3D model",
     id: imageTo3D,
 
-    inputText: 'delete me',
+    // inputText: 'convert to 3D',
+    // inputType: TaskInputTypes.Image,
 
     inputs: [
       {
         inputText: 'first image for modeling.',
         inputType: TaskInputTypes.Image,
-
       },
-      {
-        inputText: 'second image for modeling.',
-        inputType: TaskInputTypes.Image,        
-      }
+      // {
+      //   inputText: 'second image for modeling.',
+      //   inputType: TaskInputTypes.Image,        
+      // }
 
     ],
     useMultiInput: true,
     outputText: "3D model generated from the uploaded images",
-    icon: (props) => <TextToText {...props} />,
+    icon: (props) => <TextToText {...props} />,  // UPDATE
     sampleInputs: [],
     tutorialDescription: "3D conversion models produce a 3D version of the user's input.",
   });

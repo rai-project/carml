@@ -67,7 +67,7 @@ export default function ImageTo3DOutput(props) {
                             <BoxExample position={[1.2, 0, 0]} /> */}
 
                             {/* There are several other stylings in the original example that aren't being used here */}
-                            <RingExample frame="#fff0f0" diamonds="#ffffff" scale={0.15} />
+                            <RingExample frame="#fff0f0" diamonds="#ffffff" scale={0.18} />
                             
                             <OrbitControls />                            
                         </Canvas>

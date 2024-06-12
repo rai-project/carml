@@ -100,12 +100,12 @@ export const SampleImageTo3DInputs = [
       alt: "diamond ring",
     },
   ],
-  [
-    {
-      src: DiamondRing,
-      alt: "diamond ring",
-    },
-  ]  
+  // [
+  //   {
+  //     src: DiamondRing,
+  //     alt: "diamond ring",
+  //   },
+  // ]  
 ];
 
 export const SampleTextInputs = [
