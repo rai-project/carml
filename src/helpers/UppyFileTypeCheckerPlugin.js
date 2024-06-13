@@ -1,6 +1,15 @@
 import BasePlugin from '@uppy/core/lib/BasePlugin.js';
 
-import { audioToText, imageTo3D, image_classification, image_enhancement, instance_segmentation, object_detection, semantic_segmentation, styleTransfer } from './TaskIDs';
+import { 
+  audioToText, 
+  imageTo3D, 
+  image_classification, 
+  image_enhancement, 
+  instance_segmentation, 
+  object_detection, 
+  semantic_segmentation, 
+  styleTransfer 
+} from './TaskIDs';
 
 import fileTypeChecker from "file-type-checker";
 
