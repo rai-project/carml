@@ -47,6 +47,7 @@
     "react-compare-image": "^3.4.0",
     "react-dev-utils": "^12.0.1",
     "react-dom": "^18.3.1",
+    "react-player": "^2.16.0",
     "react-router-dom": "^6.23.1",
     "react-syntax-highlighter": "^15.5.0",
     "resolve": "^1.20.0",

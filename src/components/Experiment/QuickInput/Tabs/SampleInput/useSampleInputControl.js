@@ -4,15 +4,17 @@ import Task from "../../../../../helpers/Task";
 
 export default function useSampleInputControl(props) {
   const task = Task.getStaticTask(props.task);
+  const sampleInputType = (task.useMultiInput ? (Task.getStaticTask(props.task).inputs[props.inputIndex]?.inputType) : props.type)?.toLowerCase();
 
   const [selectedIndex, setSelectedIndex] = useState([]);
 
-  const isSelected = (input) => props.type === QuickInputType.Image ? selectedIndex.indexOf(input.src) > -1 : selectedIndex.indexOf(input) > -1;
-  const isUnselected = (input) => selectedIndex.length >= 0 && props.type === QuickInputType.Image ? selectedIndex.indexOf(input.src) === -1 : selectedIndex.indexOf(input) === -1;
-
+  const isSelected = (input) => sampleInputType === QuickInputType.Image ? selectedIndex.indexOf(input.src) > -1 : selectedIndex.indexOf(input) > -1;
+  const isUnselected = (input) => selectedIndex.length >= 0 && sampleInputType === QuickInputType.Image ? selectedIndex.indexOf(input.src) === -1 : selectedIndex.indexOf(input) === -1;
   const selectMultiInput = (selectedValueIndex) => {
+
+
     // Note: Currently using both new and old way of handling inputs but should refactor in the future
-    let input = props.type === QuickInputType.Image ? 
+    let input = sampleInputType === QuickInputType.Image ? 
         props.sampleInputs[props.inputIndex][selectedValueIndex].src : 
         props.sampleInputs[props.inputIndex][selectedValueIndex];
 
@@ -39,10 +41,10 @@ export default function useSampleInputControl(props) {
   }
 
   const selectInput = (index) => {
-    const input = props.type === QuickInputType.Image ?
+    const input = sampleInputType === QuickInputType.Image ?
         props.sampleInputs[index].src :
-        props.sampleInputs[index];
-
+      props.sampleInputs[index];
+    
     if (props.multiple) {
       const selected = Array.from(selectedIndex);
       let storedIndex = selected.indexOf(input);
@@ -62,11 +64,13 @@ export default function useSampleInputControl(props) {
   }
 
   const {type} = props;
-
   return {
     selectedIndex, 
     selectInput: !task.useMultiInput ? selectInput : selectMultiInput, 
     isSelected, 
     isUnselected, 
-    type};
+    type,
+    sampleInputType
+  };
+
 }

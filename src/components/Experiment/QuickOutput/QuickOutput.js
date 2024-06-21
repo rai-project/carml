@@ -13,7 +13,11 @@ import {
   styleTransfer,
   audioToText,
   textToAudio,
-  textConversation
+  textConversation,
+  textGuidedImagetoImage,
+  visualQuestionAnswering,
+  documentQuestionAnswering,
+  textToVideo
 } from "../../../helpers/TaskIDs";
 import ObjectDetection from "./Outputs/ObjectDetection/ObjectDetection";
 import ImageEnhancement from "./Outputs/ImageEnhancement/ImageEnhancement";
@@ -26,6 +30,11 @@ import TextOutput from "./Outputs/Text/TextOutput";
 import TextToCodeOutput from "./Outputs/TextToCode/TextToCodeOutput";
 import TextConversationOutput from "./Outputs/TextConversation/TextConversationOutput";
 import StyleTransferOutput from "./Outputs/StyleTransfer/StyleTransferOutput";
+import TextGuidedImagetoImageOutput from "./Outputs/TextGuidedImagetoImage/TextGuidedImagetoImageOutput"
+import VisualQuestionAnsweringOutput from "./Outputs/VisualQuestionAnswering/VisualQuestionAnsweringOutput"
+import DocumentQuestionAnsweringOutput from "./Outputs/DocumentQuestionAnswering/DocumentQuestionAnsweringOutput"
+import TextToVideoOutput from "./Outputs/TextToVideo/TextToVideoOutput"
+import TextToImageOutput from "./Outputs/TextToImage/TextToImageOutput"
 
 const defaultProps = {
   className: "quick-output",
@@ -122,6 +131,41 @@ export default function QuickOutput(givenProps) {
           return (
             <StyleTransferOutput 
               onBackClicked={props.onBackClicked}
+              trial={props.trialOutput}
+            />
+          )
+        case textGuidedImagetoImage:
+          return (
+            <TextGuidedImagetoImageOutput
+              onBackClicked={props.onBackClicked}
+              trial={props.trialOutput}
+            />
+          )
+        case visualQuestionAnswering:
+          return (
+            <VisualQuestionAnsweringOutput
+             onBackClicked={props.onBackClicked}
+              trial={props.trialOutput}
+            />
+          )
+        case documentQuestionAnswering:
+          return (
+            <DocumentQuestionAnsweringOutput
+             onBackClicked={props.onBackClicked}
+              trial={props.trialOutput}
+            />
+          )
+        case textToVideo:
+          return (
+            <TextToVideoOutput
+             onBackClicked={props.onBackClicked}
+              trial={props.trialOutput}
+            />
+          )
+        case textToAudio:
+          return (
+            <TextToImageOutput
+             onBackClicked={props.onBackClicked}
               trial={props.trialOutput}
             />
           )

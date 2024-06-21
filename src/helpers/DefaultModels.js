@@ -1,4 +1,4 @@
-import { audioToText, styleTransfer, textToAudio, textToText } from "./TaskIDs";
+import { audioToText, documentQuestionAnswering, styleTransfer, textGuidedImagetoImage, textToAudio, textToImage, textToText, textToVideo, visualQuestionAnswering } from "./TaskIDs";
 
 export const DefaultImageClassificationModel = {
   id: 1,
@@ -479,6 +479,266 @@ export const DefaultTextConversationModel = {
   output: {
     description: "the chatbot's response to the inputted text",
     type: audioToText,
+  },
+  url: {
+    github:
+      "https://github.com/rai-project/tensorflow/blob/master/builtin_models/DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug.yml",
+    citation: "https://arxiv.org/pdf/1802.02611v3.pdf",
+    link1: "https://arxiv.org/pdf/1706.05587.pdf",
+    link2: "",
+  },
+  version: "1.0",
+};
+
+export const DefaultVisualQuestionAnsweringModel = {
+  id: 185,
+  created_at: "2022-04-29T20:48:47.370171Z",
+  updated_at: "2022-04-29T20:48:47.370171Z",
+  attributes: {
+    Top1: "",
+    Top5: "",
+    kind: "CNN",
+    manifest_author: "Jingning Tang",
+    training_dataset: "PASCAL VOC 2012",
+  },
+  description:
+    "TensorFlow Chatbot model, which is trained on the COCO (Common Objects in Context) dataset. Use deeplabv3_mnv2_dm05_pascal_train_aug(deeplabv3_mnv2_dm05_pascal_train_aug_2018_10_01) from TensorFlow DeepLab Model Zoo.\n",
+  short_description:
+    "DeepLabv3 is a deep convolutional neural networks for semantic chatbotness. It employ atrous convolution in cascade or in parallel to capture multi-scale context by adopting multiple atrous rates.",
+  model: {
+    graph_checksum: "0336ceb67b378df8ada0efe9eadb5ac8",
+    graph_path:
+      "https://s3.amazonaws.com/store.carml.org/models/tensorflow/models/deeplabv3_mnv2_dm05_pascal_train_aug_2018_10_01/frozen_inference_graph.pb",
+    weights_checksum: "",
+    weights_path: "",
+  },
+  framework: {
+    id: 4,
+    name: "TensorFlow",
+    version: "1.14.0",
+    architectures: [
+      {
+        name: "amd64",
+      },
+    ],
+  },
+  input: {
+    description: "text to be responded to",
+    type: "text",
+  },
+  license: "Apache License, Version 2.0",
+  name: "DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug",
+  output: {
+    description: "the chatbot's response to the inputted text",
+    type: visualQuestionAnswering,
+  },
+  url: {
+    github:
+      "https://github.com/rai-project/tensorflow/blob/master/builtin_models/DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug.yml",
+    citation: "https://arxiv.org/pdf/1802.02611v3.pdf",
+    link1: "https://arxiv.org/pdf/1706.05587.pdf",
+    link2: "",
+  },
+  version: "1.0",
+};
+
+export const DefaultTextGuidedImagetoImageModel = {
+  id: 186,
+  created_at: "2022-04-29T20:48:47.370171Z",
+  updated_at: "2022-04-29T20:48:47.370171Z",
+  attributes: {
+    Top1: "",
+    Top5: "",
+    kind: "CNN",
+    manifest_author: "Jingning Tang",
+    training_dataset: "PASCAL VOC 2012",
+  },
+  description:
+    "TensorFlow Chatbot model, which is trained on the COCO (Common Objects in Context) dataset. Use deeplabv3_mnv2_dm05_pascal_train_aug(deeplabv3_mnv2_dm05_pascal_train_aug_2018_10_01) from TensorFlow DeepLab Model Zoo.\n",
+  short_description:
+    "DeepLabv3 is a deep convolutional neural networks for semantic chatbotness. It employ atrous convolution in cascade or in parallel to capture multi-scale context by adopting multiple atrous rates.",
+  model: {
+    graph_checksum: "0336ceb67b378df8ada0efe9eadb5ac8",
+    graph_path:
+      "https://s3.amazonaws.com/store.carml.org/models/tensorflow/models/deeplabv3_mnv2_dm05_pascal_train_aug_2018_10_01/frozen_inference_graph.pb",
+    weights_checksum: "",
+    weights_path: "",
+  },
+  framework: {
+    id: 4,
+    name: "TensorFlow",
+    version: "1.14.0",
+    architectures: [
+      {
+        name: "amd64",
+      },
+    ],
+  },
+  input: {
+    description: "text to be responded to",
+    type: "text",
+  },
+  license: "Apache License, Version 2.0",
+  name: "DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug",
+  output: {
+    description: "the chatbot's response to the inputted text",
+    type: textGuidedImagetoImage,
+  },
+  url: {
+    github:
+      "https://github.com/rai-project/tensorflow/blob/master/builtin_models/DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug.yml",
+    citation: "https://arxiv.org/pdf/1802.02611v3.pdf",
+    link1: "https://arxiv.org/pdf/1706.05587.pdf",
+    link2: "",
+  },
+  version: "1.0",
+};
+
+export const DefaultDocumentQuestionAnsweringModel = {
+  id: 187,
+  created_at: "2022-04-29T20:48:47.370171Z",
+  updated_at: "2022-04-29T20:48:47.370171Z",
+  attributes: {
+    Top1: "",
+    Top5: "",
+    kind: "CNN",
+    manifest_author: "Jingning Tang",
+    training_dataset: "PASCAL VOC 2012",
+  },
+  description:
+    "TensorFlow Chatbot model, which is trained on the COCO (Common Objects in Context) dataset. Use deeplabv3_mnv2_dm05_pascal_train_aug(deeplabv3_mnv2_dm05_pascal_train_aug_2018_10_01) from TensorFlow DeepLab Model Zoo.\n",
+  short_description:
+    "DeepLabv3 is a deep convolutional neural networks for semantic chatbotness. It employ atrous convolution in cascade or in parallel to capture multi-scale context by adopting multiple atrous rates.",
+  model: {
+    graph_checksum: "0336ceb67b378df8ada0efe9eadb5ac8",
+    graph_path:
+      "https://s3.amazonaws.com/store.carml.org/models/tensorflow/models/deeplabv3_mnv2_dm05_pascal_train_aug_2018_10_01/frozen_inference_graph.pb",
+    weights_checksum: "",
+    weights_path: "",
+  },
+  framework: {
+    id: 4,
+    name: "TensorFlow",
+    version: "1.14.0",
+    architectures: [
+      {
+        name: "amd64",
+      },
+    ],
+  },
+  input: {
+    description: "text to be responded to",
+    type: "text",
+  },
+  license: "Apache License, Version 2.0",
+  name: "DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug",
+  output: {
+    description: "the chatbot's response to the inputted text",
+    type: documentQuestionAnswering,
+  },
+  url: {
+    github:
+      "https://github.com/rai-project/tensorflow/blob/master/builtin_models/DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug.yml",
+    citation: "https://arxiv.org/pdf/1802.02611v3.pdf",
+    link1: "https://arxiv.org/pdf/1706.05587.pdf",
+    link2: "",
+  },
+  version: "1.0",
+};
+
+export const DefaultTextToImage = {
+  id: 188,
+  created_at: "2022-04-29T20:48:47.370171Z",
+  updated_at: "2022-04-29T20:48:47.370171Z",
+  attributes: {
+    Top1: "",
+    Top5: "",
+    kind: "CNN",
+    manifest_author: "Jingning Tang",
+    training_dataset: "PASCAL VOC 2012",
+  },
+  description:
+    "TensorFlow Chatbot model, which is trained on the COCO (Common Objects in Context) dataset. Use deeplabv3_mnv2_dm05_pascal_train_aug(deeplabv3_mnv2_dm05_pascal_train_aug_2018_10_01) from TensorFlow DeepLab Model Zoo.\n",
+  short_description:
+    "DeepLabv3 is a deep convolutional neural networks for semantic chatbotness. It employ atrous convolution in cascade or in parallel to capture multi-scale context by adopting multiple atrous rates.",
+  model: {
+    graph_checksum: "0336ceb67b378df8ada0efe9eadb5ac8",
+    graph_path:
+      "https://s3.amazonaws.com/store.carml.org/models/tensorflow/models/deeplabv3_mnv2_dm05_pascal_train_aug_2018_10_01/frozen_inference_graph.pb",
+    weights_checksum: "",
+    weights_path: "",
+  },
+  framework: {
+    id: 4,
+    name: "TensorFlow",
+    version: "1.14.0",
+    architectures: [
+      {
+        name: "amd64",
+      },
+    ],
+  },
+  input: {
+    description: "text to be responded to",
+    type: "text",
+  },
+  license: "Apache License, Version 2.0",
+  name: "DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug",
+  output: {
+    description: "the chatbot's response to the inputted text",
+    type: textToImage,
+  },
+  url: {
+    github:
+      "https://github.com/rai-project/tensorflow/blob/master/builtin_models/DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug.yml",
+    citation: "https://arxiv.org/pdf/1802.02611v3.pdf",
+    link1: "https://arxiv.org/pdf/1706.05587.pdf",
+    link2: "",
+  },
+  version: "1.0",
+};
+
+export const DefaultTextToVideo = {
+  id: 189,
+  created_at: "2022-04-29T20:48:47.370171Z",
+  updated_at: "2022-04-29T20:48:47.370171Z",
+  attributes: {
+    Top1: "",
+    Top5: "",
+    kind: "CNN",
+    manifest_author: "Jingning Tang",
+    training_dataset: "PASCAL VOC 2012",
+  },
+  description:
+    "TensorFlow Chatbot model, which is trained on the COCO (Common Objects in Context) dataset. Use deeplabv3_mnv2_dm05_pascal_train_aug(deeplabv3_mnv2_dm05_pascal_train_aug_2018_10_01) from TensorFlow DeepLab Model Zoo.\n",
+  short_description:
+    "DeepLabv3 is a deep convolutional neural networks for semantic chatbotness. It employ atrous convolution in cascade or in parallel to capture multi-scale context by adopting multiple atrous rates.",
+  model: {
+    graph_checksum: "0336ceb67b378df8ada0efe9eadb5ac8",
+    graph_path:
+      "https://s3.amazonaws.com/store.carml.org/models/tensorflow/models/deeplabv3_mnv2_dm05_pascal_train_aug_2018_10_01/frozen_inference_graph.pb",
+    weights_checksum: "",
+    weights_path: "",
+  },
+  framework: {
+    id: 4,
+    name: "TensorFlow",
+    version: "1.14.0",
+    architectures: [
+      {
+        name: "amd64",
+      },
+    ],
+  },
+  input: {
+    description: "text to be responded to",
+    type: "text",
+  },
+  license: "Apache License, Version 2.0",
+  name: "DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug",
+  output: {
+    description: "the chatbot's response to the inputted text",
+    type: textToVideo,
   },
   url: {
     github:

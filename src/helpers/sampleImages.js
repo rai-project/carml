@@ -116,3 +116,74 @@ export const SampleTextConversationInputs = [
   "What is the weather tomorrow?",
   "What is the meaning of life?",
 ];
+export const SampleVisualQuestionAnsweringInputs = [
+  [{
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/birdy.png",
+    alt: "bird"
+  },
+  {
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/kitty.png",
+    alt: "cat"
+  },
+  {
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/crabby.png",
+    alt: "crab"
+  }
+  ],
+  [
+    "What is the color of the bird?",
+    "What is the animal in the image?",
+    "Where is the crab?"
+  ]
+];
+export const SampleTextGuidedImagetoImageInputs = [
+  [{
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/birdy.png",
+    alt: "bird"
+  },
+  {
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/kitty.png",
+    alt: "cat"
+  },
+  {
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/crabby.png",
+    alt: "crab"
+  }
+  ],
+  [
+    "Replace the background with a beach.",
+    "Make the animal look like a cartoon.",
+    "Make the image look like a painting."
+  ]
+];
+export const SampleDocumentQuestionAnsweringInputs = [
+  [{
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/birdy.png",
+    description: "Bird"
+  },
+  {
+    src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/kitty.png",
+    description: "Cat"
+  },
+  {
+    src: "https://xlab1.netlify.app/samples/PDF/invoice.pdf",
+    description: "Sample Invoice"
+  }
+  ],
+  [
+    "What is the color of the bird?",
+    "What is the animal in the image?",
+    "What is the total amount in the invoice?"
+  ]
+];
+
+export const SampleTextToImage = [
+  "Cat and dog playing",
+  "Flower in a garden",
+  "Sunset on a beach"
+];
+export const SampleTextToVideo = [
+  "Cat and dog playing",
+  "Flower in a garden",
+  "Sunset on a beach"
+];

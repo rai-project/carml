@@ -9,7 +9,12 @@ import {
   textToCode,
   audioToText,
   textToAudio,
-  textConversation
+  textConversation,
+  visualQuestionAnswering,
+  textGuidedImagetoImage,
+  documentQuestionAnswering,
+  textToImage,
+  textToVideo
 } from "./TaskIDs";
 import React from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
@@ -23,6 +28,10 @@ import { ReactComponent as TextToCode } from "../resources/icons/icon-textToCode
 import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToText.svg";
 import { ReactComponent as TextToAudio } from "../resources/icons/icon-textToAudio.svg";
 import { ReactComponent as TextConversation } from "../resources/icons/icon-textConversation.svg";
+import { ReactComponent as VisualQuestionAnswering } from "../resources/icons/icon-visualQuestionAnswering.svg";
+import { ReactComponent as TextGuidedImagetoImage } from "../resources/icons/icon-textGuidedImagetoImage.svg";
+import { ReactComponent as TexttoImage } from "../resources/icons/icon-textToImage.svg";
+import { ReactComponent as TexttoVideo } from "../resources/icons/icon-textToVideo.svg";
 
 import {
   DefaultImageClassificationModel,
@@ -34,7 +43,12 @@ import {
   DefaultAudioToTextModel,
   DefaultTextToAudioModel,
   DefaultTextConversationModel,
-  DefaultStyleTransferModel
+  DefaultStyleTransferModel,
+  DefaultVisualQuestionAnsweringModel,
+  DefaultTextGuidedImagetoImageModel,
+  DefaultDocumentQuestionAnsweringModel,
+  DefaultTextToImage,
+  DefaultTextToVideo,
 } from "./DefaultModels";
 import {
   SampleAudioToTextInputs,
@@ -43,6 +57,11 @@ import {
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
   SampleStyleTransferInputs,
+  SampleTextGuidedImagetoImageInputs,
+  SampleVisualQuestionAnsweringInputs,
+  SampleDocumentQuestionAnsweringInputs,
+  SampleTextToImage,
+  SampleTextToVideo
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
 import { TestImageEnhancementData } from "../components/Experiment/QuickOutput/Outputs/ImageEnhancement/testData/TestFeatures";
@@ -55,6 +74,12 @@ import { TestTextToAudioOutput } from "../components/Experiment/QuickOutput/Outp
 import { TestTextConversationOutput } from "../components/Experiment/QuickOutput/Outputs/TextConversation/testData/testTextConversationOutput";
 import { TaskInputTypes } from "./TaskInputTypes";
 import { TestStyleTransferOutput } from "../components/Experiment/QuickOutput/Outputs/StyleTransfer/testData/testStyleTransferOutput";
+import TextInputTab from "../components/Experiment/QuickInput/Tabs/TextInput/TextInputTab";
+import { TestVisualQuestionAnswering } from "../components/Experiment/QuickOutput/Outputs/VisualQuestionAnswering/testData/testVisualQuestionAnsweringOutput";
+import { TestDocumentQuestionAnswering } from "../components/Experiment/QuickOutput/Outputs/DocumentQuestionAnswering/testData/testDocumentQuestionAnsweringOuput";
+import { TestTextGuidedImagetoImage } from "../components/Experiment/QuickOutput/Outputs/TextGuidedImagetoImage/testData/testTextGuidedImagetoImageOutput";
+import { TestTextToImageOutput } from "../components/Experiment/QuickOutput/Outputs/TextToImage/testData/testTextToImageOutput";
+import { TestTextToVideoOutput } from "../components/Experiment/QuickOutput/Outputs/TextToVideo/testData/testTextToVideoOutput";
 
 export default class Task {
   static image_classification = new Task({
@@ -131,6 +156,18 @@ export default class Task {
     description:
       "Used to convert one image into the artistic style of a second image",
     id: styleTransfer,
+    inputText: "***",
+    outputText: "Stylized image:",
+    icon: (props) => <StyleTransfer {...props} />,
+    sampleInputs: SampleStyleTransferInputs,
+    tutorialDescription:
+      "Style transfer models convert one image into the artistic style of the second image.",
+  });
+  static style_transfer = new Task({
+    name: "Style Transfer",
+    description:
+      "Used to convert one image into the artistic style of a second image",
+    id: styleTransfer,
 
     // inputText: "Old inputText",
     // inputType: TaskInputTypes.Image,
@@ -143,7 +180,7 @@ export default class Task {
       },
       {
         inputText: 'use the style from.',
-        inputType: TaskInputTypes.Image,        
+        inputType: TaskInputTypes.Image,
       }
 
     ],
@@ -166,6 +203,7 @@ export default class Task {
     inputText: "[insert text input help text here]",
     outputText: "[insert text output help text here]",
     icon: (props) => <TextToText {...props} />,
+    icon: (props) => <TextToText {...props} />,
     sampleInputs: [],
     tutorialDescription: "[insert text tutorial page description here]",
     inputType: TaskInputTypes.Text,
@@ -176,6 +214,7 @@ export default class Task {
     id: textToCode,
     inputText: "[insert text to code input help text here]",
     outputText: "[insert text to code output help text here]",
+    icon: (props) => <TextToCode {...props} />,
     icon: (props) => <TextToCode {...props} />,
     sampleInputs: [],
     tutorialDescription: "[insert text to code tutorial page description here]",
@@ -203,7 +242,7 @@ export default class Task {
     tutorialDescription: "Text to audio models bring your written words to life.",
     inputType: TaskInputTypes.Text,
     hideUpload: true,
-  });  
+  });
   static text_conversation = new Task({
     name: "Conversation",
     description: "Converse with a virtual assistant in real-time",
@@ -216,7 +255,144 @@ export default class Task {
     inputType: TaskInputTypes.Text,
     hideUpload: true,
   });
+  static visual_question_answering = new Task({
+    name: "Visual Question Answering",
+    description: "Used to answer questions based on visual input.",
+    id: visualQuestionAnswering,
 
+    inputs: [
+      {
+        inputText: 'Visual Input.',
+        inputType: TaskInputTypes.Image,
+
+      },
+      {
+        inputText: 'Question here',
+        inputType: TaskInputTypes.Text,
+        inputUpload: false,
+        inputUrl: false,
+        defaultTab: {
+          "id": "text-input",
+          "title": "Text",
+          "component": TextInputTab
+        }
+      }
+
+    ],
+    useMultiInput: true,
+    // Note: This is just an example of what a config field could look like, not currently used
+    config: {
+      numWarmups: 0
+    },
+
+    outputText: "Response to the question:",
+    icon: (props) => <VisualQuestionAnswering {...props} />,
+    sampleInputs: SampleVisualQuestionAnsweringInputs,
+    tutorialDescription:
+      "Visual Question Answering models answer questions based on visual input.",
+  });
+
+
+  static text_guided_image_to_image = new Task({
+    name: "Text Guided Image to Image",
+    description: "Generate images based on a source image and a given text prompt.",
+    id: textGuidedImagetoImage,
+
+    inputs: [
+      {
+        inputText: 'Visual Input.',
+        inputType: TaskInputTypes.Image,
+
+      },
+      {
+        inputText: 'Question here',
+        inputType: TaskInputTypes.Text,
+        inputUpload: false,
+        inputUrl: false,
+        defaultTab: {
+          "id": "text-input",
+          "title": "Text",
+          "component": TextInputTab
+        }
+      }
+
+    ],
+    useMultiInput: true,
+    // Note: This is just an example of what a config field could look like, not currently used
+    config: {
+      numWarmups: 0
+    },
+
+    outputText: "Generated Image",
+    icon: (props) => <TextGuidedImagetoImage {...props} />,
+    sampleInputs: SampleTextGuidedImagetoImageInputs,
+    tutorialDescription:
+      "Text Guided Image to Image models generate images based on a source image and a given text prompt.",
+  });
+
+  static document_question_answering = new Task({
+    name: "Document Question Answering",
+    description: "Answer questions based on a document.",
+    id: documentQuestionAnswering,
+
+    inputs: [
+      {
+        inputText: 'Training Document',
+        inputType: TaskInputTypes.Document,
+
+      },
+      {
+        inputText: 'Question here',
+        inputType: TaskInputTypes.Text,
+        inputUpload: false,
+        inputUrl: false,
+        defaultTab: {
+          "id": "text-input",
+          "title": "Text",
+          "component": TextInputTab
+        }
+      }
+
+    ],
+    useMultiInput: true,
+    // Note: This is just an example of what a config field could look like, not currently used
+    config: {
+      numWarmups: 0
+    },
+
+    outputText: "Response to the question:",
+    icon: (props) => <TextGuidedImagetoImage {...props} />,
+    sampleInputs: SampleDocumentQuestionAnsweringInputs,
+    tutorialDescription:
+      "Document Question Answering models answer questions based on a document.",
+  });
+
+
+  static text_to_image = new Task({
+    name: "Text to Image",
+    description: "Generate images with a text prompt.",
+    id: textToImage,
+    inputText: "Input prompt to generate an image",
+    outputText: "Image output",
+    icon: (props) => <TexttoImage {...props} />,
+    sampleInputs: SampleTextToImage,
+    hideUpload: true,
+    tutorialDescription: "Text to Image model generates images based on a textual prompt.",
+    inputType: TaskInputTypes.Text,
+  });
+
+  static text_to_video = new Task({
+    name: "Text to Video",
+    description: "Generate videos with a text prompt.",
+    id: textToVideo,
+    inputText: "Input prompt to generate a video",
+    outputText: "Video output",
+    icon: (props) => <TexttoVideo {...props} />,
+    sampleInputs: SampleTextToVideo,
+    hideUpload: true,
+    tutorialDescription: "Text to Video model generates a video based on a textual prompt.",
+    inputType: TaskInputTypes.Text,
+  });
 
   constructor(options) {
     this.name = options.name ?? "";
@@ -224,6 +400,9 @@ export default class Task {
     this.description = options.description ?? "";
     this.modelDescription = options.modelDescription ?? this.description;
     this.inputText = options.inputText ?? "";
+    this.inputs = options.inputs ?? [];  // TODO: Update this to be only input-related field, and remove inputText and inputType
+    this.useMultiInput = options.useMultiInput ?? false;
+    this.multiple = options.multiple ?? false;  // This is used to allow multiple selections from one input
     this.inputs = options.inputs ?? [];  // TODO: Update this to be only input-related field, and remove inputText and inputType
     this.useMultiInput = options.useMultiInput ?? false;
     this.multiple = options.multiple ?? false;  // This is used to allow multiple selections from one input
@@ -265,6 +444,16 @@ export default class Task {
         return Task.text_to_audio;
       case textConversation:
         return Task.text_conversation;
+      case visualQuestionAnswering:
+        return Task.visual_question_answering;
+      case textGuidedImagetoImage:
+        return Task.text_guided_image_to_image;
+      case documentQuestionAnswering:
+        return Task.document_question_answering;
+      case textToImage:
+        return Task.text_to_image;
+      case textToVideo:
+        return Task.text_to_video;
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }
@@ -295,7 +484,16 @@ export default class Task {
         return DefaultTextToAudioModel;
       case textConversation:
         return DefaultTextConversationModel;
-
+      case visualQuestionAnswering:
+        return DefaultVisualQuestionAnsweringModel;
+      case textGuidedImagetoImage:
+        return DefaultTextGuidedImagetoImageModel;
+      case documentQuestionAnswering:
+        return DefaultDocumentQuestionAnsweringModel;
+      case textToImage:
+        return DefaultTextToImage;
+      case textToVideo:
+        return DefaultTextToVideo;
       default:
         return undefined;
     }
@@ -315,6 +513,8 @@ export default class Task {
         return TestInstanceSegmentationOutput;
       case styleTransfer:
         return TestStyleTransferOutput;
+      case styleTransfer:
+        return TestStyleTransferOutput;
       case textToText:
         return TestTextOutput;
       case audioToText:
@@ -323,8 +523,18 @@ export default class Task {
         return TestTextToAudioOutput;
       case textConversation:
         return TestTextConversationOutput;
+      case visualQuestionAnswering:
+        return TestVisualQuestionAnswering;
+      case textGuidedImagetoImage:
+        return TestTextGuidedImagetoImage;
+      case documentQuestionAnswering:
+        return TestDocumentQuestionAnswering;
+      case textToImage:
+        return TestTextToImageOutput;
+      case textToVideo:
+        return TestTextToVideoOutput;
       default:
-        return undefined
+        return undefined;
     }
   }
 
@@ -336,11 +546,17 @@ export default class Task {
       this.getStaticTask(semantic_segmentation),
       this.getStaticTask(instance_segmentation),
       this.getStaticTask(styleTransfer),
+      this.getStaticTask(styleTransfer),
       this.getStaticTask(textToText),
       this.getStaticTask(textToCode),
-      this.getStaticTask(textConversation),     
-      this.getStaticTask(textToAudio),       
+      this.getStaticTask(textConversation),
+      this.getStaticTask(textToAudio),
       this.getStaticTask(audioToText),
+      this.getStaticTask(visualQuestionAnswering),
+      this.getStaticTask(textGuidedImagetoImage),
+      this.getStaticTask(documentQuestionAnswering),
+      this.getStaticTask(textToImage),
+      this.getStaticTask(textToVideo)
     ];
   }
 

@@ -21,6 +21,7 @@ export default function useQuickInputControl(props) {
   // }, [selectedInputs])
 
   const getTabs = (type = QuickInputType.Image) => {  // TODO: Remove this default
+    if(task.useMultiInput) return getMultiInputTabs(task.inputs);
     const sample = {
       id: 'sample-input',
       title: 'Sample inputs',
@@ -37,9 +38,34 @@ export default function useQuickInputControl(props) {
 
     return tabs;
   }
+
+  const getMultiInputTabs = (types) => {
+    const sample = {
+      id: 'sample-input',
+      title: 'Sample inputs',
+      component: SampleInputsTab,
+      props: { sampleInputs: props.sampleInputs, type: types }
+    };
+    const upload = [];
+    const input = [];
+    const tabs = [];
+    types.forEach(type => {
+      if (!(type?.inputUpload === false)) upload.push(getUploadTabType(type.inputType.toLowerCase()));
+      if (!(type?.inputUrl === false)) input.push(...getInputTabType(type.inputType.toLowerCase()));
+      
+    });
+
+    if (!props.hideSample) tabs.push(sample);
+    if (!props.hideUpload) tabs.push(...upload);
+    if (!props.hideUrl) tabs.push(...input);
+    return tabs;
+  }
+
+
   const getInputTabType = (type) => {
     switch (type) {
       case QuickInputType.Image:
+      case QuickInputType.Document:
         return [{id: 'url-input', title: 'URL', component: URLInputsTab}];
       case QuickInputType.Audio:
         return [
@@ -47,7 +73,7 @@ export default function useQuickInputControl(props) {
           {id: 'audio-input', title: 'Record', component: AudioInputTab}
         ];
       case QuickInputType.Text:
-        return [{id: 'text-input', title: 'Text', component: TextInputTab}];
+          return [{ id: 'text-input', title: 'Text', component: TextInputTab }];
       default:
         // TODO: Create a default "error" tab
         return '--error--';
@@ -57,6 +83,7 @@ export default function useQuickInputControl(props) {
     switch (type) {
       case QuickInputType.Image:
       case QuickInputType.Audio:
+      case QuickInputType.Document:
         return {id: 'upload-input', title: 'Upload', component: UploadInputsTab};
       case QuickInputType.Text:
         return {id: 'upload-input', title: 'Upload', component: UploadTextInputTab};

@@ -25,11 +25,34 @@
     border: 2px solid $charcoalLightest;
     border-radius: 5px;
     margin-top: 16px;
-    min-height: 128px;
     padding: 8px 16px;
 
   }
 
+
+
+  &__document{
+    
+    display: flex;
+    align-items: end;
+    justify-content: left;
+    flex-grow: 1;
+    border: 1px solid $gray;
+    gap:10px;
+    padding: 7.5px 8px;
+    text-align: start;
+
+    &:not(:first-child) {
+      margin-left: 4px;
+    }
+
+
+    .icon{
+    }
+    & a{
+    color: $azul;
+  }
+  }
   &__back-button {
     @include secondaryButtonWithIconBefore("arrow-right.svg");
     align-self: flex-start;

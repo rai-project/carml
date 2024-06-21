@@ -15,6 +15,11 @@ import {
   textToCode,
   audioToText,
   textConversation,
+  visualQuestionAnswering,
+  textGuidedImagetoImage,
+  documentQuestionAnswering,
+  textToImage,
+  textToVideo,
 } from "../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -26,6 +31,11 @@ import {
   SampleAudioToTextInputs,
   SampleTextConversationInputs,
   SampleStyleTransferInputs,
+  SampleVisualQuestionAnsweringInputs,
+  SampleTextGuidedImagetoImageInputs,
+  SampleDocumentQuestionAnsweringInputs,
+  SampleTextToImage,
+  SampleTextToVideo
 } from "../../helpers/sampleImages";  // This file should be renamed
 
 const ModelDetailPage = (props) => {
@@ -44,6 +54,8 @@ const ModelDetailPage = (props) => {
         return SampleSegmentationInputs;
       case styleTransfer:
         return SampleStyleTransferInputs;
+      case styleTransfer:
+        return SampleStyleTransferInputs;
       case textToText:
         return SampleTextInputs;
       case textToCode:
@@ -52,6 +64,16 @@ const ModelDetailPage = (props) => {
         return SampleAudioToTextInputs;
       case textConversation:
         return SampleTextConversationInputs;
+      case visualQuestionAnswering:
+        return SampleVisualQuestionAnsweringInputs;
+      case textGuidedImagetoImage:
+        return SampleTextGuidedImagetoImageInputs;
+      case documentQuestionAnswering:
+        return SampleDocumentQuestionAnsweringInputs;
+      case textToImage:
+        return SampleTextToImage;
+      case textToVideo:
+        return SampleTextToVideo;
       case image_classification:
       default:
         return SampleImageClassificationInputs;
