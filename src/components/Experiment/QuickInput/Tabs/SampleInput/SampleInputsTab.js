@@ -81,7 +81,7 @@ export default function SampleInputsTab(props) {
     function makeTaskTitle(props) {
         switch (props.type) {
             case QuickInputType.Image:
-                return "Select an image";
+                return `Select an image${!props.multiple ? "" : " or set of images"}`;
             case QuickInputType.Text:
                 return "Select text";
             case QuickInputType.Audio:

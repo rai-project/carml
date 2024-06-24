@@ -19,7 +19,7 @@ import { ReactComponent as SemanticSegmentation } from "../resources/icons/icon-
 import { ReactComponent as InstanceSegmentation } from "../resources/icons/icon-instanceSegmentation.svg";
 import { ReactComponent as ImageEnhancement } from "../resources/icons/icon-imageEnhancement.svg";
 import { ReactComponent as StyleTransfer } from "../resources/icons/icon-styleTransfer.svg";
-
+import { ReactComponent as ImageTo3D } from "../resources/icons/icon-imageTo3D.svg";
 import { ReactComponent as TextToText } from "../resources/icons/icon-textToText.svg";
 import { ReactComponent as TextToCode } from "../resources/icons/icon-textToCode.svg";
 import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToText.svg";
@@ -140,6 +140,7 @@ export default class Task {
     // inputText: "Old inputText",
     // inputType: TaskInputTypes.Image,
 
+    useMultiInput: true,
     inputs: [
       {
         inputText: 'have its style changed.',
@@ -150,9 +151,7 @@ export default class Task {
         inputText: 'use the style from.',
         inputType: TaskInputTypes.Image,        
       }
-
     ],
-    useMultiInput: true,
     // Note: This is just an example of what a config field could look like, not currently used
     config: {
       numWarmups: 0
@@ -164,30 +163,21 @@ export default class Task {
     tutorialDescription:
       "Style transfer models convert one image into the artistic style of the second image.",
   });
-
   static image_to_3D = new Task({
     name: "Image to 3D",
     description: "Convert a 2D image or collection of images into a 3D model",
     id: imageTo3D,
     multiple: true,
-
-    // inputText: 'convert to 3D',
-    // inputType: TaskInputTypes.Image,
-
+    useMultiInput: true,
     inputs: [
       {
-        inputText: 'first image for modeling.',
+        inputText: 'be converted into a 3D model.',
         inputType: TaskInputTypes.Image,
       },
-      // {
-      //   inputText: 'second image for modeling.',
-      //   inputType: TaskInputTypes.Image,        
-      // }
-
     ],
-    useMultiInput: true,
+    
     outputText: "3D model generated from the uploaded images",
-    icon: (props) => <TextToText {...props} />,  // UPDATE
+    icon: (props) => <ImageTo3D {...props} />,
     sampleInputs: [],
     tutorialDescription: "3D conversion models produce a 3D version of the user's input.",
   });

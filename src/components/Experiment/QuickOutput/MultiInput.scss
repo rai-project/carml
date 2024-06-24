@@ -1,0 +1,32 @@
+@import "../../../App.scss";
+
+.multi-input-preview {
+    &__multi-input-grid-display {
+        // border: 1px solid blue;
+        display: flex;
+        flex-direction: column;
+
+        max-width: 320px;
+    }
+    &__multi-input-grid-primary-row {
+        // border: 1px solid green;
+    }
+    &__multi-input-grid-secondary-row {
+        // border: 2px solid orange;
+        display: flex;
+        flex-wrap: wrap;
+
+    }
+    &__multi-input-grid-item {
+        // border: 2px solid red;
+        display: flex;
+        flex-basis: 25%;
+        // img {
+        //     // max-width: 100px;
+        //     // max-height: 100px;
+        // }
+        
+    }     
+}
+
+

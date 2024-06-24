@@ -2,6 +2,8 @@ import React from "react";
 import "./InputPreview.scss";
 import useBEMNaming from "../../../common/useBEMNaming";
 
+import "./MultiInput.scss";
+
 const defaultProps = {
   className: "multi-input-preview",
   inputs: [],
@@ -16,11 +18,14 @@ export default function MultiInputPreview(givenProps) {
     switch (input.inputType) {
       case "text":
         return <p className={getElement("text")}>{input}</p>;
-      case "audio":  // Currently not being used
       case "image":
+        return (
+          <img className={getElement("image")} src={input.src} />
+        );
+      case "audio":  // Currently not being used
       default:
         return (
-            <img className={getElement("image")} src={input.src} />
+            <p className={getElement("error")}>Unable to display input</p>
         );
     }
   };
@@ -31,13 +36,38 @@ export default function MultiInputPreview(givenProps) {
             Inputs
         </h3>
         <div className={getElement("container")}>
-            {
-                props.inputs.map((input, index) => (
-                    <div className={getElement("single-input")} key={index}>
-                        {getInputs(input)}
-                    </div>
-                )
-            )}
+          {
+            props.inputs.length > 2 ? (
+              <div className={getElement("multi-input-grid-display")}>
+                <div className={getElement("multi-input-grid-primary-row")}>
+                  {getInputs(props.inputs[0])}
+                </div>
+                <div className={getElement("multi-input-grid-secondary-row")}>
+                  {
+                    props.inputs.slice(1).map((input, index) => {
+                        return (
+                          <div className={getElement("multi-input-grid-item")} key={index}>
+                            {getInputs(input)}
+                          </div>
+                        )
+                    })
+                  }
+                </div>
+
+              </div>
+            ) : (
+              <div>
+                {
+                    props.inputs.map((input, index) => (
+                        <div className={getElement("single-input")} key={index}>
+                            {getInputs(input)}
+                        </div>
+
+                    )
+                )}
+              </div>
+            )
+          }
         </div>
 
         <button

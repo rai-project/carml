@@ -1,5 +1,10 @@
-import DiamondRing from "./diamondRing.png"
-import DiamondRing3D from "./3-stone-transformed.glb"
+import Chair1 from "./chair/images/chair1.png";
+import Chair2 from "./chair/images/chair2.png";
+import Chair3 from "./chair/images/chair3.png";
+import Chair4 from "./chair/images/chair4.png";
+import Chair5 from "./chair/images/chair5.png";
+import Chair3DOBJ from "./chair/object/chairs.obj";
+import Chair3DMTL from "./chair/object/chairs.mtl";
 
 
 export const TestImageTo3DOutputGeneratedToken = {
@@ -10,9 +15,30 @@ export const TestImageTo3DOutput = {
     id: "sampleImageTo3DOutputIdHere",
     inputs: [
         {
-            src: DiamondRing,
-            alt: "diamond ring",
+            src: Chair1,
+            alt: "chair",
+            inputType: "image"
+        },       
+        {
+            src: Chair2,
+            alt: "chair",
+            inputType: "image"
         },
+        {
+            src: Chair3,
+            alt: "chair",
+            inputType: "image"
+        },
+        {
+            src: Chair4,
+            alt: "chair",
+            inputType: "image"
+        },
+        {
+            src: Chair5,
+            alt: "chair",
+            inputType: "image"
+        },        
     ],
     completed_at: "2023-06-03T18:17:14.513854Z",
     results: { 
@@ -22,8 +48,8 @@ export const TestImageTo3DOutput = {
             {
                 'features': [
                     {
-                        src: DiamondRing3D,
-                        alt: "3D Diamond Ring",
+                        model: Chair3DOBJ,
+                        texture: Chair3DMTL,
                     },
                 ], 
                 'id': "sampleImageTo3DOutputResponseIdHere"

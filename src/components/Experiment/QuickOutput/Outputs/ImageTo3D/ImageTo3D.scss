@@ -1,0 +1,94 @@
+@import "../../../../../App";
+
+.image-to-3d {
+    &__header {
+        padding: 32px 32px 0 32px;
+    }
+    &__content {
+        display: flex;
+        flex-direction: row;
+        padding: 32px;
+
+        .multi-input-preview {
+            flex-grow: 1;
+            &__container {
+                display: flex;
+                flex-direction: column;
+                img {
+                    margin-bottom: 16px;
+                    max-width: 300px;
+                }      
+                @include maxWidth(700px) {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    img {
+                        max-height: 200px;
+                    }
+                }                              
+            }
+        }
+        @include maxWidth(700px) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &__input-and-rating {
+        display: flex;
+        flex-direction: column;
+    }
+    .rating {
+        margin: auto 0;
+        padding: 32px;
+    }
+    &__output {
+        flex-grow: 1;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+        margin-left: 16px;
+        padding: 32px;
+      
+        @include maxWidth(700px) {
+          margin-left: 0;
+        }     
+        
+        &-title-row {
+            margin-bottom: 0;
+        
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+    
+            @include maxWidth(575px) {
+            h3 {
+                margin-top: 8px;
+            }
+            }
+        }
+        &-subtitle {
+            @include body;
+            border-bottom: 1px solid $smokeDarkest;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+        
+            @include mobileWidth-lg {
+              @include bodySmall;
+            }
+        }   
+        &-model {
+            border: 1px solid $smokeDarkest;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+            height: 375px;
+            img {
+                width: 70%;
+            }
+        }           
+    }      
+}

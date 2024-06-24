@@ -1,5 +1,5 @@
 import { useGLTF, MeshRefractionMaterial, useEnvironment } from '@react-three/drei'
-import ring3d from "./testData/3-stone-transformed.glb"
+import ring3d from "./testData/diamondRing/3-stone-transformed.glb"
 import * as THREE from 'three'
 
 
@@ -21,4 +21,5 @@ export default function RingExample({ frame, diamonds, ...props }) {
   }
 
 
-  // See: https://codesandbox.io/p/sandbox/diamond-ring-3ywzzx?file=%2Fsrc%2FApp.js
+// See: https://codesandbox.io/p/sandbox/diamond-ring-3ywzzx?file=%2Fsrc%2FApp.js
+// Another example here: https://medium.com/@valentinagaravaglia/rendering-a-3d-model-with-next-js-13-typescript-react-three-fiber-and-react-three-drei-84476c3b6a5d

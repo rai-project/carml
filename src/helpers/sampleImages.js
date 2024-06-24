@@ -1,7 +1,10 @@
 import StyleTransferContent from "../resources/taskSample/styleTransferContent.jpg";
 import StyleTransferStyle from "../resources/taskSample/styleTransferStyle.jpg";
-import DiamondRing from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/diamondRing.png"
-
+import Chair1 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair1.png"
+import Chair2 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair2.png"
+import Chair3 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair3.png"
+import Chair4 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair4.png"
+import Chair5 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair5.png"
 
 export const SampleImageEnhancementInputs = [
   {
@@ -96,16 +99,26 @@ export const SampleStyleTransferInputs = [
 export const SampleImageTo3DInputs = [
   [
     {
-      src: DiamondRing,
-      alt: "diamond ring",
+      src: Chair1,
+      alt: "chair",
     },
+    {
+      src: Chair2,
+      alt: "chair",
+    },    
+    {
+      src: Chair3,
+      alt: "chair",
+    }, 
+    {
+      src: Chair4,
+      alt: "chair",
+    }, 
+    {
+      src: Chair5,
+      alt: "chair",
+    },             
   ],
-  // [
-  //   {
-  //     src: DiamondRing,
-  //     alt: "diamond ring",
-  //   },
-  // ]  
 ];
 
 export const SampleTextInputs = [
