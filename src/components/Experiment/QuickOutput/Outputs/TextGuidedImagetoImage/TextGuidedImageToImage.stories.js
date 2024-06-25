@@ -1,6 +1,6 @@
 import React from 'react';
-import { TestTextGuidedImageToImage } from './testData/testTextGuidedImageToImageOutput'
-import { TextGuidedImageToImageOutput } from './TextGuidedImageToImageOutput'
+import { TestTextGuidedImageToImage } from './testData/testTextGuidedImagetoImageOutput'
+import { TextGuidedImageToImageOutput } from './TextGuidedImagetoImageOutput'
 
 export default {
   title: "Experiments/Quick Output/Text Guided Image to Image",

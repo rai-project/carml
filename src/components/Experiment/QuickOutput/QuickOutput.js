@@ -30,7 +30,7 @@ import TextOutput from "./Outputs/Text/TextOutput";
 import TextToCodeOutput from "./Outputs/TextToCode/TextToCodeOutput";
 import TextConversationOutput from "./Outputs/TextConversation/TextConversationOutput";
 import StyleTransferOutput from "./Outputs/StyleTransfer/StyleTransferOutput";
-import TextGuidedImageToImageOutput from "./Outputs/TextGuidedImageToImage/TextGuidedImageToImageOutput"
+import TextGuidedImageToImageOutput from "./Outputs/TextGuidedImagetoImage/TextGuidedImagetoImageOutput"
 import VisualQuestionAnsweringOutput from "./Outputs/VisualQuestionAnswering/VisualQuestionAnsweringOutput"
 import DocumentQuestionAnsweringOutput from "./Outputs/DocumentQuestionAnswering/DocumentQuestionAnsweringOutput"
 import TextToVideoOutput from "./Outputs/TextToVideo/TextToVideoOutput"

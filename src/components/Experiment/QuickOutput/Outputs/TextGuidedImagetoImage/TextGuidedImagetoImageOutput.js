@@ -8,7 +8,7 @@ import MultiInputPreview from "../../MultiInputPreview";
 import Rating from "../Classification/Rating";
 import OutputDuration from "../_Common/components/OutputDuration";
 
-import "./TextGuidedImageToImageOutput.scss"
+import "./TextGuidedImagetoImageOutput.scss"
 
 
 export default function TextGuidedImageToImageOutput(props) {
