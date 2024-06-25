@@ -9,41 +9,25 @@ import Task from "../../../../../helpers/Task";
 export default function URLInputsTab(props) {
   const {getBlock, getElement} = useBEMNaming("url-inputs");
   const {urlChanged, getUrlValidity, task, values} = useURLInputControl(props);
-  const taskName = (task.useMultiInput ? (Task.getStaticTask(props.task).inputs[props.inputIndex]?.inputType): props.type || '').toLowerCase();
+  const taskName = (task.useMultiInput ? 
+                    (Task.getStaticTask(props.task).inputs[props.inputIndex]?.inputType) : 
+                    props.type || 
+                    '').toLowerCase();
+  const longTaskName = "aeiou".includes(taskName[0]?.toLowerCase()) ? `an ${taskName}` : `a ${taskName}`;                    
   // Note: Currently using both new and old way of handling inputs but should refactor in the future
   const inputText = task.inputText || props.input.inputText;  
   const getInputClassName = (index) => getElement(getUrlValidity(index) ? "url url-error" : "url")
-  const taskNameWithVowel = "aeiou".includes(taskName[0]?.toLowerCase()) ? `an ${taskName}` : `a ${taskName}`;
+  
   return (
     <div className={getBlock()}>
+      <div className={getElement('title')}>
+        <b>Copy {longTaskName} URL ({taskName} address) and paste</b>
+        {" "}to {inputText.toLowerCase()}
+      </div>
       {
         task.useMultiInput ? (
-          <>
-            <div className={getElement('title')}>
-              <b>Copy {taskNameWithVowel} URL ({taskName} address) and paste</b>
-              {" "}to {inputText.toLowerCase()}
-            </div>
-
-            <div key={`input-tab-${props.inputIndex}`}>
-              <input className={getInputClassName(props.inputIndex)} 
-                placeholder={`Paste any ${taskName} URL`} 
-                type="url" 
-                value={values[props.inputIndex] || ''}
-                onChange={(e) => urlChanged(e, props.inputIndex)}
-              />
-              {getUrlValidity(props.inputIndex) &&
-                <p className={getElement("error-text")}>
-                  Not a valid URL. Right click on {taskNameWithVowel} to copy the {taskName}&nbsp;
-                  address.
-                </p>}
-            </div>
-          </>
-        ) : (
-          <>
-            <div className={getElement('title')}>
-              <b>Copy {taskNameWithVowel} URL ({taskName} address) and paste</b>
-              {" "}to {inputText.toLowerCase()}
-            </div>
+          task.multiple ? (
+            <>
             {(values).map((value, index) => (
                 <div key={`input-tab-${index}`}>
                   <input className={getInputClassName(index)} 
@@ -54,7 +38,47 @@ export default function URLInputsTab(props) {
                   />
                   {getUrlValidity(index) &&
                     <p className={getElement("error-text")}>
-                      Not a valid URL. Right click on {taskNameWithVowel} to copy the {taskName}&nbsp;
+                      Not a valid URL. Right click on {longTaskName} to copy the {taskName}&nbsp;
+                      address.
+                    </p>}
+                </div>
+              )
+            )}
+            <button onClick={props.addInput} className={getElement("add-btn")}>
+              <PlusSign className={getElement("add-btn-icon")}/> 
+              Add another URL
+            </button>
+            </>
+          ) : (
+            <>
+              <div key={`input-tab-${props.inputIndex}`}>
+                <input className={getInputClassName(props.inputIndex)} 
+                  placeholder={`Paste any ${taskName} URL`} 
+                  type="url" 
+                  value={values[props.inputIndex] || ''}
+                  onChange={(e) => urlChanged(e, props.inputIndex)}
+                />
+                {getUrlValidity(props.inputIndex) &&
+                  <p className={getElement("error-text")}>
+                    Not a valid URL. Right click on {longTaskName} to copy the {taskName}&nbsp;
+                    address.
+                  </p>}
+              </div>      
+            </>
+          )
+        ) : (
+          <>
+            {(values).map((value, index) => (
+                <div key={`input-tab-${index}`}>
+                  <input className={getInputClassName(index)} 
+                    placeholder={`Paste any ${taskName} URL`} 
+                    type="url" 
+                    value={value}
+                    onChange={(e) => urlChanged(e, index)}
+                  />
+                  {getUrlValidity(index) &&
+                    <p className={getElement("error-text")}>
+                      Not a valid URL. Right click on {longTaskName} to copy the {taskName}&nbsp;
                       address.
                     </p>}
                 </div>

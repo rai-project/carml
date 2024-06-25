@@ -5,13 +5,14 @@ import {
   object_detection,
   semantic_segmentation,
   styleTransfer,
+  imageTo3D,
   textToText,
   textToCode,
   audioToText,
   textToAudio,
   textConversation,
   visualQuestionAnswering,
-  textGuidedImagetoImage,
+  textGuidedImageToImage,
   documentQuestionAnswering,
   textToImage,
   textToVideo
@@ -23,13 +24,14 @@ import { ReactComponent as SemanticSegmentation } from "../resources/icons/icon-
 import { ReactComponent as InstanceSegmentation } from "../resources/icons/icon-instanceSegmentation.svg";
 import { ReactComponent as ImageEnhancement } from "../resources/icons/icon-imageEnhancement.svg";
 import { ReactComponent as StyleTransfer } from "../resources/icons/icon-styleTransfer.svg";
+import { ReactComponent as ImageTo3D } from "../resources/icons/icon-imageTo3D.svg";
 import { ReactComponent as TextToText } from "../resources/icons/icon-textToText.svg";
 import { ReactComponent as TextToCode } from "../resources/icons/icon-textToCode.svg";
 import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToText.svg";
 import { ReactComponent as TextToAudio } from "../resources/icons/icon-textToAudio.svg";
 import { ReactComponent as TextConversation } from "../resources/icons/icon-textConversation.svg";
 import { ReactComponent as VisualQuestionAnswering } from "../resources/icons/icon-visualQuestionAnswering.svg";
-import { ReactComponent as TextGuidedImagetoImage } from "../resources/icons/icon-textGuidedImagetoImage.svg";
+import { ReactComponent as TextGuidedImageToImage } from "../resources/icons/icon-textGuidedImageToImage.svg";
 import { ReactComponent as TexttoImage } from "../resources/icons/icon-textToImage.svg";
 import { ReactComponent as TexttoVideo } from "../resources/icons/icon-textToVideo.svg";
 
@@ -39,16 +41,17 @@ import {
   DefaultInstanceSegmentationModel,
   DefaultObjectDetectionModel,
   DefaultSemanticSegmentationModel,
+  DefaultStyleTransferModel,
   DefaultTextModel,
   DefaultAudioToTextModel,
   DefaultTextToAudioModel,
   DefaultTextConversationModel,
-  DefaultStyleTransferModel,
   DefaultVisualQuestionAnsweringModel,
-  DefaultTextGuidedImagetoImageModel,
+  DefaultTextGuidedImageToImageModel,
   DefaultDocumentQuestionAnsweringModel,
   DefaultTextToImage,
   DefaultTextToVideo,
+  DefaultImageTo3DModel
 } from "./DefaultModels";
 import {
   SampleAudioToTextInputs,
@@ -57,11 +60,12 @@ import {
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
   SampleStyleTransferInputs,
-  SampleTextGuidedImagetoImageInputs,
+  SampleTextGuidedImageToImageInputs,
   SampleVisualQuestionAnsweringInputs,
   SampleDocumentQuestionAnsweringInputs,
   SampleTextToImage,
   SampleTextToVideo
+
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
 import { TestImageEnhancementData } from "../components/Experiment/QuickOutput/Outputs/ImageEnhancement/testData/TestFeatures";
@@ -77,9 +81,11 @@ import { TestStyleTransferOutput } from "../components/Experiment/QuickOutput/Ou
 import TextInputTab from "../components/Experiment/QuickInput/Tabs/TextInput/TextInputTab";
 import { TestVisualQuestionAnswering } from "../components/Experiment/QuickOutput/Outputs/VisualQuestionAnswering/testData/testVisualQuestionAnsweringOutput";
 import { TestDocumentQuestionAnswering } from "../components/Experiment/QuickOutput/Outputs/DocumentQuestionAnswering/testData/testDocumentQuestionAnsweringOuput";
-import { TestTextGuidedImagetoImage } from "../components/Experiment/QuickOutput/Outputs/TextGuidedImagetoImage/testData/testTextGuidedImagetoImageOutput";
+import { TestTextGuidedImageToImage } from "../components/Experiment/QuickOutput/Outputs/TextGuidedImageToImage/testData/testTextGuidedImageToImageOutput";
 import { TestTextToImageOutput } from "../components/Experiment/QuickOutput/Outputs/TextToImage/testData/testTextToImageOutput";
 import { TestTextToVideoOutput } from "../components/Experiment/QuickOutput/Outputs/TextToVideo/testData/testTextToVideoOutput";
+import { TestImageTo3DOutput } from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/testImageTo3DOutput";
+
 
 export default class Task {
   static image_classification = new Task({
@@ -172,6 +178,7 @@ export default class Task {
     // inputText: "Old inputText",
     // inputType: TaskInputTypes.Image,
 
+    useMultiInput: true,
     inputs: [
       {
         inputText: 'have its style changed.',
@@ -182,9 +189,7 @@ export default class Task {
         inputText: 'use the style from.',
         inputType: TaskInputTypes.Image,
       }
-
     ],
-    useMultiInput: true,
     // Note: This is just an example of what a config field could look like, not currently used
     config: {
       numWarmups: 0
@@ -195,6 +200,24 @@ export default class Task {
     sampleInputs: SampleStyleTransferInputs,
     tutorialDescription:
       "Style transfer models convert one image into the artistic style of the second image.",
+  });
+  static image_to_3D = new Task({
+    name: "Image to 3D",
+    description: "Convert a 2D image or collection of images into a 3D model",
+    id: imageTo3D,
+    multiple: true,
+    useMultiInput: true,
+    inputs: [
+      {
+        inputText: 'be converted into a 3D model.',
+        inputType: TaskInputTypes.Image,
+      },
+    ],
+    
+    outputText: "3D model generated from the uploaded images",
+    icon: (props) => <ImageTo3D {...props} />,
+    sampleInputs: [],
+    tutorialDescription: "3D conversion models produce a 3D version of the user's input.",
   });
   static text_to_text = new Task({
     name: "Text to Text",
@@ -262,12 +285,12 @@ export default class Task {
 
     inputs: [
       {
-        inputText: 'Visual Input.',
+        inputText: '[Visual Input]',
         inputType: TaskInputTypes.Image,
 
       },
       {
-        inputText: 'Question here',
+        inputText: '[Question here]',
         inputType: TaskInputTypes.Text,
         inputUpload: false,
         inputUrl: false,
@@ -296,16 +319,16 @@ export default class Task {
   static text_guided_image_to_image = new Task({
     name: "Text Guided Image to Image",
     description: "Generate images based on a source image and a given text prompt.",
-    id: textGuidedImagetoImage,
+    id: textGuidedImageToImage,
 
     inputs: [
       {
-        inputText: 'Visual Input.',
+        inputText: '[Visual Input]',
         inputType: TaskInputTypes.Image,
 
       },
       {
-        inputText: 'Question here',
+        inputText: '[Question here]',
         inputType: TaskInputTypes.Text,
         inputUpload: false,
         inputUrl: false,
@@ -324,8 +347,8 @@ export default class Task {
     },
 
     outputText: "Generated Image",
-    icon: (props) => <TextGuidedImagetoImage {...props} />,
-    sampleInputs: SampleTextGuidedImagetoImageInputs,
+    icon: (props) => <TextGuidedImageToImage {...props} />,
+    sampleInputs: SampleTextGuidedImageToImageInputs,
     tutorialDescription:
       "Text Guided Image to Image models generate images based on a source image and a given text prompt.",
   });
@@ -342,7 +365,7 @@ export default class Task {
 
       },
       {
-        inputText: 'Question here',
+        inputText: '[Question here]',
         inputType: TaskInputTypes.Text,
         inputUpload: false,
         inputUrl: false,
@@ -361,7 +384,7 @@ export default class Task {
     },
 
     outputText: "Response to the question:",
-    icon: (props) => <TextGuidedImagetoImage {...props} />,
+    icon: (props) => <TextGuidedImageToImage {...props} />,
     sampleInputs: SampleDocumentQuestionAnsweringInputs,
     tutorialDescription:
       "Document Question Answering models answer questions based on a document.",
@@ -434,6 +457,8 @@ export default class Task {
         return Task.image_instance_segmentation;
       case styleTransfer:
         return Task.style_transfer;
+      case imageTo3D:
+        return Task.image_to_3D;
       case textToText:
         return Task.text_to_text;
       case textToCode:
@@ -446,7 +471,7 @@ export default class Task {
         return Task.text_conversation;
       case visualQuestionAnswering:
         return Task.visual_question_answering;
-      case textGuidedImagetoImage:
+      case textGuidedImageToImage:
         return Task.text_guided_image_to_image;
       case documentQuestionAnswering:
         return Task.document_question_answering;
@@ -473,6 +498,8 @@ export default class Task {
         return DefaultInstanceSegmentationModel;
       case styleTransfer:
         return DefaultStyleTransferModel;
+      case imageTo3D:
+        return DefaultImageTo3DModel;
       case textToText:
         return DefaultTextModel;
       case textToCode:
@@ -486,8 +513,8 @@ export default class Task {
         return DefaultTextConversationModel;
       case visualQuestionAnswering:
         return DefaultVisualQuestionAnsweringModel;
-      case textGuidedImagetoImage:
-        return DefaultTextGuidedImagetoImageModel;
+      case textGuidedImageToImage:
+        return DefaultTextGuidedImageToImageModel;
       case documentQuestionAnswering:
         return DefaultDocumentQuestionAnsweringModel;
       case textToImage:
@@ -515,6 +542,8 @@ export default class Task {
         return TestStyleTransferOutput;
       case styleTransfer:
         return TestStyleTransferOutput;
+      case imageTo3D:
+        return TestImageTo3DOutput;
       case textToText:
         return TestTextOutput;
       case audioToText:
@@ -525,8 +554,8 @@ export default class Task {
         return TestTextConversationOutput;
       case visualQuestionAnswering:
         return TestVisualQuestionAnswering;
-      case textGuidedImagetoImage:
-        return TestTextGuidedImagetoImage;
+      case textGuidedImageToImage:
+        return TestTextGuidedImageToImage;
       case documentQuestionAnswering:
         return TestDocumentQuestionAnswering;
       case textToImage:
@@ -547,13 +576,14 @@ export default class Task {
       this.getStaticTask(instance_segmentation),
       this.getStaticTask(styleTransfer),
       this.getStaticTask(styleTransfer),
+      this.getStaticTask(imageTo3D),
       this.getStaticTask(textToText),
       this.getStaticTask(textToCode),
       this.getStaticTask(textConversation),
       this.getStaticTask(textToAudio),
       this.getStaticTask(audioToText),
       this.getStaticTask(visualQuestionAnswering),
-      this.getStaticTask(textGuidedImagetoImage),
+      this.getStaticTask(textGuidedImageToImage),
       this.getStaticTask(documentQuestionAnswering),
       this.getStaticTask(textToImage),
       this.getStaticTask(textToVideo)

@@ -13,10 +13,12 @@ export const TestStyleTransferOutput = {
         {
             src: StyleTransferContent,
             alt: "yellow dog",
+            inputType: "image"
         },
         {
             src: StyleTransferStyle,
             alt: "painting",
+            inputType: "image"
         },
     ],
     completed_at: "2023-06-03T18:17:14.513854Z",

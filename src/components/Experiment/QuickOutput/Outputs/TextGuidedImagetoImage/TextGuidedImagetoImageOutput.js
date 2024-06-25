@@ -2,19 +2,19 @@ import React from "react";
 
 import useBEMNaming from "../../../../../common/useBEMNaming";
 import Task from "../../../../../helpers/Task";
-import { textGuidedImagetoImage } from "../../../../../helpers/TaskIDs";
+import { textGuidedImageToImage } from "../../../../../helpers/TaskIDs";
 
 import MultiInputPreview from "../../MultiInputPreview";
 import Rating from "../Classification/Rating";
 import OutputDuration from "../_Common/components/OutputDuration";
 
-import "./TextGuidedImagetoImageOutput.scss"
+import "./TextGuidedImageToImageOutput.scss"
 
 
-export default function TextGuidedImagetoImageOutput(props) {
+export default function TextGuidedImageToImageOutput(props) {
     const { getElement, getBlock } = useBEMNaming('text-guided-image-to-image');
 
-    const task = Task.getStaticTask(textGuidedImagetoImage);
+    const task = Task.getStaticTask(textGuidedImageToImage);
 
     const inputs = props.trial?.inputs ?? [];
     const output = props.trial?.results?.responses[0]?.features[0] ?? {};

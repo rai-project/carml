@@ -5,13 +5,13 @@ import QuickTextInput from "./QuickTextInput";
 import QuickAudioInput from "./QuickAudioInput";
 import Task from "../../../helpers/Task";
 import { TaskInputTypes } from "../../../helpers/TaskInputTypes";
-import { TaskControls } from "../../HomePage/TaskControls";
+// import { TaskControls } from "../../HomePage/TaskControls";
 import QuickMultiInput from "./QuickMultiInput";
 
 export default function QuickInput(props) {
   const task = Task.getStaticTask(props.model.output.type)
 
-  if (task.inputs.length > 1) {
+  if (task.useMultiInput) {
     // TODO: At some point this should replace the switch statement below
     return <QuickMultiInput {...props} />
   }
@@ -21,7 +21,6 @@ export default function QuickInput(props) {
       return <QuickTextInput hideUpload={task.hideUpload} {...props} />;
     case TaskInputTypes.Audio:
       return <QuickAudioInput  {...props} />;      
-
     case TaskInputTypes.Image:
     default:
       return <QuickImageInput {...props} />;

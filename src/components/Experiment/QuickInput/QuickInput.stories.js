@@ -12,19 +12,21 @@ import {
   textConversation,
   textToAudio,
   visualQuestionAnswering,
-  textGuidedImagetoImage,
+  textGuidedImageToImage,
   documentQuestionAnswering,
   textToImage,
   textToVideo,
+  imageTo3D,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
   SampleImageEnhancementInputs,
+  SampleImageTo3DInputs,
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
   SampleStyleTransferInputs,
   SampleVisualQuestionAnsweringInputs,
-  SampleTextGuidedImagetoImageInputs,
+  SampleTextGuidedImageToImageInputs,
   SampleDocumentQuestionAnsweringInputs,
   SampleTextToImage,
   SampleTextToVideo
@@ -83,6 +85,16 @@ StyleTransfer.args = {
   model: {
     output: {
       type: styleTransfer,
+    },
+  },
+};
+
+export const ImageTo3D = Template.bind({});
+ImageTo3D.args = {
+  sampleInputs: SampleImageTo3DInputs,
+  model: {
+    output: {
+      type: imageTo3D,
     },
   },
 };
@@ -175,12 +187,12 @@ VisualQuestionAnswering.args = {
   },
 };
 
-export const TextGuidedImagetoImage = Template.bind({});
-TextGuidedImagetoImage.args = {
-  sampleInputs: SampleTextGuidedImagetoImageInputs,
+export const TextGuidedImageToImage = Template.bind({});
+TextGuidedImageToImage.args = {
+  sampleInputs: SampleTextGuidedImageToImageInputs,
   model: {
     output: {
-      type: textGuidedImagetoImage,
+      type: textGuidedImageToImage,
     },
   },
 };

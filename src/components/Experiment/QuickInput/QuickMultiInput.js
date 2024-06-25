@@ -5,7 +5,7 @@ import useQuickInputControl from "./useQuickInputControl";
 import useBEMNaming from "../../../common/useBEMNaming";
 import { QuickMultiInputTabContent } from "./QuickMultiInputTabContent";
 import { QuickInputTabTitle } from "./QuickInputTabTitle";
-import { QuickInputType } from "./quickInputType";
+// import { QuickInputType } from "./quickInputType";
 
 export default function QuickMultiInput(props) {
   const {
@@ -60,6 +60,7 @@ export default function QuickMultiInput(props) {
                   tabIndex={tabIndex}
                   getElement={getElement}
                   {...props}
+                  multiple={task.multiple}
                   removeInput={removeInput}
                   addInput={addInput}
                   selectInput={selectInput}

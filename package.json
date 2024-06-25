@@ -6,6 +6,8 @@
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
+    "@react-three/drei": "^9.106.0",
+    "@react-three/fiber": "^8.16.8",
     "@storybook/addon-webpack5-compiler-swc": "^1.0.3",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^6.4.5",
@@ -60,6 +62,7 @@
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.0.2",
     "terser-webpack-plugin": "^5.2.5",
+    "three": "^0.165.0",
     "typeface-lato": "1.1.13",
     "typeface-source-code-pro": "1.1.13",
     "uppy": "^3.25.3",

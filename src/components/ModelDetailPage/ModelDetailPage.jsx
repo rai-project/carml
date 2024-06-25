@@ -11,12 +11,13 @@ import {
   object_detection,
   semantic_segmentation,
   styleTransfer,
+  imageTo3D,
   textToText,
   textToCode,
   audioToText,
   textConversation,
   visualQuestionAnswering,
-  textGuidedImagetoImage,
+  textGuidedImageToImage,
   documentQuestionAnswering,
   textToImage,
   textToVideo,
@@ -32,10 +33,11 @@ import {
   SampleTextConversationInputs,
   SampleStyleTransferInputs,
   SampleVisualQuestionAnsweringInputs,
-  SampleTextGuidedImagetoImageInputs,
+  SampleTextGuidedImageToImageInputs,
   SampleDocumentQuestionAnsweringInputs,
   SampleTextToImage,
-  SampleTextToVideo
+  SampleTextToVideo,
+  SampleImageTo3DInputs
 } from "../../helpers/sampleImages";  // This file should be renamed
 
 const ModelDetailPage = (props) => {
@@ -54,8 +56,8 @@ const ModelDetailPage = (props) => {
         return SampleSegmentationInputs;
       case styleTransfer:
         return SampleStyleTransferInputs;
-      case styleTransfer:
-        return SampleStyleTransferInputs;
+      case imageTo3D:
+        return SampleImageTo3DInputs;
       case textToText:
         return SampleTextInputs;
       case textToCode:
@@ -66,8 +68,8 @@ const ModelDetailPage = (props) => {
         return SampleTextConversationInputs;
       case visualQuestionAnswering:
         return SampleVisualQuestionAnsweringInputs;
-      case textGuidedImagetoImage:
-        return SampleTextGuidedImagetoImageInputs;
+      case textGuidedImageToImage:
+        return SampleTextGuidedImageToImageInputs;
       case documentQuestionAnswering:
         return SampleDocumentQuestionAnsweringInputs;
       case textToImage:
@@ -96,6 +98,7 @@ const ModelDetailPage = (props) => {
       case semantic_segmentation:
       case instance_segmentation:
       case styleTransfer:
+      case imageTo3D:
       default:
         return "image";
     }

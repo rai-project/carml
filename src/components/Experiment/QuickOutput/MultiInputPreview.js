@@ -3,6 +3,8 @@ import "./InputPreview.scss";
 import useBEMNaming from "../../../common/useBEMNaming";
 import { ReactComponent as DocumentIcon } from "../../../resources/icons/icon-document.svg";
 
+import "./MultiInput.scss";
+
 const defaultProps = {
   className: "multi-input-preview",
   inputs: [],
@@ -16,19 +18,26 @@ export default function MultiInputPreview(givenProps) {
   const getInputs = (input) => {
     switch (input.inputType) {
       case "text":
-        return <p className={getElement("text")}>{input.description}</p>;
+        return (
+          <p className={getElement("text")}>{input.description}</p>
+        );
       case "document":
-        return (<button className={getElement("document")}>
-        <DocumentIcon className='icon'/>
-        <a href={input.src} target='_blank' >
-            <span>{input.description ?? "Document"}</span>
-        </a>
-    </button>)
-      case "audio":  // Currently not being used
+        return (
+          <button className={getElement("document")}>
+            <DocumentIcon className='icon'/>
+            <a href={input.src} target='_blank' >
+                <span>{input.description ?? "Document"}</span>
+            </a>
+          </button>
+        );
       case "image":
+        return (
+          <img className={getElement("image")} src={input.src} />
+        );
+      case "audio":  // Currently not being used
       default:
         return (
-            <img className={getElement("image")} src={input.src} />
+            <p className={getElement("error")}>Unable to display input</p>
         );
     }
   };
@@ -39,13 +48,38 @@ export default function MultiInputPreview(givenProps) {
             Inputs
         </h3>
         <div className={getElement("container")}>
-            {
-                props.inputs.map((input, index) => (
-                    <div className={getElement("single-input")} key={index}>
-                    {getInputs(input)}
-                    </div>
-                )
-            )}
+          {
+            props.inputs.length > 2 ? (
+              <div className={getElement("multi-input-grid-display")}>
+                <div className={getElement("multi-input-grid-primary-row")}>
+                  {getInputs(props.inputs[0])}
+                </div>
+                <div className={getElement("multi-input-grid-secondary-row")}>
+                  {
+                    props.inputs.slice(1).map((input, index) => {
+                        return (
+                          <div className={getElement("multi-input-grid-item")} key={index}>
+                            {getInputs(input)}
+                          </div>
+                        )
+                    })
+                  }
+                </div>
+
+              </div>
+            ) : (
+              <div>
+                {
+                    props.inputs.map((input, index) => (
+                        <div className={getElement("single-input")} key={index}>
+                            {getInputs(input)}
+                        </div>
+
+                    )
+                )}
+              </div>
+            )
+          }
         </div>
 
         <button

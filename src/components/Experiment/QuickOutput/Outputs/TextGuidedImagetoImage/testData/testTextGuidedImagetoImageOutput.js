@@ -1,16 +1,16 @@
-export const TestTextGuidedImagetoImageGeneratedToken = {
-    id: "sampleTextGuidedImagetoImageOutputIdHere"
+export const TestTextGuidedImageToImageGeneratedToken = {
+    id: "sampleTextGuidedImageToImageOutputIdHere"
 };
 
-export const TestTextGuidedImagetoImage = {
-    id: "sampleTextGuidedImagetoImageOutputIdHere",
+export const TestTextGuidedImageToImage = {
+    id: "sampleTextGuidedImageToImageOutputIdHere",
     inputs: [
         {
             src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/kitty.png",
             alt: "yellow dog",
         },
         {
-            description: "Hello  World",
+            description: "Hello World",
             inputType:"text"
         }
     ],
@@ -26,7 +26,7 @@ export const TestTextGuidedImagetoImage = {
                         alt: "painted dog",
                     },
                 ], 
-                'id': "sampleTextGuidedImagetoImageIdHere"
+                'id': "sampleTextGuidedImageToImageIdHere"
             }
         ]
     }

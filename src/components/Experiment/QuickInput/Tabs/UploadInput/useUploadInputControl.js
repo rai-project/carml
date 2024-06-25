@@ -59,8 +59,9 @@ export const useUploadInputControl = (props) => {
     let u = new Uppy({
       autoProceed: true,
       restrictions: {
-        // Uppy file-type restrictions will default the upload pop-up to the 
-        // allowed file types and reject any other types
+        // Note: Uppy file-type restrictions will default the upload pop-up to the 
+        // allowed file types and reject any other types, but the user can intentionally
+        // still force the selection of other/bad file types
         allowedFileTypes: props.allowedFileTypes.mimeTypes,
         maxNumberOfFiles: props.multiple ? 99 : 1,
       },
