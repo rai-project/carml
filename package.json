@@ -76,7 +76,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "CI=false react-app-rewired build",
     "copy:redirect": "cp ./_redirects build",
     "test": "react-app-rewired test --env=jsdom --setupFilesAfterEnv='./src/setupTests.js'",
     "bundle": "npm-run-all clean:build build build:assets",
