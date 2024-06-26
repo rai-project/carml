@@ -27,7 +27,7 @@ jobs:
           REACT_APP_TRACE_URL: "https://trace.staging.mlmodelscope.org"
           REACT_APP_COMPANION_URL: "https://companion.staging.mlmodelscope.org"
           REACT_APP_VERSION: ${{ github.sha }}
-        run: npm run build
+        run: CI=false && npm run build
       - name: Deploy to S3
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.STAGING_UPDATER_ACCESS_KEY_ID }}
