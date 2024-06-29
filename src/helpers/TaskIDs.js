@@ -15,4 +15,5 @@ export const textGuidedImageToImage = "text_guided_image_to_image";
 export const documentQuestionAnswering = "document_question_answering";
 export const textToImage = "text_to_image"
 export const textToVideo = "text_to_video"
+export const imageToText = "image_to_text"
 export const pending = "pending";

@@ -15,7 +15,8 @@ import {
   textGuidedImageToImage,
   documentQuestionAnswering,
   textToImage,
-  textToVideo
+  textToVideo,
+  imageToText
 } from "./TaskIDs";
 import React from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
@@ -34,6 +35,8 @@ import { ReactComponent as VisualQuestionAnswering } from "../resources/icons/ic
 import { ReactComponent as TextGuidedImageToImage } from "../resources/icons/icon-textGuidedImagetoImage.svg";
 import { ReactComponent as TexttoImage } from "../resources/icons/icon-textToImage.svg";
 import { ReactComponent as TexttoVideo } from "../resources/icons/icon-textToVideo.svg";
+import { ReactComponent as ImageToText } from "../resources/icons/icon-imageToText.svg";
+
 
 import {
   DefaultImageClassificationModel,
@@ -51,7 +54,8 @@ import {
   DefaultDocumentQuestionAnsweringModel,
   DefaultTextToImage,
   DefaultTextToVideo,
-  DefaultImageTo3DModel
+  DefaultImageTo3DModel,
+  DefaultImageToText
 } from "./DefaultModels";
 import {
   SampleAudioToTextInputs,
@@ -64,7 +68,8 @@ import {
   SampleVisualQuestionAnsweringInputs,
   SampleDocumentQuestionAnsweringInputs,
   SampleTextToImage,
-  SampleTextToVideo
+  SampleTextToVideo,
+  SampleImageToText
 
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
@@ -85,6 +90,7 @@ import { TestTextGuidedImageToImage } from "../components/Experiment/QuickOutput
 import { TestTextToImageOutput } from "../components/Experiment/QuickOutput/Outputs/TextToImage/testData/testTextToImageOutput";
 import { TestTextToVideoOutput } from "../components/Experiment/QuickOutput/Outputs/TextToVideo/testData/testTextToVideoOutput";
 import { TestImageTo3DOutput } from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/testImageTo3DOutput";
+import { TestImageToTextOutput } from "../components/Experiment/QuickOutput/Outputs/ImageToText/testData/testImageToTextOutput";
 
 
 export default class Task {
@@ -213,7 +219,7 @@ export default class Task {
         inputType: TaskInputTypes.Image,
       },
     ],
-    
+
     outputText: "3D model generated from the uploaded images",
     icon: (props) => <ImageTo3D {...props} />,
     sampleInputs: [],
@@ -417,6 +423,19 @@ export default class Task {
     inputType: TaskInputTypes.Text,
   });
 
+  static image_to_text = new Task({
+    name: "Image to Text",
+    description: "Caption an image.",
+    id: imageToText,
+    inputText: "Generate a caption for the image.",
+    outputText: "Caption:",
+    icon: (props) => <ImageToText {...props} />,
+    sampleInputs: SampleImageToText,
+    tutorialDescription: "Image to Text model generates a caption for an image.",
+    inputType: TaskInputTypes.Image,
+  });
+
+
   constructor(options) {
     this.name = options.name ?? "";
     this.id = options.id ?? this.name;
@@ -479,6 +498,8 @@ export default class Task {
         return Task.text_to_image;
       case textToVideo:
         return Task.text_to_video;
+      case imageToText:
+        return Task.image_to_text;
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }
@@ -521,6 +542,8 @@ export default class Task {
         return DefaultTextToImage;
       case textToVideo:
         return DefaultTextToVideo;
+      case imageToText:
+        return DefaultImageToText;
       default:
         return undefined;
     }
@@ -562,6 +585,8 @@ export default class Task {
         return TestTextToImageOutput;
       case textToVideo:
         return TestTextToVideoOutput;
+      case imageToText:
+        return TestImageToTextOutput;
       default:
         return undefined;
     }
@@ -586,7 +611,8 @@ export default class Task {
       this.getStaticTask(textGuidedImageToImage),
       this.getStaticTask(documentQuestionAnswering),
       this.getStaticTask(textToImage),
-      this.getStaticTask(textToVideo)
+      this.getStaticTask(textToVideo),
+      this.getStaticTask(imageToText)
     ];
   }
 

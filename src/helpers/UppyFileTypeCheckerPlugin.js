@@ -11,7 +11,8 @@ import {
   styleTransfer, 
   imageTo3D,
   textGuidedImageToImage, 
-  visualQuestionAnswering 
+  visualQuestionAnswering, 
+  imageToText
 } from './TaskIDs';
 
 import fileTypeChecker from "file-type-checker";
@@ -31,6 +32,7 @@ export const getAllowedFileTypes = (task) => {
       case styleTransfer:
       case imageTo3D:
       case instance_segmentation:
+      case imageToText:
         return {
           fileTypes: ['bmp', 'gif', 'ico', 'jpeg', 'pdf', 'png', 'psd'],
           mimeTypes: ['image/*']

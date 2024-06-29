@@ -2,7 +2,7 @@
 
 .text-output, .text-to-code-output, 
 .audio-to-text-output, .text-to-audio-output,
-.text-conversation-output {
+.text-conversation-output,.image-to-text-output {
   display: flex;
   flex-direction: row;
   gap: 72px;
@@ -42,7 +42,7 @@
 
     }
 
-    &-audio-content {
+    &-audio-content, &-image-content {
       padding-top: 12px;
       font-size: 20px;
     }
