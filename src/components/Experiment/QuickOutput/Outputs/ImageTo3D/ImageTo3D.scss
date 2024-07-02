@@ -79,6 +79,11 @@
               @include bodySmall;
             }
         }   
+        &-help-text {
+            @include bodySmall;
+            font-size: 14px;
+            margin-bottom: 12px;
+        }        
         &-model {
             border: 1px solid $smokeDarkest;
             border-radius: 5px;

@@ -26,6 +26,7 @@ export default function useTextOutput(trial) {
           .map((token) => token.token)
           .join(" ");
       case "AUDIO":
+      case "3D_MODEL":
         return trial?.results?.responses[0]?.features[0] ?? "";
       case "TEXT":
       default:

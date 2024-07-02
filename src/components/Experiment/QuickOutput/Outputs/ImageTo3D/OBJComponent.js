@@ -21,7 +21,8 @@ export default function OBJComponent(props) {
 
 
     return (
-        <mesh scale={.3} position={[0,0,0]} rotation={[0, 1, 0]} materials={mtl}>
+        // Note: Can use "scale" attribute to adjust default size of model
+        <mesh position={[0,0,0]} rotation={[0, 1, 0]} materials={mtl}>
             <primitive object={obj} {...props} />
         </mesh>
     )

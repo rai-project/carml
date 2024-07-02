@@ -8,7 +8,7 @@ import MultiInputPreview from "../../MultiInputPreview";
 import Rating from "../Classification/Rating";
 import OutputDuration from "../_Common/components/OutputDuration";
 
-import "./TextGuidedImagetoImageOutput.scss"
+import "./TextGuidedImageToImageOutput.scss"
 
 
 export default function TextGuidedImageToImageOutput(props) {
@@ -19,7 +19,6 @@ export default function TextGuidedImageToImageOutput(props) {
     const inputs = props.trial?.inputs ?? [];
     const output = props.trial?.results?.responses[0]?.features[0] ?? {};
     const duration = props.trial?.results?.duration_for_inference ?? "0s";
-
 
     return (
         <div className={getBlock()}>

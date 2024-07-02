@@ -231,3 +231,7 @@ export const SampleImageToText = [
     alt: "crab"
   }
 ];
+
+export const SampleTextTo3DInputs = [
+  "a cool drum set"
+]

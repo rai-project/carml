@@ -53,6 +53,9 @@ export default function ImageTo3DOutput(props) {
                     <p className={getElement("output-subtitle")}>
                         {task.outputText}
                     </p>
+                    <p className={getElement("output-help-text")}>
+                        Hover over the model and scroll to zoom, click-and-hold to rotate, right-click-and-hold to drag
+                    </p>                        
                     <div className={getElement("output-model")}>
                         <Canvas>
                             {/* Very basic 3D Box that can be rotated with OrbitControls */}

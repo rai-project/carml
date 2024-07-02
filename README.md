@@ -83,6 +83,25 @@ The project is structured as follows:
 - `/.storybook/` - Contains the configuration for storybook
 - `/scripts/` - Contains scripts that are used for development and deployment
 
+## Recommended Workflow for creating new Tasks (WIP)
+- Add the task name to `TaskIDs.js`. Use camelcase for the variable and snakecase for the string
+- Make a new directory in `Outputs` and make:
+  - `testData` subdirectory
+  - `TaskNameOutput.js`
+  - `TaskName.stories.js`
+  - `TaskName.scss`
+- Create a new `Task` in `Task.js`
+  - Search svgrepo.com for a suitable icon and add it to the `icons` folder
+  - Add the new task to:
+    - `getStaticTask`
+    - `getDefaultModel`
+      -  Open `DefaultModels.js` and copy/paste one of the existing models (editing where appropriate)
+    - `getSampleOutput` 
+      - Returne the `Test[Task Name]Output` that you created in `testData` above 
+    - `getStaticTasks`
+- Create a new story for the task in `QuickInput.stories.js`
+
+
 ## Recommended Workflow for creating new components
 
 Create a new folder in `src/components/` with the name of the component, and create the following files as needed:

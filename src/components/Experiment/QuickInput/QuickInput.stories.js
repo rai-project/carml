@@ -18,6 +18,7 @@ import {
   textToVideo,
   imageTo3D,
   imageToText,
+  textTo3D,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -31,7 +32,8 @@ import {
   SampleDocumentQuestionAnsweringInputs,
   SampleTextToImage,
   SampleTextToVideo,
-  SampleImageToText
+  SampleImageToText,
+  SampleTextTo3DInputs
 } from "../../../helpers/sampleImages";
 
 export default {
@@ -238,3 +240,14 @@ ImageToText.args = {
     },
   },
 };
+
+export const TextTo3D = Template.bind({});
+TextTo3D.args = {
+  sampleInputs: SampleTextTo3DInputs,
+  model: {
+    output: {
+      type: textTo3D,
+    },
+  },
+};
+
