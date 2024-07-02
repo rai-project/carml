@@ -50,6 +50,7 @@ export const TestImageTo3DOutput = {
                     {
                         model: Chair3DOBJ,
                         texture: Chair3DMTL,
+                        type: '3D_MODEL'
                     },
                 ], 
                 'id': "sampleImageTo3DOutputResponseIdHere"

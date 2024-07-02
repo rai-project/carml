@@ -170,18 +170,6 @@ export default class Task {
     description:
       "Used to convert one image into the artistic style of a second image",
     id: styleTransfer,
-    inputText: "***",
-    outputText: "Stylized image:",
-    icon: (props) => <StyleTransfer {...props} />,
-    sampleInputs: SampleStyleTransferInputs,
-    tutorialDescription:
-      "Style transfer models convert one image into the artistic style of the second image.",
-  });
-  static style_transfer = new Task({
-    name: "Style Transfer",
-    description:
-      "Used to convert one image into the artistic style of a second image",
-    id: styleTransfer,
 
     // inputText: "Old inputText",
     // inputType: TaskInputTypes.Image,
@@ -551,8 +539,6 @@ export default class Task {
         return TestInstanceSegmentationOutput;
       case styleTransfer:
         return TestStyleTransferOutput;
-      case styleTransfer:
-        return TestStyleTransferOutput;
       case imageTo3D:
         return TestImageTo3DOutput;
       case textToText:
@@ -589,7 +575,6 @@ export default class Task {
       this.getStaticTask(image_enhancement),
       this.getStaticTask(semantic_segmentation),
       this.getStaticTask(instance_segmentation),
-      this.getStaticTask(styleTransfer),
       this.getStaticTask(styleTransfer),
       this.getStaticTask(imageTo3D),
       this.getStaticTask(textToText),

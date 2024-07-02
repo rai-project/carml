@@ -18,13 +18,28 @@
     .filter-group__button-icon {
       path {
         fill: $white;
-      }
+      }       
     }
   }
 
   &-inactive {
     background: white;
     color: $color;
+    path {
+      fill: $color;
+    }
+    line {
+      stroke: $color;
+    }
+    rect {
+      stroke: $color;
+    }
+    circle {
+      stroke: $color;
+    }
+    .a {
+      stroke: $color;
+    }
 
     &:hover {
       background: rgba($color, 0.07);
