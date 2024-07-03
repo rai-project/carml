@@ -17,7 +17,8 @@ import {
   textToImage,
   textToVideo,
   imageToText,
-  textTo3D
+  textTo3D,
+  textClassification,
 } from "./TaskIDs";
 import React from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
@@ -38,6 +39,7 @@ import { ReactComponent as TextToImage } from "../resources/icons/icon-textToIma
 import { ReactComponent as TexttoVideo } from "../resources/icons/icon-textToVideo.svg";
 import { ReactComponent as TextTo3D } from "../resources/icons/icon-textTo3D.svg";
 import { ReactComponent as ImageToText } from "../resources/icons/icon-imageToText.svg";
+import { ReactComponent as TextClassification } from "../resources/icons/icon-textClassification.svg";
 
 import {
   DefaultImageClassificationModel,
@@ -57,7 +59,8 @@ import {
   DefaultTextToImage,
   DefaultTextToVideo,
   DefaultTextTo3DModel,
-  DefaultImageToText
+  DefaultImageToText,
+  DefaultTextClassification,
 } from "./DefaultModels";
 import {
   SampleAudioToTextInputs,
@@ -72,7 +75,8 @@ import {
   SampleTextToImage,
   SampleTextToVideo,
   SampleImageToText,
-  SampleTextTo3DInputs
+  SampleTextTo3DInputs,
+  SampleTextClassification,
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
 import { TestImageEnhancementData } from "../components/Experiment/QuickOutput/Outputs/ImageEnhancement/testData/TestFeatures";
@@ -94,6 +98,7 @@ import { TestTextToVideoOutput } from "../components/Experiment/QuickOutput/Outp
 import { TestImageTo3DOutput } from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/testImageTo3DOutput";
 import { TestImageToTextOutput } from "../components/Experiment/QuickOutput/Outputs/ImageToText/testData/testImageToTextOutput";
 import { TestTextTo3DOutput } from "../components/Experiment/QuickOutput/Outputs/TextTo3D/testData/testTextTo3DOutput";
+import { TestTextClassificationOutput } from "../components/Experiment/QuickOutput/Outputs/TextClassification/testData/testTextClassification";
 
 export default class Task {
   static image_classification = new Task({
@@ -394,7 +399,7 @@ export default class Task {
     icon: (props) => <TextTo3D {...props} />,
     sampleInputs: SampleTextTo3DInputs,
     tutorialDescription: "3D conversion models produce a 3D version of the user's input.",
-  });  
+  });
   static image_to_text = new Task({
     name: "Image to Text",
     description: "Caption an image.",
@@ -405,6 +410,24 @@ export default class Task {
     sampleInputs: SampleImageToText,
     tutorialDescription: "Image to Text model generates a caption for an image.",
     inputType: TaskInputTypes.Image,
+  });
+
+
+  static text_classification = new Task({
+    name: "Text Classification",
+    description:
+      "Used to classify text into different labels.",
+    modelDescription:
+      "Used to classify text into different labels.",
+    id: textClassification,
+    inputText: "See how well this model can classify the text.",
+    outputText: "How this model classified the text:",
+    icon: (props) => <TextClassification {...props} />,
+    sampleInputs: SampleTextClassification,
+    tutorialDescription:
+      "Image classification models can recognize a single object in an image.",
+    inputType: TaskInputTypes.Text,
+
   });
 
 
@@ -472,8 +495,10 @@ export default class Task {
         return Task.text_to_video;
       case imageToText:
         return Task.image_to_text;
-        case textTo3D:
-          return Task.text_to_3D;        
+      case textTo3D:
+        return Task.text_to_3D;
+      case textClassification:
+        return Task.text_classification;
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }
@@ -520,6 +545,8 @@ export default class Task {
         return DefaultImageToText;
       case textTo3D:
         return DefaultTextTo3DModel;
+      case textClassification:
+        return DefaultTextClassification;
       default:
         return undefined;
     }
@@ -563,6 +590,8 @@ export default class Task {
         return TestImageToTextOutput;
       case textTo3D:
         return TestTextTo3DOutput;
+      case textClassification:
+        return TestTextClassificationOutput;
       default:
         return undefined;
     }
@@ -588,7 +617,8 @@ export default class Task {
       this.getStaticTask(textToImage),
       this.getStaticTask(textToVideo),
       this.getStaticTask(imageToText),
-      this.getStaticTask(textTo3D)
+      this.getStaticTask(textTo3D),
+      this.getStaticTask(textClassification),
     ];
   }
 

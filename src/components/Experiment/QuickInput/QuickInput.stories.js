@@ -19,6 +19,7 @@ import {
   imageTo3D,
   imageToText,
   textTo3D,
+  textClassification,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -33,7 +34,8 @@ import {
   SampleTextToImage,
   SampleTextToVideo,
   SampleImageToText,
-  SampleTextTo3DInputs
+  SampleTextTo3DInputs,
+  SampleTextClassification,
 } from "../../../helpers/sampleImages";
 
 export default {
@@ -251,3 +253,12 @@ TextTo3D.args = {
   },
 };
 
+export const TextClassification = Template.bind({});
+TextClassification.args = {
+  sampleInputs: SampleTextClassification,
+  model: {
+    output: {
+      type: textClassification,
+    },
+  },
+};

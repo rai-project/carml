@@ -1,10 +1,10 @@
 import StyleTransferContent from "../resources/taskSample/styleTransferContent.jpg";
 import StyleTransferStyle from "../resources/taskSample/styleTransferStyle.jpg";
-import Chair1 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair1.png"
-import Chair2 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair2.png"
-import Chair3 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair3.png"
-import Chair4 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair4.png"
-import Chair5 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair5.png"
+import Chair1 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair1.png";
+import Chair2 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair2.png";
+import Chair3 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair3.png";
+import Chair4 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair4.png";
+import Chair5 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair5.png";
 
 export const SampleImageEnhancementInputs = [
   {
@@ -105,19 +105,19 @@ export const SampleImageTo3DInputs = [
     {
       src: Chair2,
       alt: "chair",
-    },    
+    },
     {
       src: Chair3,
       alt: "chair",
-    }, 
+    },
     {
       src: Chair4,
       alt: "chair",
-    }, 
+    },
     {
       src: Chair5,
       alt: "chair",
-    },             
+    },
   ],
 ];
 
@@ -137,7 +137,7 @@ export const SampleAudioToTextInputs = [
   {
     title: "automatic-speech-recognition-input.flac",
     src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
-  } 
+  }
 ];
 
 export const SampleTextConversationInputs = [
@@ -234,4 +234,10 @@ export const SampleImageToText = [
 
 export const SampleTextTo3DInputs = [
   "a cool drum set"
-]
+];
+
+export const SampleTextClassification = [
+  "The weather is very pleasant today.",
+  "The ending of the movie was sad.",
+  "There is a car parked there."
+];

@@ -19,7 +19,9 @@ import {
   visualQuestionAnswering,
   documentQuestionAnswering,
   textToVideo,
-  textTo3D
+  textTo3D,
+  textClassification,
+  imageToText,
 } from "../../../helpers/TaskIDs";
 import ObjectDetection from "./Outputs/ObjectDetection/ObjectDetection";
 import ImageEnhancement from "./Outputs/ImageEnhancement/ImageEnhancement";
@@ -32,18 +34,20 @@ import TextOutput from "./Outputs/Text/TextOutput";
 import TextToCodeOutput from "./Outputs/TextToCode/TextToCodeOutput";
 import TextConversationOutput from "./Outputs/TextConversation/TextConversationOutput";
 import StyleTransferOutput from "./Outputs/StyleTransfer/StyleTransferOutput";
-import TextGuidedImageToImageOutput from "./Outputs/TextGuidedImageToImage/TextGuidedImageToImageOutput"
-import VisualQuestionAnsweringOutput from "./Outputs/VisualQuestionAnswering/VisualQuestionAnsweringOutput"
-import DocumentQuestionAnsweringOutput from "./Outputs/DocumentQuestionAnswering/DocumentQuestionAnsweringOutput"
-import TextToVideoOutput from "./Outputs/TextToVideo/TextToVideoOutput"
-import TextToImageOutput from "./Outputs/TextToImage/TextToImageOutput"
+import TextGuidedImageToImageOutput from "./Outputs/TextGuidedImageToImage/TextGuidedImageToImageOutput";
+import VisualQuestionAnsweringOutput from "./Outputs/VisualQuestionAnswering/VisualQuestionAnsweringOutput";
+import DocumentQuestionAnsweringOutput from "./Outputs/DocumentQuestionAnswering/DocumentQuestionAnsweringOutput";
+import TextToVideoOutput from "./Outputs/TextToVideo/TextToVideoOutput";
+import TextToImageOutput from "./Outputs/TextToImage/TextToImageOutput";
+import TextClassificationOutput from "./Outputs/TextClassification/TextClassificationOutput";
+import ImageToTextOutput from "./Outputs/ImageToText/ImageToTextOutput";
 import { AudioToText, ImageTo3D, TextTo3D } from "../QuickInput/QuickInput.stories";
 
 const defaultProps = {
   className: "quick-output",
   features: [],
   input: "",
-  compare: () => {},
+  compare: () => { },
   processFailed: false,
   inputType: "image", // Todo: Change this default?
 };
@@ -107,18 +111,18 @@ export default function QuickOutput(givenProps) {
           );
         case styleTransfer:
           return (
-            <StyleTransferOutput 
+            <StyleTransferOutput
               onBackClicked={props.onBackClicked}
               trial={props.trialOutput}
             />
-          )      
+          );
         case imageTo3D:
           return (
-            <ImageTo3D 
+            <ImageTo3D
               onBackClicked={props.onBackClicked}
-              trial={props.trialOutput}            
+              trial={props.trialOutput}
             />
-          )
+          );
         case textToText:
           return (
             <TextOutput
@@ -134,61 +138,76 @@ export default function QuickOutput(givenProps) {
             />
           );
         case audioToText:
-          return(
-            <AudioToText 
+          return (
+            <AudioToText
               onBackClicked={props.onBackClicked}
-              trial={props.trialOutput}            
+              trial={props.trialOutput}
             />
-          )
+          );
         case textConversation:
           return (
-            <TextConversationOutput 
+            <TextConversationOutput
               trial={props.trialOutput}
               onSubmit={props.runTrial}
             />
-          )
+          );
         case textGuidedImageToImage:
           return (
             <TextGuidedImageToImageOutput
               onBackClicked={props.onBackClicked}
               trial={props.trialOutput}
             />
-          )
+          );
         case visualQuestionAnswering:
           return (
             <VisualQuestionAnsweringOutput
-             onBackClicked={props.onBackClicked}
+              onBackClicked={props.onBackClicked}
               trial={props.trialOutput}
             />
-          )
+          );
         case documentQuestionAnswering:
           return (
             <DocumentQuestionAnsweringOutput
               onBackClicked={props.onBackClicked}
               trial={props.trialOutput}
             />
-          )
+          );
         case textToVideo:
           return (
             <TextToVideoOutput
               onBackClicked={props.onBackClicked}
               trial={props.trialOutput}
             />
-          )
+          );
         case textToAudio:
           return (
             <TextToImageOutput
               onBackClicked={props.onBackClicked}
               trial={props.trialOutput}
             />
-          )
+          );
         case textTo3D:
           return (
-            <TextTo3D 
+            <TextTo3D
               onBackClicked={props.onBackClicked}
               trial={props.trialOutput}
             />
-          )          
+          );
+        case imageToText:
+          return (
+            <ImageToTextOutput
+              onBackClicked={props.onBackClicked}
+              trial={props.trialOutput}
+            />
+          );
+
+        case textClassification:
+          return (
+            <TextClassificationOutput
+              onBackClicked={props.onBackClicked}
+              trial={props.trialOutput}
+            />
+          );
         default:
           return (
             <>

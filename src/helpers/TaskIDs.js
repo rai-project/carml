@@ -17,4 +17,5 @@ export const textToImage = "text_to_image";
 export const textToVideo = "text_to_video";
 export const textTo3D = "text_to_3D";
 export const imageToText = "image_to_text";
+export const textClassification = "text_classification";
 export const pending = "pending";
