@@ -206,7 +206,7 @@ export default class Task {
     name: "Image to 3D",
     description: "Convert a 2D image or collection of images into a 3D model",
     id: imageTo3D,
-    multiple: true,
+    multiple: false,
     useMultiInput: true,
     inputs: [
       {
@@ -217,6 +217,7 @@ export default class Task {
     outputText: "3D model generated from the uploaded images",
     icon: (props) => <ImageTo3D {...props} />,
     sampleInputs: [],
+    useMultiImageSample: true,
     tutorialDescription: "3D conversion models produce a 3D version of the user's input.",
   });
   static text_to_text = new Task({
@@ -447,6 +448,7 @@ export default class Task {
     this.Icon = options.icon ?? ((props) => <></>);
     this.defaultModel = Task.getDefaultModel(this.id);
     this.sampleInputs = options.sampleInputs ?? [];
+    this.useMultiImageSample = options.useMultiImageSample ?? false;
     this.tutorialDescription = options.tutorialDescription ?? this.description;
     this.inputType = options.inputType ?? TaskInputTypes.Image;
     this.hideUpload = options.hideUpload ?? false;

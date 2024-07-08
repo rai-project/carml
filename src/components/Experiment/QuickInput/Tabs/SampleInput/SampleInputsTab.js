@@ -5,18 +5,21 @@ import useSampleInputControl from "./useSampleInputControl";
 import useBEMNaming from "../../../../../common/useBEMNaming";
 import { QuickInputType } from "../../quickInputType";
 import { ReactComponent as DocumentIcon } from "../../../../../resources/icons/icon-document.svg";
+import { imageTo3D } from '../../../../../helpers/TaskIDs';
 
 
 export default function SampleInputsTab(props) {
     // Note: This is the content for the Sample Input Tab, below the header
-
     const { getBlock, getElement } = useBEMNaming("sample-inputs");
     const { isUnselected, isSelected, selectInput, type,sampleInputType } = useSampleInputControl(props);
     const task = Task.getStaticTask(props.task);
+
     const getInputClassName = (url) => {
+        const tasksWithLargeImages = [imageTo3D];
         let className = `input-${sampleInputType}`;
         if (isSelected(url)) className += ` ${className}--selected`;
         if (isUnselected(url)) className += ` ${className}--unselected`;
+        if (tasksWithLargeImages.includes(task.id)) className += ` input-${sampleInputType}--large`;
 
         return className;
     };
@@ -36,7 +39,6 @@ export default function SampleInputsTab(props) {
         }
     };
 
-    // TODO: Rename "url" to "input" or similar
     // TODO: Rename "url" to "input" or similar
     function makeSampleImageInput(url, index) {
         return (
@@ -96,7 +98,7 @@ export default function SampleInputsTab(props) {
     function makeTaskTitle(props) {
         switch (sampleInputType) {
             case QuickInputType.Image:
-                return `Select an image${!props.multiple ? "" : " or set of images"}`;
+                return !task.useMultiImageSample ? "Select an image" : "Select a set of images";
             case QuickInputType.Text:
                 return "Select text";
             case QuickInputType.Audio:

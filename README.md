@@ -101,7 +101,6 @@ The project is structured as follows:
     - `getStaticTasks`
 - Create a new story for the task in `QuickInput.stories.js`
 
-
 ## Recommended Workflow for creating new components
 
 Create a new folder in `src/components/` with the name of the component, and create the following files as needed:
@@ -114,8 +113,19 @@ Create a new folder in `src/components/` with the name of the component, and cre
 - `[ComponentName].test.jsx` - The unit tests for the component
 - `use[*].test.js` - The unit tests for the React hooks
 
-### Writing tests for UI components
+## Creating multi-image sample images:
+- Some tasks, such as `ImageTo3D`, use a collection of images rather than a single image on the sample tab
+- In order to easily display and select them as a group while preserving current functionality, we can use an image-editing tool to combine the images. You are welcome to use any tool you wish, but here are the steps to do so with Figma (free to sign up):
+1. Drag any images you want from your folder to the Figma canvas & line them up in a row.
+2. Select the "square" tool from the upper-left corner, and draw a square on the canvas, around one of the images. Then, on the right side menu, click the `-` button in the `Fill` row. This should make your square transparent except for its outer border.
+3. Copy and paste the square until you have one for each image, and move them to frame each image (to give the appearance that the images are separate, rather than one large image).
+4. Click on the canvas and drag to select all of the images+squares, then right-click on them and select `Group selection` to combine them.
+  - On the right menu you'll also see the option to adjust the dimensions of your new Group. You can shrink them down to a smaller number, but be sure to click the `Constrain Proportions` button to link X and Y and the dimensions the same (it is the small button next to the `W` and `H` values).
+5. At the bottom of the right menu, you'll see the `Export` option. Use that to export your image as a `.png`, and add it to the project.
+6. Update the `tasksWithLargeImages` array in `SampleInputsTab.js` with the task that you are adding.
 
+### Writing tests for UI components
+Note: Enzyme is no longer supported by React
 This project uses [Enzyme](https://enzymejs.github.io/enzyme/) for testing React components. Enzyme is a testing utility
 for React that makes it easier to test React components. It is recommended to use Enzyme's shallow rendering API to test
 components. Shallow rendering is useful for testing components in isolation, and it is recommended to use shallow

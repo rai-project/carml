@@ -1,10 +1,7 @@
 import StyleTransferContent from "../resources/taskSample/styleTransferContent.jpg";
 import StyleTransferStyle from "../resources/taskSample/styleTransferStyle.jpg";
-import Chair1 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair1.png";
-import Chair2 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair2.png";
-import Chair3 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair3.png";
-import Chair4 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair4.png";
-import Chair5 from "../components/Experiment/QuickOutput/Outputs/ImageTo3D/testData/chair/images/chair5.png";
+import Chairs from "../resources/taskSample/imageTo3D1.png";
+// import Drums from "../resources/taskSample/imageTo3D2.png";
 
 export const SampleImageEnhancementInputs = [
   {
@@ -99,25 +96,13 @@ export const SampleStyleTransferInputs = [
 export const SampleImageTo3DInputs = [
   [
     {
-      src: Chair1,
-      alt: "chair",
+      src: Chairs,
+      alt: "chairs",
     },
-    {
-      src: Chair2,
-      alt: "chair",
-    },
-    {
-      src: Chair3,
-      alt: "chair",
-    },
-    {
-      src: Chair4,
-      alt: "chair",
-    },
-    {
-      src: Chair5,
-      alt: "chair",
-    },
+    // {
+    //   src: Drums,
+    //   alt: "drums",
+    // },           
   ],
 ];
 

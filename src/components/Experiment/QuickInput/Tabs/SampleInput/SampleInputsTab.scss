@@ -48,6 +48,10 @@
     &--unselected {
       opacity: 0.5;
     }
+
+    &--large {
+      max-width: 100% !important;
+    }
   }
 
   &__input-text {
