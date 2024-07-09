@@ -226,3 +226,21 @@ export const SampleTextClassification = [
   "The ending of the movie was sad.",
   "There is a car parked there."
 ];
+
+export const SampleAudioToAudioInputs = [
+  {
+    title: "audio1.flac",
+    src: "https://xlab1.netlify.app/audio-to-audio-input.flac"
+
+  },
+  {
+    title: "audio2.flac",
+    src: "https://xlab1.netlify.app/audio-to-audio-input.flac"
+
+  },
+  {
+    title: "audio3.flac",
+    src: "https://xlab1.netlify.app/audio-to-audio-input.flac"
+
+  },
+];

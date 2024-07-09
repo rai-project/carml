@@ -19,6 +19,7 @@ import {
   imageToText,
   textTo3D,
   textClassification,
+  audioToAudio,
 } from "./TaskIDs";
 import React from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
@@ -40,6 +41,7 @@ import { ReactComponent as TexttoVideo } from "../resources/icons/icon-textToVid
 import { ReactComponent as TextTo3D } from "../resources/icons/icon-textTo3D.svg";
 import { ReactComponent as ImageToText } from "../resources/icons/icon-imageToText.svg";
 import { ReactComponent as TextClassification } from "../resources/icons/icon-textClassification.svg";
+import { ReactComponent as AudioToAudio } from "../resources/icons/icon-audioToAudio.svg";
 
 import {
   DefaultImageClassificationModel,
@@ -61,6 +63,7 @@ import {
   DefaultTextTo3DModel,
   DefaultImageToText,
   DefaultTextClassification,
+  DefaultAudioToAudioModel,
 } from "./DefaultModels";
 import {
   SampleAudioToTextInputs,
@@ -77,6 +80,7 @@ import {
   SampleImageToText,
   SampleTextTo3DInputs,
   SampleTextClassification,
+  SampleAudioToAudioInputs,
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
 import { TestImageEnhancementData } from "../components/Experiment/QuickOutput/Outputs/ImageEnhancement/testData/TestFeatures";
@@ -99,6 +103,7 @@ import { TestImageTo3DOutput } from "../components/Experiment/QuickOutput/Output
 import { TestImageToTextOutput } from "../components/Experiment/QuickOutput/Outputs/ImageToText/testData/testImageToTextOutput";
 import { TestTextTo3DOutput } from "../components/Experiment/QuickOutput/Outputs/TextTo3D/testData/testTextTo3DOutput";
 import { TestTextClassificationOutput } from "../components/Experiment/QuickOutput/Outputs/TextClassification/testData/testTextClassification";
+import { TestAudioToAudioOutput } from "../components/Experiment/QuickOutput/Outputs/AudioToAudio/testData/testAudioToAudio";
 
 export default class Task {
   static image_classification = new Task({
@@ -431,6 +436,17 @@ export default class Task {
 
   });
 
+  static audio_to_audio = new Task({
+    name: "Audio to Audio",
+    description: "Used to run operations on audio file.",
+    id: audioToAudio,
+    inputText: "see how well this model can transform an audio input.",
+    outputText: "Audio output:",
+    icon: (props) => <AudioToAudio {...props} />,
+    sampleInputs: SampleAudioToAudioInputs,
+    tutorialDescription: "Audio to audio models transform audio files.",
+    inputType: TaskInputTypes.Audio,
+  });
 
   constructor(options) {
     this.name = options.name ?? "";
@@ -501,6 +517,8 @@ export default class Task {
         return Task.text_to_3D;
       case textClassification:
         return Task.text_classification;
+      case audioToAudio:
+        return Task.audio_to_audio;
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }
@@ -549,6 +567,8 @@ export default class Task {
         return DefaultTextTo3DModel;
       case textClassification:
         return DefaultTextClassification;
+      case audioToAudio:
+        return DefaultAudioToAudioModel;
       default:
         return undefined;
     }
@@ -594,6 +614,8 @@ export default class Task {
         return TestTextTo3DOutput;
       case textClassification:
         return TestTextClassificationOutput;
+      case audioToAudio:
+        return TestAudioToAudioOutput;
       default:
         return undefined;
     }
@@ -621,6 +643,7 @@ export default class Task {
       this.getStaticTask(imageToText),
       this.getStaticTask(textTo3D),
       this.getStaticTask(textClassification),
+      this.getStaticTask(audioToAudio),
     ];
   }
 

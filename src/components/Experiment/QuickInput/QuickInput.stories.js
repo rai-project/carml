@@ -20,6 +20,7 @@ import {
   imageToText,
   textTo3D,
   textClassification,
+  audioToAudio,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -36,6 +37,7 @@ import {
   SampleImageToText,
   SampleTextTo3DInputs,
   SampleTextClassification,
+  SampleAudioToAudioInputs,
 } from "../../../helpers/sampleImages";
 
 export default {
@@ -259,6 +261,16 @@ TextClassification.args = {
   model: {
     output: {
       type: textClassification,
+    },
+  },
+};
+
+export const AudioToAudio = Template.bind({});
+AudioToAudio.args = {
+  sampleInputs: SampleAudioToAudioInputs,
+  model: {
+    output: {
+      type: audioToAudio,
     },
   },
 };
