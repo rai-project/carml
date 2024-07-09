@@ -16,15 +16,31 @@
     color: $white;
 
     .filter-group__button-icon {
+      // Styling for .svg Task icons to make sure they are $white and $azul
+      // Note: This needs to be double-checked on Staging / Local
       path {
         fill: $white;
-      }       
+      }
+      line {
+        stroke: $white;
+      }
+      rect {
+        stroke: $white;
+      }
+      circle {
+        stroke: $white;
+        fill: $white;
+      }
+      polyline {
+        stroke: $white;
+      }                  
     }
   }
 
   &-inactive {
     background: white;
     color: $color;
+    // Styling for .svg Task icons to make sure they are $white and $azul
     path {
       fill: $color;
     }
@@ -36,10 +52,14 @@
     }
     circle {
       stroke: $color;
+      fill: $color;
     }
+    polyline {
+      stroke: $color;
+    }    
     .a {
       stroke: $color;
-    }
+    }   
 
     &:hover {
       background: rgba($color, 0.07);

@@ -91,7 +91,7 @@ The project is structured as follows:
   - `TaskName.stories.js`
   - `TaskName.scss`
 - Create a new `Task` in `Task.js`
-  - Search svgrepo.com for a suitable icon and add it to the `icons` folder
+  - Search svgrepo.com for a suitable icon and add it to the `icons` folder (see below for more instructions)
   - Add the new task to:
     - `getStaticTask`
     - `getDefaultModel`
@@ -101,6 +101,17 @@ The project is structured as follows:
     - `getStaticTasks`
 - Create a new story for the task in `QuickInput.stories.js`
 
+## Adding new Task icons
+- Go to svgrepo.com, search for a suitable icon, download it, and drag the file into the `src/resources/icons` directory
+- Rename the file to follow the `icon-taskNameInCamelCase.svg` structure that all of the other Task icons use
+- Import the file to `Task.js` and finish Task setup as usual.
+- You can view the icon in the `Home` -> `Splash Page` Storybook.
+- After deploying to Staging (or locally if you have the React app running), the icon is also visible on the `All Models` page, in the "Filter Models by Tasks" menu on the left.
+- The icon colors should be white and blue. If you notice black lines, you'll need to use css to adjust those.
+  - Open the svg file, and if the file isn't already formatted, from the main VS Code menu, select `View` and then `Command Pallet`, and then type `Format document` into the search bar (you may need to install XML Tools)
+  - Now open the `Header.scss` and `_FilterGroup.scss` files and find the related styling (Search for this text: `// Styling for .svg Task icons to make sure they are $white and $azul`)
+  - Compare the xml tags against the styling here, and update as necessary
+  
 ## Recommended Workflow for creating new components
 
 Create a new folder in `src/components/` with the name of the component, and create the following files as needed:

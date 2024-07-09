@@ -671,7 +671,7 @@
         width: 24px;
         height: 24px;
         margin-right: 8px;
-
+        // Styling for .svg Task icons to make sure they are $white and $azul
         path {
           fill: $azul !important;
         }
@@ -680,13 +680,18 @@
         }
         circle {
           stroke: $azul !important;
-        }        
+          fill: $azul !important;
+        }
+        polyline {
+          stroke: $azul !important;
+        } 
       }
 
       &:hover, &-selected {
         background-color: $azul;
         color: $white;
-
+        // Styling for .svg Task icons to make sure they are $white and $azul
+        // Get more icons at https://www.svgrepo.com/
         path {
           fill: $white !important;
         }
@@ -694,18 +699,19 @@
           stroke: $azul !important;
         }
         .a {
-          // Currently not used
-          // Get more icons at https://www.svgrepo.com/
+          // Currently not used?
           stroke: $azul !important;
         }
         rect {
-          // Currently only used for audioToText icon
           stroke: $white !important;
         }
         circle {
-          // Currently only used for audioToText icon
           stroke: $white !important;
+          fill: $white !important;
         }
+        polyline {
+          stroke: $white !important;
+        } 
       }
     }
 
