@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '18'
       - name: Run deployment script
-        run: ./scripts/deploy-storybook-to-s3.sh
+        run: ./scripts-old/deploy-storybook-to-s3.sh
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.STORYBOOK_UPDATER_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.STORYBOOK_UPDATER_SECRET_ACCESS_KEY }}
