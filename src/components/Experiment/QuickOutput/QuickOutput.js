@@ -22,6 +22,7 @@ import {
   textTo3D,
   textClassification,
   imageToText,
+  audioClassification,
 } from "../../../helpers/TaskIDs";
 import ObjectDetection from "./Outputs/ObjectDetection/ObjectDetection";
 import ImageEnhancement from "./Outputs/ImageEnhancement/ImageEnhancement";
@@ -42,6 +43,7 @@ import TextToImageOutput from "./Outputs/TextToImage/TextToImageOutput";
 import TextClassificationOutput from "./Outputs/TextClassification/TextClassificationOutput";
 import ImageToTextOutput from "./Outputs/ImageToText/ImageToTextOutput";
 import { AudioToText, ImageTo3D, TextTo3D } from "../QuickInput/QuickInput.stories";
+import AudioClassificationOutput from "./Outputs/AudioClassification/AudioClassificationOutput";
 
 const defaultProps = {
   className: "quick-output",
@@ -207,6 +209,16 @@ export default function QuickOutput(givenProps) {
               onBackClicked={props.onBackClicked}
               trial={props.trialOutput}
             />
+          );
+        case audioClassification:
+          return (
+            <>
+              <InputPreview input={props.trialOutput.inputs[0].src} inputType="audio" onBackClicked={props.onBackClicked} />
+              <AudioClassificationOutput
+                features={props.features}
+                trial={props.trialOutput}
+              />
+            </>
           );
         default:
           return (

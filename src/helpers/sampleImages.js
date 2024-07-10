@@ -244,3 +244,10 @@ export const SampleAudioToAudioInputs = [
 
   },
 ];
+export const SampleAudioClassificationInputs = [
+  {
+    title: "audio1.flac",
+    src: "https://xlab1.netlify.app/audio-classification-input.flac"
+
+  },
+];

@@ -21,6 +21,7 @@ import {
   textTo3D,
   textClassification,
   audioToAudio,
+  audioClassification,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -38,6 +39,7 @@ import {
   SampleTextTo3DInputs,
   SampleTextClassification,
   SampleAudioToAudioInputs,
+  SampleAudioClassificationInputs,
 } from "../../../helpers/sampleImages";
 
 export default {
@@ -149,7 +151,7 @@ AudioToText.args = {
     {
       title: "automatic-speech-recognition-input(3).flac",
       src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
-    },    
+    },
   ],
   model: {
     output: {
@@ -271,6 +273,16 @@ AudioToAudio.args = {
   model: {
     output: {
       type: audioToAudio,
+    },
+  },
+};
+
+export const AudioClassification = Template.bind({});
+AudioClassification.args = {
+  sampleInputs: SampleAudioClassificationInputs,
+  model: {
+    output: {
+      type: audioClassification,
     },
   },
 };

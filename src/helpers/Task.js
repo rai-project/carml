@@ -20,6 +20,7 @@ import {
   textTo3D,
   textClassification,
   audioToAudio,
+  audioClassification,
 } from "./TaskIDs";
 import React from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
@@ -37,11 +38,12 @@ import { ReactComponent as TextConversation } from "../resources/icons/icon-text
 import { ReactComponent as VisualQuestionAnswering } from "../resources/icons/icon-visualQuestionAnswering.svg";
 import { ReactComponent as TextGuidedImageToImage } from "../resources/icons/icon-textGuidedImageToImage.svg";
 import { ReactComponent as TextToImage } from "../resources/icons/icon-textToImage.svg";
-import { ReactComponent as TexttoVideo } from "../resources/icons/icon-textToVideo.svg";
+import { ReactComponent as TextToVideo } from "../resources/icons/icon-textToVideo.svg";
 import { ReactComponent as TextTo3D } from "../resources/icons/icon-textTo3D.svg";
 import { ReactComponent as ImageToText } from "../resources/icons/icon-imageToText.svg";
 import { ReactComponent as TextClassification } from "../resources/icons/icon-textClassification.svg";
 import { ReactComponent as AudioToAudio } from "../resources/icons/icon-audioToAudio.svg";
+import { ReactComponent as AudioClassification } from "../resources/icons/icon-audioClassification.svg";
 
 import {
   DefaultImageClassificationModel,
@@ -64,6 +66,7 @@ import {
   DefaultImageToText,
   DefaultTextClassification,
   DefaultAudioToAudioModel,
+  DefaultAudioClassificationModel,
 } from "./DefaultModels";
 import {
   SampleAudioToTextInputs,
@@ -81,6 +84,7 @@ import {
   SampleTextTo3DInputs,
   SampleTextClassification,
   SampleAudioToAudioInputs,
+  SampleAudioClassificationInputs,
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
 import { TestImageEnhancementData } from "../components/Experiment/QuickOutput/Outputs/ImageEnhancement/testData/TestFeatures";
@@ -104,6 +108,7 @@ import { TestImageToTextOutput } from "../components/Experiment/QuickOutput/Outp
 import { TestTextTo3DOutput } from "../components/Experiment/QuickOutput/Outputs/TextTo3D/testData/testTextTo3DOutput";
 import { TestTextClassificationOutput } from "../components/Experiment/QuickOutput/Outputs/TextClassification/testData/testTextClassification";
 import { TestAudioToAudioOutput } from "../components/Experiment/QuickOutput/Outputs/AudioToAudio/testData/testAudioToAudio";
+import { TestAudioClassificationOutput } from "../components/Experiment/QuickOutput/Outputs/AudioClassification/testData/testAudioClassification";
 
 export default class Task {
   static image_classification = new Task({
@@ -187,18 +192,17 @@ export default class Task {
     useMultiInput: true,
     inputs: [
       {
-        inputText: 'have its style changed.',
+        inputText: "have its style changed.",
         inputType: TaskInputTypes.Image,
-
       },
       {
-        inputText: 'use the style from.',
+        inputText: "use the style from.",
         inputType: TaskInputTypes.Image,
-      }
+      },
     ],
     // Note: This is just an example of what a config field could look like, not currently used
     config: {
-      numWarmups: 0
+      numWarmups: 0,
     },
 
     outputText: "Stylized image:",
@@ -215,7 +219,7 @@ export default class Task {
     useMultiInput: true,
     inputs: [
       {
-        inputText: 'be converted into a 3D model.',
+        inputText: "be converted into a 3D model.",
         inputType: TaskInputTypes.Image,
       },
     ],
@@ -223,7 +227,8 @@ export default class Task {
     icon: (props) => <ImageTo3D {...props} />,
     sampleInputs: [],
     useMultiImageSample: true,
-    tutorialDescription: "3D conversion models produce a 3D version of the user's input.",
+    tutorialDescription:
+      "3D conversion models produce a 3D version of the user's input.",
   });
   static text_to_text = new Task({
     name: "Text to Text",
@@ -251,13 +256,16 @@ export default class Task {
   });
   static audio_to_text = new Task({
     name: "Audio to Text",
-    description: "Used to transcribe an audio file to text. Can help you understand what is said.",
+    description:
+      "Used to transcribe an audio file to text. Can help you understand what is said.",
     id: audioToText,
-    inputText: "see how well this model can recognize and transcribe an audio (voice) input.",
+    inputText:
+      "see how well this model can recognize and transcribe an audio (voice) input.",
     outputText: "Transcribed text:",
     icon: (props) => <AudioToText {...props} />,
     sampleInputs: SampleAudioToTextInputs,
-    tutorialDescription: "Audio to text models transcribe audio files, allowing you to read what is said.",
+    tutorialDescription:
+      "Audio to text models transcribe audio files, allowing you to read what is said.",
     inputType: TaskInputTypes.Audio,
   });
   static text_to_audio = new Task({
@@ -268,7 +276,8 @@ export default class Task {
     outputText: "Play the file below to listen to the generated audio file.",
     icon: (props) => <TextToAudio {...props} />,
     sampleInputs: [],
-    tutorialDescription: "Text to audio models bring your written words to life.",
+    tutorialDescription:
+      "Text to audio models bring your written words to life.",
     inputType: TaskInputTypes.Text,
     hideUpload: true,
   });
@@ -280,7 +289,8 @@ export default class Task {
     outputText: "Conversational responses from the virtual assistant",
     icon: (props) => <TextConversation {...props} />,
     sampleInputs: [],
-    tutorialDescription: "Type a question and receive a response from a virtual assistant",
+    tutorialDescription:
+      "Type a question and receive a response from a virtual assistant",
     inputType: TaskInputTypes.Text,
     hideUpload: true,
   });
@@ -290,21 +300,20 @@ export default class Task {
     id: visualQuestionAnswering,
     inputs: [
       {
-        inputText: '[Visual Input]',
+        inputText: "use as visual context.",
         inputType: TaskInputTypes.Image,
-
       },
       {
-        inputText: '[Question here]',
+        inputText: "ask a question.",
         inputType: TaskInputTypes.Text,
         inputUpload: false,
         inputUrl: false,
         defaultTab: {
-          "id": "text-input",
-          "title": "Text",
-          "component": TextInputTab
-        }
-      }
+          id: "text-input",
+          title: "Text",
+          component: TextInputTab,
+        },
+      },
     ],
     useMultiInput: true,
     outputText: "Response to the question:",
@@ -315,24 +324,25 @@ export default class Task {
   });
   static text_guided_image_to_image = new Task({
     name: "Text Guided Image to Image",
-    description: "Generate images based on a source image and a given text prompt.",
+    description:
+      "Generate images based on a source image and a given text prompt.",
     id: textGuidedImageToImage,
     inputs: [
       {
-        inputText: '[Visual Input]',
+        inputText: "use as source image.",
         inputType: TaskInputTypes.Image,
       },
       {
-        inputText: '[Question here]',
+        inputText: "use as text prompt.",
         inputType: TaskInputTypes.Text,
         inputUpload: false,
         inputUrl: false,
         defaultTab: {
-          "id": "text-input",
-          "title": "Text",
-          "component": TextInputTab
-        }
-      }
+          id: "text-input",
+          title: "Text",
+          component: TextInputTab,
+        },
+      },
     ],
     useMultiInput: true,
     outputText: "Generated Image",
@@ -348,20 +358,20 @@ export default class Task {
     id: documentQuestionAnswering,
     inputs: [
       {
-        inputText: 'Training Document',
+        inputText: "Training Document",
         inputType: TaskInputTypes.Document,
       },
       {
-        inputText: '[Question here]',
+        inputText: "ask a question.",
         inputType: TaskInputTypes.Text,
         inputUpload: false,
         inputUrl: false,
         defaultTab: {
-          "id": "text-input",
-          "title": "Text",
-          "component": TextInputTab
-        }
-      }
+          id: "text-input",
+          title: "Text",
+          component: TextInputTab,
+        },
+      },
     ],
     useMultiInput: true,
     outputText: "Response to the question:",
@@ -379,7 +389,8 @@ export default class Task {
     icon: (props) => <TextToImage {...props} />,
     sampleInputs: SampleTextToImage,
     hideUpload: true,
-    tutorialDescription: "Text to Image model generates images based on a textual prompt.",
+    tutorialDescription:
+      "Text to Image model generates images based on a textual prompt.",
     inputType: TaskInputTypes.Text,
   });
   static text_to_video = new Task({
@@ -388,10 +399,11 @@ export default class Task {
     id: textToVideo,
     inputText: "Input prompt to generate a video",
     outputText: "Video output",
-    icon: (props) => <TexttoVideo {...props} />,
+    icon: (props) => <TextToVideo {...props} />,
     sampleInputs: SampleTextToVideo,
     hideUpload: true,
-    tutorialDescription: "Text to Video model generates a video based on a textual prompt.",
+    tutorialDescription:
+      "Text to Video model generates a video based on a textual prompt.",
     inputType: TaskInputTypes.Text,
   });
   static text_to_3D = new Task({
@@ -404,7 +416,8 @@ export default class Task {
     outputText: "3D model generated from the text prompt",
     icon: (props) => <TextTo3D {...props} />,
     sampleInputs: SampleTextTo3DInputs,
-    tutorialDescription: "3D conversion models produce a 3D version of the user's input.",
+    tutorialDescription:
+      "3D conversion models produce a 3D version of the user's input.",
   });
   static image_to_text = new Task({
     name: "Image to Text",
@@ -414,17 +427,15 @@ export default class Task {
     outputText: "Caption:",
     icon: (props) => <ImageToText {...props} />,
     sampleInputs: SampleImageToText,
-    tutorialDescription: "Image to Text model generates a caption for an image.",
+    tutorialDescription:
+      "Image to Text model generates a caption for an image.",
     inputType: TaskInputTypes.Image,
   });
 
-
   static text_classification = new Task({
     name: "Text Classification",
-    description:
-      "Used to classify text into different labels.",
-    modelDescription:
-      "Used to classify text into different labels.",
+    description: "Used to classify text into different labels.",
+    modelDescription: "Used to classify text into different labels.",
     id: textClassification,
     inputText: "See how well this model can classify the text.",
     outputText: "How this model classified the text:",
@@ -433,7 +444,6 @@ export default class Task {
     tutorialDescription:
       "Image classification models can recognize a single object in an image.",
     inputType: TaskInputTypes.Text,
-
   });
 
   static audio_to_audio = new Task({
@@ -448,18 +458,32 @@ export default class Task {
     inputType: TaskInputTypes.Audio,
   });
 
+  static audio_classification = new Task({
+    name: "Audio Classification",
+    description: "Used to classify audio into different labels.",
+    modelDescription: "Used to classify audio into different labels.",
+    id: audioClassification,
+    inputText: "See how well this model can classify the audio.",
+    outputText: "How this model classified the audio:",
+    icon: (props) => <AudioClassification {...props} />,
+    sampleInputs: SampleAudioClassificationInputs,
+    tutorialDescription:
+      "Image classification models can recognize a single object in an image.",
+    inputType: TaskInputTypes.Audio,
+  });
+
   constructor(options) {
     this.name = options.name ?? "";
     this.id = options.id ?? this.name;
     this.description = options.description ?? "";
     this.modelDescription = options.modelDescription ?? this.description;
     this.inputText = options.inputText ?? "";
-    this.inputs = options.inputs ?? [];  // TODO: Update this to be only input-related field, and remove inputText and inputType
+    this.inputs = options.inputs ?? []; // TODO: Update this to be only input-related field, and remove inputText and inputType
     this.useMultiInput = options.useMultiInput ?? false;
-    this.multiple = options.multiple ?? false;  // This is used to allow multiple selections from one input
-    this.inputs = options.inputs ?? [];  // TODO: Update this to be only input-related field, and remove inputText and inputType
+    this.multiple = options.multiple ?? false; // This is used to allow multiple selections from one input
+    this.inputs = options.inputs ?? []; // TODO: Update this to be only input-related field, and remove inputText and inputType
     this.useMultiInput = options.useMultiInput ?? false;
-    this.multiple = options.multiple ?? false;  // This is used to allow multiple selections from one input
+    this.multiple = options.multiple ?? false; // This is used to allow multiple selections from one input
     this.outputText = options.outputText ?? "";
     this.Icon = options.icon ?? ((props) => <></>);
     this.defaultModel = Task.getDefaultModel(this.id);
@@ -519,6 +543,8 @@ export default class Task {
         return Task.text_classification;
       case audioToAudio:
         return Task.audio_to_audio;
+      case audioClassification:
+        return Task.audio_classification;
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }
@@ -569,6 +595,8 @@ export default class Task {
         return DefaultTextClassification;
       case audioToAudio:
         return DefaultAudioToAudioModel;
+      case audioClassification:
+        return DefaultAudioClassificationModel;
       default:
         return undefined;
     }
@@ -616,6 +644,8 @@ export default class Task {
         return TestTextClassificationOutput;
       case audioToAudio:
         return TestAudioToAudioOutput;
+      case audioClassification:
+        return TestAudioClassificationOutput;
       default:
         return undefined;
     }
@@ -644,6 +674,7 @@ export default class Task {
       this.getStaticTask(textTo3D),
       this.getStaticTask(textClassification),
       this.getStaticTask(audioToAudio),
+      this.getStaticTask(audioClassification),
     ];
   }
 
@@ -654,7 +685,7 @@ export default class Task {
       this.getStaticTask(image_enhancement),
       this.getStaticTask(semantic_segmentation),
       this.getStaticTask(instance_segmentation),
-      // Note: Don't add new tasks here; 
+      // Note: Don't add new tasks here;
       // These are just examples on the Home Page
     ];
   }

@@ -85,6 +85,7 @@ const ModelDetailPage = (props) => {
   const getInputType = () => {
     switch (outputType) {
       case audioToText:
+      case audioClassification:
         return "audio";
       case textToText:
         return "text";
