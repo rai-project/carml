@@ -5,7 +5,7 @@ import useQuickInputControl from "./useQuickInputControl";
 import useBEMNaming from "../../../common/useBEMNaming";
 import { QuickInputTabContent } from "./QuickInputTabContent";
 import { QuickInputTabTitle } from "./QuickInputTabTitle";
-import {QuickInputType} from "./quickInputType";
+import { QuickInputType } from "./quickInputType";
 
 export default function QuickImageInput(props) {
   const {

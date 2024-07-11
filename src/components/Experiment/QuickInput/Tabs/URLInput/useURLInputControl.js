@@ -1,12 +1,14 @@
 import ImageVerifier from "../../../../../helpers/imageVerifier";
+import AudioVerifier from "../../../../../helpers/audioVerifier";
 import Task from "../../../../../helpers/Task";
-import {useState} from "react";
+import { useState } from "react";
+import { TaskInputTypes } from "../../../../../helpers/TaskInputTypes";
 
 const UrlMatcher = /https?:\/\/.+/;
 
 export default function useURLInputControl(props) {
   const [isInvalidUrl, setIsInvalidUrl] = useState([false]);
-
+  const inputType = Task.getStaticTask(props.task).inputType;
   const urlChanged = async (event, index) => {
     if (event.persist)
       event.persist();
@@ -15,8 +17,18 @@ export default function useURLInputControl(props) {
     if (tempUrl.match(UrlMatcher) === null)
       tempUrl = "";
     else {
-      let verifier = new ImageVerifier(tempUrl);
-      if (!(await verifier.Verify()))
+      let verifier;
+      switch (inputType) {
+        case TaskInputTypes.Image:
+          verifier = new ImageVerifier(tempUrl);
+          break;
+        case TaskInputTypes.Audio:
+          verifier = new AudioVerifier(tempUrl);
+          break;
+        default:
+          break;
+      }
+      if (verifier && !(await verifier.Verify()))
         tempUrl = "";
     }
     let currentInvalidUrl = isInvalidUrl;
@@ -39,7 +51,7 @@ export default function useURLInputControl(props) {
       // Todo: How to not add this to inputSelected if invalid url?
       props.inputSelected(url, index);
     }
-  }
+  };
 
   const getUrlValidity = (index) => isInvalidUrl[index];
 
@@ -49,5 +61,5 @@ export default function useURLInputControl(props) {
   let values = props.values;
   if (!values || values.length === 0) values = [""];
 
-  return {getUrlValidity, task, urlChanged, values}
+  return { getUrlValidity, task, urlChanged, values };
 }
