@@ -2,7 +2,7 @@
 
 .text-output, .text-to-code-output, 
 .audio-to-text-output, .text-to-audio-output,
-.text-conversation-output, .image-to-text-output, .audio-to-audio-output {
+.text-conversation-output, .image-to-text-output, .audio-to-audio-output, .text-guided-image-to-image, .visual-question-answering {
   display: flex;
   flex-direction: row;
   gap: 72px;

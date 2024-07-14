@@ -244,7 +244,7 @@ export default function QuickOutput(givenProps) {
         {!props.hideHeader && (
           <h2 className={getElement("title")}>Try This Model</h2>
         )}
-        {/*<button className={element('share-button')}>Share with community</button> Hidden for now*/}
+        {/* <button className={element('share-button')}>Share with community</button> Hidden for now */}
       </div>
       <div className={getElement("content")}>{makeOutput()}</div>
       <div className={getElement("footer")}>

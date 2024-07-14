@@ -5,10 +5,9 @@ import Task from "../../../../../helpers/Task";
 import { documentQuestionAnswering } from "../../../../../helpers/TaskIDs";
 
 import MultiInputPreview from "../../MultiInputPreview";
-import Rating from "../Classification/Rating";
-import { TextOutputBox } from "./TextOutputBox";
 
-import "./DocumentQuestionAnsweringOutput.scss"
+import "./DocumentQuestionAnsweringOutput.scss";
+import { TextOutputBox } from "../Text/TextOutputBox";
 
 
 export default function DocumentQuestionAnsweringOutput(props) {
@@ -23,19 +22,10 @@ export default function DocumentQuestionAnsweringOutput(props) {
 
     return (
         <div className={getBlock()}>
-            <div className={getElement("header")}>
-                <div className={getElement("header-row")}>
-                    <h3 className={getElement("header-heading")}>Try This Model</h3>
-                </div>
-            </div>
+            <MultiInputPreview inputs={inputs} onBackClicked={props.onBackClicked} />
 
-            <div className={getElement("content")}>
-                <MultiInputPreview inputs={inputs} onBackClicked={props.onBackClicked} />
+            <TextOutputBox output={output.text} duration={duration} task={task} />
+        </div>
 
-                <TextOutputBox duration={duration} output={output} />
-                    <Rating />                 
-                </div>
-            </div>
-        
-    )
+    );
 }

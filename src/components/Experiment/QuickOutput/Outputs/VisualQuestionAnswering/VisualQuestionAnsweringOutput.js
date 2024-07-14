@@ -5,10 +5,10 @@ import Task from "../../../../../helpers/Task";
 import { visualQuestionAnswering } from "../../../../../helpers/TaskIDs";
 
 import MultiInputPreview from "../../MultiInputPreview";
-import Rating from "../Classification/Rating";
-import { TextOutputBox } from "./TextOutputBox";
+
 
 import "./VisualQuestionAnsweringOutput.scss";
+import { TextOutputBox } from "../Text/TextOutputBox";
 
 
 export default function VisualQuestionAnsweringOutput(props) {
@@ -19,23 +19,15 @@ export default function VisualQuestionAnsweringOutput(props) {
     const inputs = props.trial?.inputs ?? [];
     const output = props.trial?.results?.responses[0]?.features[0] ?? {};
     const duration = props.trial?.results?.duration_for_inference ?? "0s";
-
+    console.log("output", output);
 
     return (
         <div className={getBlock()}>
-            <div className={getElement("header")}>
-                <div className={getElement("header-row")}>
-                    <h3 className={getElement("header-heading")}>Try This Model</h3>
-                </div>
-            </div>
+            <MultiInputPreview inputs={inputs} onBackClicked={props.onBackClicked} />
 
-            <div className={getElement("content")}>
-                <MultiInputPreview inputs={inputs} onBackClicked={props.onBackClicked} />
-
-                <TextOutputBox duration={duration} output={output} />
-                <Rating />
-            </div>
+            <TextOutputBox output={output.text} duration={duration} task={task} />
         </div>
+
 
     );
 }
