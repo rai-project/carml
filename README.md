@@ -85,8 +85,9 @@ The project is structured as follows:
 
 ## Recommended Workflow for creating new Tasks (WIP)
 - Add the task name to `TaskIDs.js`. Use camelcase for the variable and snakecase for the string
-- Make a new directory in `Outputs` and make:
+- Make a new directory in `Outputs` and create:
   - `testData` subdirectory
+    - `testTaskNameOutput.js`
   - `TaskNameOutput.js`
   - `TaskName.stories.js`
   - `TaskName.scss`
@@ -97,9 +98,13 @@ The project is structured as follows:
     - `getDefaultModel`
       -  Open `DefaultModels.js` and copy/paste one of the existing models (editing where appropriate)
     - `getSampleOutput` 
-      - Returne the `Test[Task Name]Output` that you created in `testData` above 
+      - Return the `Test[Task Name]Output` that you created in `testData` above 
     - `getStaticTasks`
 - Create a new story for the task in `QuickInput.stories.js`
+- If the user is able to upload files for this task, add the task to `UppyFileTypeCheckerPlugin`
+- Add the new task to `ModelDetailPage` in `getSampleInputs` and `getInputType`
+- If you need to test the upload dashboard, open `useUploadInputControl` and find the text `UNCOMMENT THIS BEFORE COMMITTING` and comment it out.
+- If you need to check the array of inputs that you are submitting, add an `onRunModelClicked` function to your task in `QuickInput.stories.js` (it takes the inputs as a param)
 
 ## Adding new Task icons
 - Go to svgrepo.com, search for a suitable icon, download it, and drag the file into the `src/resources/icons` directory

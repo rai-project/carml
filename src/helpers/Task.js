@@ -215,7 +215,7 @@ export default class Task {
     name: "Image to 3D",
     description: "Convert a 2D image or collection of images into a 3D model",
     id: imageTo3D,
-    multiple: false,
+    multiple: true,
     useMultiInput: true,
     inputs: [
       {

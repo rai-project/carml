@@ -107,6 +107,9 @@ ImageTo3D.args = {
       type: imageTo3D,
     },
   },
+  onRunModelClicked: (inputs) => {
+    console.log('inputs: ', inputs)
+  }
 };
 
 export const Text = Template.bind({});
