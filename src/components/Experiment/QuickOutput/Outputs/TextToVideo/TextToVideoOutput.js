@@ -1,11 +1,11 @@
 import React from "react";
 import useBEMNaming from "../../../../../common/useBEMNaming";
 import useTextOutput from "../Text/useTextOutput";
-
 import { VideoOutputBox } from "./VideoOutputBox";
 import TextOutputInputSection from "../Text/TextOutputInputSection";
-
 import { textToVideo } from "../../../../../helpers/TaskIDs";
+import "./TextToVideoOutput.scss";
+
 export default function TextToVideoOutput(props) {
     const { getBlock } = useBEMNaming("text-to-video-output");
 

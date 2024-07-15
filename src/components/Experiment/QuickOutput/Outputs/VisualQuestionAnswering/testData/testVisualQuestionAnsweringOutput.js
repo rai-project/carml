@@ -1,3 +1,5 @@
+import { DefaultVisualQuestionAnsweringModel } from "../../../../../../helpers/DefaultModels";
+
 export const TestVisualQuestionAnsweringGeneratedToken = {
     id: "sampleVisualQuestionAnsweringOutputIdHere"
 };
@@ -8,17 +10,17 @@ export const TestVisualQuestionAnswering = {
         {
             src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/kitty.png",
             description: "yellow dog.png",
-            inputType:"image"
+            inputType: "image"
         },
         {
             description: "Hello  World",
-            inputType:"text"
+            inputType: "text"
         }
     ],
     completed_at: "2023-06-03T18:17:14.513854Z",
-    results: { 
-        'duration': "9.216154124s", 
-        'duration_for_inference': "9.193807904s", 
+    results: {
+        'duration': "9.216154124s",
+        'duration_for_inference': "9.193807904s",
         'responses': [
             {
                 'features': [
@@ -27,9 +29,10 @@ export const TestVisualQuestionAnswering = {
                         type: "TEXT",
                         text: "Luigi sagte mir oft, er wollte nie, dass die Brüder vor",
                     },
-                ], 
+                ],
                 'id': "sampleVisualQuestionAnsweringIdHere"
             }
         ]
-    }
-}
+    },
+    model: DefaultVisualQuestionAnsweringModel,
+};

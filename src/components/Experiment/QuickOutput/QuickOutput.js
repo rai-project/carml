@@ -24,6 +24,7 @@ import {
   imageToText,
   audioClassification,
   textToImage,
+  audioToAudio,
 } from "../../../helpers/TaskIDs";
 import ObjectDetection from "./Outputs/ObjectDetection/ObjectDetection";
 import ImageEnhancement from "./Outputs/ImageEnhancement/ImageEnhancement";
@@ -48,6 +49,7 @@ import TextTo3DOutput from "./Outputs/TextTo3D/TextTo3DOutput";
 import AudioToTextOutput from "./Outputs/AudioToText/AudioToTextOutput";
 import TextToAudioOutput from "./Outputs/TextToAudio/TextToAudioOutput";
 import AudioClassificationOutput from "./Outputs/AudioClassification/AudioClassificationOutput";
+import AudioToAudioOutput from "./Outputs/AudioToAudio/AudioToAudioOutput";
 
 const defaultProps = {
   className: "quick-output",
@@ -147,7 +149,7 @@ export default function QuickOutput(givenProps) {
           return (
             <AudioToTextOutput
               onBackClicked={props.onBackClicked}
-              trial={props.trialOutput}            
+              trial={props.trialOutput}
             />
           );
         case textConversation:
@@ -182,9 +184,9 @@ export default function QuickOutput(givenProps) {
           return (
             <TextToImageOutput
               onBackClicked={props.onBackClicked}
-              trial={props.trialOutput}    
+              trial={props.trialOutput}
             />
-          )  
+          );
         case textToVideo:
           return (
             <TextToVideoOutput
@@ -192,18 +194,18 @@ export default function QuickOutput(givenProps) {
               trial={props.trialOutput}
             />
           );
-        case textToAudio:
+        case textToImage:
           return (
             <TextToAudioOutput
               onBackClicked={props.onBackClicked}
-              trial={props.trialOutput}            
+              trial={props.trialOutput}
             />
           );
         case textTo3D:
           return (
-            <TextTo3DOutput 
+            <TextTo3DOutput
               onBackClicked={props.onBackClicked}
-              trial={props.trialOutput}            
+              trial={props.trialOutput}
             />
           );
         case imageToText:
@@ -231,6 +233,13 @@ export default function QuickOutput(givenProps) {
               />
             </>
           );
+        case audioToAudio:
+          return (
+            <AudioToAudioOutput
+              features={props.features}
+              trial={props.trialOutput}
+            />
+          );
         default:
           return (
             <>
@@ -255,7 +264,7 @@ export default function QuickOutput(givenProps) {
         {!props.hideHeader && (
           <h2 className={getElement("title")}>Try This Model</h2>
         )}
-        {/*<button className={element('share-button')}>Share with community</button> Hidden for now*/}
+        {/* <button className={element('share-button')}>Share with community</button> Hidden for now */}
       </div>
       <div className={getElement("content")}>{makeOutput()}</div>
       <div className={getElement("footer")}>
