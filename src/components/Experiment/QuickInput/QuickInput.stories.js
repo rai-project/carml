@@ -33,11 +33,11 @@ import {
   SampleVisualQuestionAnsweringInputs,
   SampleTextGuidedImageToImageInputs,
   SampleDocumentQuestionAnsweringInputs,
-  SampleTextToImage,
-  SampleTextToVideo,
-  SampleImageToText,
+  SampleTextToImageInputs,
+  SampleTextToVideoInputs,
+  SampleImageToTextInputs,
   SampleTextTo3DInputs,
-  SampleTextClassification,
+  SampleTextClassificationInputs,
   SampleAudioToAudioInputs,
   SampleAudioClassificationInputs,
 } from "../../../helpers/sampleImages";
@@ -108,7 +108,7 @@ ImageTo3D.args = {
     },
   },
   onRunModelClicked: (inputs) => {
-    console.log('inputs: ', inputs)
+    console.log('inputs: ', inputs);
   }
 };
 
@@ -222,7 +222,7 @@ DocumentQuestionAnswering.args = {
 
 export const TextToImage = Template.bind({});
 TextToImage.args = {
-  sampleInputs: SampleTextToImage,
+  sampleInputs: SampleTextToImageInputs,
   model: {
     output: {
       type: textToImage,
@@ -232,7 +232,7 @@ TextToImage.args = {
 
 export const TextToVideo = Template.bind({});
 TextToVideo.args = {
-  sampleInputs: SampleTextToVideo,
+  sampleInputs: SampleTextToVideoInputs,
   model: {
     output: {
       type: textToVideo,
@@ -242,7 +242,7 @@ TextToVideo.args = {
 
 export const ImageToText = Template.bind({});
 ImageToText.args = {
-  sampleInputs: SampleImageToText,
+  sampleInputs: SampleImageToTextInputs,
   model: {
     output: {
       type: imageToText,
@@ -262,7 +262,7 @@ TextTo3D.args = {
 
 export const TextClassification = Template.bind({});
 TextClassification.args = {
-  sampleInputs: SampleTextClassification,
+  sampleInputs: SampleTextClassificationInputs,
   model: {
     output: {
       type: textClassification,

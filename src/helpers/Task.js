@@ -78,11 +78,11 @@ import {
   SampleTextGuidedImageToImageInputs,
   SampleVisualQuestionAnsweringInputs,
   SampleDocumentQuestionAnsweringInputs,
-  SampleTextToImage,
-  SampleTextToVideo,
-  SampleImageToText,
+  SampleTextToImageInputs,
+  SampleTextToVideoInputs,
+  SampleImageToTextInputs,
   SampleTextTo3DInputs,
-  SampleTextClassification,
+  SampleTextClassificationInputs,
   SampleAudioToAudioInputs,
   SampleAudioClassificationInputs,
 } from "./sampleImages";
@@ -387,7 +387,7 @@ export default class Task {
     inputText: "Input prompt to generate an image",
     outputText: "Image output",
     icon: (props) => <TextToImage {...props} />,
-    sampleInputs: SampleTextToImage,
+    sampleInputs: SampleTextToImageInputs,
     hideUpload: true,
     tutorialDescription:
       "Text to Image model generates images based on a textual prompt.",
@@ -400,7 +400,7 @@ export default class Task {
     inputText: "Input prompt to generate a video",
     outputText: "Video output",
     icon: (props) => <TextToVideo {...props} />,
-    sampleInputs: SampleTextToVideo,
+    sampleInputs: SampleTextToVideoInputs,
     hideUpload: true,
     tutorialDescription:
       "Text to Video model generates a video based on a textual prompt.",
@@ -426,7 +426,7 @@ export default class Task {
     inputText: "Generate a caption for the image.",
     outputText: "Caption:",
     icon: (props) => <ImageToText {...props} />,
-    sampleInputs: SampleImageToText,
+    sampleInputs: SampleImageToTextInputs,
     tutorialDescription:
       "Image to Text model generates a caption for an image.",
     inputType: TaskInputTypes.Image,
@@ -440,7 +440,7 @@ export default class Task {
     inputText: "See how well this model can classify the text.",
     outputText: "How this model classified the text:",
     icon: (props) => <TextClassification {...props} />,
-    sampleInputs: SampleTextClassification,
+    sampleInputs: SampleTextClassificationInputs,
     tutorialDescription:
       "Image classification models can recognize a single object in an image.",
     inputType: TaskInputTypes.Text,
