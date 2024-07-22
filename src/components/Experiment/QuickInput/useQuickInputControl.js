@@ -11,14 +11,17 @@ import Task from "../../../helpers/Task";
 
 export default function useQuickInputControl(props) {
   const task = Task.getStaticTask(props.model.output.type);
-
   const [selectedInputs, setSelectedInputs] = useState([""]);
+  const [selectedInputData, setSelectedInputData] = useState([{src: "", inputType: ""}]);
   const [selectedTab, setSelectedTab] = useState(0);
 
   // Note: Uncomment for debugging
   // useEffect(() => {
+  //   Because of how hooks/timing works with react, if you print these 
+  //   variables out below, such as in `selectInput`, you may see incorrect values
   //   console.log('selectedInputs', selectedInputs)
-  // }, [selectedInputs])
+  //   console.log('selectedInputData', selectedInputData)
+  // }, [selectedInputs, selectedInputData]);
 
   const getTabs = (type = QuickInputType.Image) => {  // TODO: Remove this default
     if(task.useMultiInput) return getMultiInputTabs(task.inputs);
@@ -52,7 +55,6 @@ export default function useQuickInputControl(props) {
     types.forEach(type => {
       if (!(type?.inputUpload === false)) upload.push(getUploadTabType(type.inputType.toLowerCase()));
       if (!(type?.inputUrl === false)) input.push(...getInputTabType(type.inputType.toLowerCase()));
-      
     });
 
     if (!props.hideSample) tabs.push(sample);
@@ -93,27 +95,80 @@ export default function useQuickInputControl(props) {
     }
   }  
   const runModel = () => {
-    if (typeof (props.onRunModelClicked) === 'function')
-      props.onRunModelClicked(selectedInputs.filter(url => url));
+    if (typeof (props.onRunModelClicked) === 'function') {
+      props.onRunModelClicked(selectedInputData.filter(input => input));
+    } 
   }
   const selectInput = (url, index) => {
     let selected = selectedInputs;
+    let selectedData = selectedInputs;
 
-    if (index)
+    if (index) {
+      // Note: This doesn't get selected in audioToText Sample inputs 
+      // - does it ever happen? Or do we always go to the else?
+      
+      // Display as selected
       selected[index] = url;
-    else
+      // Data to be sent to API
+      if (typeof url !== 'object') {
+        selectedData[index] = { src: url, inputType: task.inputType }
+      } else {
+        selectedData[index] = { inputType: task.inputType, ...url }
+      }
+    } else {
+      // Display as selected
       selected = Array.isArray(url) ? url : [url];
+      // Data to be sent to API
+      if (typeof url !== 'object') {
+        selectedData = [{ src: url, inputType: task.inputType }];
+      } else {
+        selectedData = [{ inputType: task.inputType, ...url }];
+      }
+    }
+
     setSelectedInputs(selected);
+    setSelectedInputData(selectedData);
   }
   const selectMultiInput = (url, inputIndex) => {
     let selected = [...selectedInputs];
+    let selectedData = [...selectedInputData];
 
-    if (inputIndex >= 0)
+    if (inputIndex >= 0) {
+      // Display as selected
       selected[inputIndex] = url;
-    else
+      // Data to be sent to API
+      if (typeof url !== 'object') {
+        selectedData[inputIndex] = {
+          src: url, 
+          inputType: task.inputs[inputIndex].inputType
+        }        
+      } else {
+        selectedData[inputIndex] = {
+          inputType: task.inputs[inputIndex].inputType,
+          ...url
+        }
+      }
+    }
+    else {
+      // Display as selected
       selected = Array.isArray(url) ? url : [url];
-    // Note: Need to use a useEffect to accurately see what selectedInputs is
-    setSelectedInputs(selected);    
+      // Data to be sent to API
+      if (typeof url !== 'object') {
+        selectedData[inputIndex] = [{
+          src: url, 
+          inputType: task.inputs[inputIndex].inputType
+        }]     
+      } else {
+        selectedData[inputIndex] = [{
+          inputType: task.inputs[inputIndex].inputType,
+          ...url
+        }]
+      }
+    }
+      
+    // Note: You need to uncomment the useEffect above to accurately see what selectedInputs/Data is
+    setSelectedInputs(selected);   
+    setSelectedInputData(selectedData);
   }
 
   const addInput = (url = "") => {

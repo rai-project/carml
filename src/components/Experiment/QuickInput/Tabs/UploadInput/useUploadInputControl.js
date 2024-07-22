@@ -35,7 +35,7 @@ export const useUploadInputControl = (props) => {
     // Note: Uncomment in order to test w/o server, adding a fake uploadURL:
     // result.successful.map(x => x.uploadURL = `test_${props.inputIndex}.com`)
 
-    const urls = result.successful.map(x => x.uploadURL);
+    const urls = result.successful.map(x => x.uploadURL);  // Response on staging seems to be { location: "https...." }, not uploadUrl?
 
     if (!task.useMultiInput) {
       if (typeof (props.inputSelected) === 'function') {

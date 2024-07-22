@@ -41,6 +41,8 @@ import {
   SampleAudioToAudioInputs,
   SampleAudioClassificationInputs,
 } from "../../../helpers/sampleImages";
+import { QuickInputType } from "./quickInputType";
+import { TaskInputTypes } from "../../../helpers/TaskInputTypes";
 
 export default {
   title: "Experiments/Quick Input",
@@ -144,16 +146,19 @@ export const AudioToText = Template.bind({});
 AudioToText.args = {
   sampleInputs: [
     {
-      title: "automatic-speech-recognition-input.flac",
-      src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
+      src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac",
+      filename: "automatic-speech-recognition-input.flac",
+      type: TaskInputTypes.Audio
     },
     {
-      title: "automatic-speech-recognition-input(2).flac",
-      src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
+      src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac",
+      filename: "automatic-speech-recognition-input.flac",
+      type: TaskInputTypes.Audio
     },
     {
-      title: "automatic-speech-recognition-input(3).flac",
-      src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
+      src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac",
+      filename: "automatic-speech-recognition-input.flac",
+      type: TaskInputTypes.Audio
     },
   ],
   model: {

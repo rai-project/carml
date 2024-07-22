@@ -59,7 +59,7 @@ export default function SampleInputsTab(props) {
     function makeSampleAudioInput(url, index) {
         return (
             <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
-                <div>{url.title}</div>
+                <div>{url.filename}</div>
                 <audio controls src={url.src} />
             </button>
         );

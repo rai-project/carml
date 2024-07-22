@@ -51,12 +51,13 @@ export default function TextConversationOutput(props) {
 
     useEffect(() => {
         if (!isSending) {
+            setNewInput('');
+
             // NOTE: Currently not working
             if (inputField.current) {
                 console.log('focus on input field')
                 inputField.current.focus();
             }
-
         }
     }, [isSending]);  
 
@@ -75,8 +76,7 @@ export default function TextConversationOutput(props) {
 
     const sendMessage = () => {
         setMessage({ role: ROLE.USER, content: newInput });
-        setIsSending(true);   
-        setNewInput('');
+        setIsSending(true);
     }    
 
 

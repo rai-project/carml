@@ -139,6 +139,8 @@ class Api {
       requestBody['context'] = context;
     }
 
+    // UNCOMMENT BEFORE COMMITTING
+    // Comment this out to test fake api requests via storybook
     const response = await fetch(`${this.apiUrl}/predict`, {
       method: 'POST',
       headers: {

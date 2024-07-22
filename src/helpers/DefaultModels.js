@@ -12,7 +12,8 @@ import {
   imageToText, 
   textClassification,
   audioToAudio,
-  audioClassification,  
+  audioClassification,
+  textConversation,  
 } from "./TaskIDs";
 
 export const DefaultImageClassificationModel = {
@@ -546,7 +547,7 @@ export const DefaultTextConversationModel = {
   name: "DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug",
   output: {
     description: "the chatbot's response to the inputted text",
-    type: audioToText,
+    type: textConversation,
   },
   url: {
     github:

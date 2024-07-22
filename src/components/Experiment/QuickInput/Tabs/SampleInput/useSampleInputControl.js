@@ -10,9 +10,8 @@ export default function useSampleInputControl(props) {
 
   const isSelected = (input) => sampleInputType === QuickInputType.Image ? selectedIndex.indexOf(input.src) > -1 : selectedIndex.indexOf(input) > -1;
   const isUnselected = (input) => selectedIndex.length >= 0 && sampleInputType === QuickInputType.Image ? selectedIndex.indexOf(input.src) === -1 : selectedIndex.indexOf(input) === -1;
+  
   const selectMultiInput = (selectedValueIndex) => {
-
-
     // Note: Currently using both new and old way of handling inputs but should refactor in the future
     let input = sampleInputType === QuickInputType.Image ? 
         props.sampleInputs[props.inputIndex][selectedValueIndex].src : 
@@ -21,7 +20,6 @@ export default function useSampleInputControl(props) {
     if (props.multiple) {
       // TODO: This block was directly copied from selectInput
       // and may need to be updated for useMultiInput
-      
       const selected = Array.from(selectedIndex);
       let storedIndex = selected.indexOf(input);
       if (storedIndex === -1) {

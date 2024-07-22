@@ -99,12 +99,16 @@ The project is structured as follows:
       -  Open `DefaultModels.js` and copy/paste one of the existing models (editing where appropriate)
     - `getSampleOutput` 
       - Return the `Test[Task Name]Output` that you created in `testData` above 
+      - Return the `Test[Task Name]Output` that you created in `testData` above 
     - `getStaticTasks`
 - Create a new story for the task in `QuickInput.stories.js`
 - If the user is able to upload files for this task, add the task to `UppyFileTypeCheckerPlugin`
 - Add the new task to `ModelDetailPage` in `getSampleInputs` and `getInputType`
-- If you need to test the upload dashboard, open `useUploadInputControl` and find the text `UNCOMMENT THIS BEFORE COMMITTING` and comment it out.
-- If you need to check the array of inputs that you are submitting, add an `onRunModelClicked` function to your task in `QuickInput.stories.js` (it takes the inputs as a param)
+- Additional Notes:
+  - To test the upload dashboard, open `useUploadInputControl` and find the text `UNCOMMENT THIS BEFORE COMMITTING` and comment it out.
+  - To see what your currently-selected inputs, and the current state of the data that will be sent to the API (prior to clicking the "Run Model" button), go to `useQuickInputControl.js` and uncomment the useEffect with `console.log`s in it.
+  - To check the array of inputs that you are submitting to the API, add an `onRunModelClicked` function to your task in `QuickInput.stories.js` (it takes the inputs as a param). Because of how Storybook works, the component you're building won't be passed the real method, but you can make a mock in the stories file to test behavior.
+    - See `TextConversationOutput.stories.js` for an example of how to test api requests in this way
 
 ## Adding new Task icons
 - Go to svgrepo.com, search for a suitable icon, download it, and drag the file into the `src/resources/icons` directory
