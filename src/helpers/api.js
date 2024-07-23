@@ -113,8 +113,8 @@ class Api {
       return null;
 
     let trial = await result.json();
-    if (trial.results.responses === undefined)
-      trial.results.responses = [{features: []}];
+    if (trial.results === undefined)
+      trial.results= {"responses": [{features: []}]};
 
     return trial;
   }
