@@ -1,5 +1,6 @@
 import React from "react";
 import InputPreview from "./InputPreview";
+import MultiInputPreview from "./MultiInputPreview";
 import ClassificationOutput from "./Outputs/Classification/ClassificationOutput";
 import PendingOutput from "./Outputs/Classification/PendingOutput";
 import {

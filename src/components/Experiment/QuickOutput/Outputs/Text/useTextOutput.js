@@ -4,7 +4,7 @@ export default function useTextOutput(trial) {
   const getInputText = () => {
     if (!trial?.inputs) return "";
 
-    return trial?.inputs[0] ?? "";
+    return trial?.inputs[0]["src"] ?? "";
   };
 
   const getInferenceDuration = () => {
