@@ -23,11 +23,11 @@ export default function InputPreview(givenProps) {
   const getInput = () => {
     switch (props.inputType) {
       case "text":
-        return <p className={getElement("text")}>{props.input}</p>;
+        return <p className={getElement("text")}>{props.input.src}</p>;
       case "audio":
-        return <audio className={getElement("audio")} controls src={props.input} />;
+        return <audio className={getElement("audio")} controls src={props.input.src} />;
       case "image":
-        return <img className={getElement("image")} src={props.input} />;
+        return <img className={getElement("image")} src={props.input.src} />;
       default:
         return <p>Not currently supported</p>;
     }
