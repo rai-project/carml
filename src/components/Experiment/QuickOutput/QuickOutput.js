@@ -50,6 +50,7 @@ import AudioToTextOutput from "./Outputs/AudioToText/AudioToTextOutput";
 import TextToAudioOutput from "./Outputs/TextToAudio/TextToAudioOutput";
 import AudioClassificationOutput from "./Outputs/AudioClassification/AudioClassificationOutput";
 import AudioToAudioOutput from "./Outputs/AudioToAudio/AudioToAudioOutput";
+import MultiInputPreview from "./MultiInputPreview";
 
 const defaultProps = {
   className: "quick-output",
@@ -64,7 +65,8 @@ export default function QuickOutput(givenProps) {
   const props = { ...defaultProps, ...givenProps };
   const { getElement, getBlock } = useBEMNaming(props.className);
 
-  const preview = (
+
+  const preview = props?.trialOutput?.inputs ? <MultiInputPreview inputs={props.trialOutput.inputs} onBackClicked={props.onBackClicked} /> : (
     <InputPreview
       input={props.input}
       onBackClicked={props.onBackClicked}
