@@ -4,6 +4,7 @@ import useBEMNaming from "../../../common/useBEMNaming";
 import { ReactComponent as DocumentIcon } from "../../../resources/icons/icon-document.svg";
 
 import "./MultiInput.scss";
+import { TaskInputTypes } from "../../../helpers/TaskInputTypes";
 
 const defaultProps = {
   className: "multi-input-preview",
@@ -33,11 +34,11 @@ export default function MultiInputPreview(givenProps) {
   };
   const getInputs = (input) => {
     switch (input.inputType) {
-      case "TEXT":
+      case TaskInputTypes.Text:
         return (
           <p className={getElement("text")}>{input.src}</p>
         );
-      case "DOCUMENT":
+      case TaskInputTypes.Document:
         return (
           <button className={getElement("document")}>
             <DocumentIcon className='icon' />
@@ -46,11 +47,15 @@ export default function MultiInputPreview(givenProps) {
             </a>
           </button>
         );
-      case "IMAGE":
+      case TaskInputTypes.Image:
         return (
-          <img className={getElement("image")} src={input.src} />
+          <img
+            className={getElement("image")}
+            src={input.src}
+            alt={input.description ?? "Input Image"}
+          />
         );
-      case "AUDIO":  // Currently not being used
+      case TaskInputTypes.Audio:
       default:
         return (
           <p className={getElement("error")}>Unable to display input</p>
@@ -60,13 +65,12 @@ export default function MultiInputPreview(givenProps) {
 
   return (
     <div className={getBlock()}>
-      console.log(props.inputs)
-      {
-        props.inputs.length > 1 ? (
-          <div className={getElement("container")}>
-            <h3 className={getElement("title")}>
-              Inputs
-            </h3>
+      <h3 className={getElement("title")}>
+        Inputs
+      </h3>
+      <div className={getElement("container")}>
+        {
+          props.inputs.length > 2 ? (
             <div className={getElement("multi-input-grid-display")}>
               <div className={getElement("multi-input-grid-primary-row")}>
                 {getInputs(props.inputs[0])}
@@ -78,22 +82,26 @@ export default function MultiInputPreview(givenProps) {
                       <div className={getElement("multi-input-grid-item")} key={index}>
                         {getInputs(input)}
                       </div>
-                    )
+                    );
                   })
                 }
               </div>
 
             </div>
-          </div>
-        ) : (
-          <div>
-            <h3 className={getElement("title")}>
-              Input {inputTypes[props.inputType]}
-            </h3>
-            {getInput()}
-          </div>
-        )
-      }
+          ) : (
+            <div>
+              {
+                props.inputs.map((input, index) => (
+                  <div className={getElement("single-input")} key={index}>
+                    {getInputs(input)}
+                  </div>
+
+                )
+                )}
+            </div>
+          )
+        }
+      </div>
 
       <button
         className={getElement("back-button")}

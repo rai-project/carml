@@ -251,3 +251,8 @@ export const SampleAudioClassificationInputs = [
 
   },
 ];
+export const SampleTextToAudio = [
+  "Waves at a beach",
+  "Traffic noise",
+  "Roar of a tiger"
+];
