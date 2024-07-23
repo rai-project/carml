@@ -122,7 +122,7 @@ export const SampleAudioToTextInputs = [
   {
     title: "automatic-speech-recognition-input.flac",
     src: "https://xlab1.netlify.app/automatic-speech-recognition-input.flac"
-  },
+  }
 ];
 
 export const SampleTextConversationInputs = [
@@ -250,4 +250,9 @@ export const SampleAudioClassificationInputs = [
     src: "https://xlab1.netlify.app/audio-classification-input.flac"
 
   },
+];
+export const SampleTextToAudio = [
+  "Waves at a beach",
+  "Traffic noise",
+  "Roar of a tiger"
 ];

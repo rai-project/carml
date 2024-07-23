@@ -11,7 +11,7 @@ import { imageTo3D } from '../../../../../helpers/TaskIDs';
 export default function SampleInputsTab(props) {
     // Note: This is the content for the Sample Input Tab, below the header
     const { getBlock, getElement } = useBEMNaming("sample-inputs");
-    const { isUnselected, isSelected, selectInput, type,sampleInputType } = useSampleInputControl(props);
+    const { isUnselected, isSelected, selectInput, type, sampleInputType } = useSampleInputControl(props);
     const task = Task.getStaticTask(props.task);
 
     const getInputClassName = (url) => {
@@ -68,7 +68,7 @@ export default function SampleInputsTab(props) {
     function makeSampleDocumentInput(url, index) {
         return (
             <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
-                <DocumentIcon className='icon'/>
+                <DocumentIcon className='icon' />
                 <a href={url.src} target='_blank' >
                     <span>{url.description ?? "Document"}</span>
                 </a>
