@@ -20,7 +20,7 @@ export default function ObjectDetection(props) {
     if (sections.length === 0) return <NoPredictions modelId={props.trial.model.id}/>
 
     return <div className={getElement("top-row")}>
-      <ObjectDetectionImage img={props.trial.inputs[0]}
+      <ObjectDetectionImage img={props.trial.inputs[0].src}
                             filteredSections={filteredSections}
                             sections={sections}
                             hover={hover}

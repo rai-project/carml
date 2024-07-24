@@ -10,7 +10,7 @@ export default function useSemanticSegmentationControl(trial) {
         labelToShow = feature?.semantic_segment.labels[hover.property] ?? "";
     }
 
-    const image = trial.inputs[0];
+    const image = trial.inputs[0].src;
     const {height, int_mask, labels, width} = feature?.semantic_segment ?? {
         height: 0,
         int_mask: [],

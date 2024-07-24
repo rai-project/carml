@@ -13,7 +13,7 @@ export default function ImageEnhancement(props) {
     <SingleColumnImageOutput
       modelId={props.trial.model.id}
       duration={props.trial.results.duration}
-      image={<ImageEnhancementImage input={props.trial.inputs[0]}
+      image={<ImageEnhancementImage input={props.trial.inputs[0].src}
                                     feature={props.trial.results.responses[0].features[0]}/>}
 
     />

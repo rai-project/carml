@@ -16,7 +16,7 @@ export default function ObjectDetectionSummary(props) {
     <p className={getElement("header")}>Output:</p>
 
     <div className={getElement("results")}>
-      <ObjectDetectionImage img={props.trial.inputs[0]}
+      <ObjectDetectionImage img={props.trial.inputs[0].src}
                             filteredSections={filteredSections}
                             hover={hover}
                             confidence={filter.confidence}
