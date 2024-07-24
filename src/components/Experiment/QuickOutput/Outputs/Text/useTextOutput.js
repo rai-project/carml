@@ -1,17 +1,22 @@
 import { useState } from "react";
 
 export default function useTextOutput(trial) {
-  const getInputText = () => {
-    if (!trial?.inputs) return "";
 
-    return trial?.inputs[0]["src"] ?? "";
+  const getInput = () => {
+    let type = trial?.inputs[0]?.inputType;
+    switch (type) {
+      case "TEXT":
+        return trial?.inputs[0]["src"] ?? "";
+      default:
+        return trial?.inputs[0];
+    }
   };
 
   const getInferenceDuration = () => {
     return trial?.results?.duration_for_inference ?? "0s";
-  };  
+  };
 
-  const [input, setInput] = useState(getInputText());
+  const [input, setInput] = useState(getInput());
   const [inferenceDuration, setInferenceDuration] = useState(getInferenceDuration());
 
   const getOutput = () => {
