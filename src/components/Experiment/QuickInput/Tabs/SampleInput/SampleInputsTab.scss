@@ -11,10 +11,12 @@
 
     @include tabletWidth {
       flex-direction: column;
-      align-items: center;  // TODO: Update this so that text/audio aren't centered
-     
+      align-items: center; // TODO: Update this so that text/audio aren't centered
+
       .sample-inputs {
-        &__input-image, &__input-text, &__input-audio {
+        &__input-image,
+        &__input-text,
+        &__input-audio {
           &:not(:first-child) {
             margin-left: 0px;
             margin-top: 10px;
@@ -74,15 +76,14 @@
     }
   }
 
-  &__input-document{
-
+  &__input-document {
     display: flex;
     align-items: end;
     justify-content: left;
     flex-grow: 1;
     gap: 10px;
     border: 1px solid $gray;
-    
+
     padding: 7.5px 8px;
     text-align: start;
 
@@ -99,12 +100,11 @@
       opacity: 0.5;
     }
 
-    .icon{
-     
+    .icon {
     }
-    & a{
-    color: $azul;
-  }
+    & a {
+      color: $azul;
+    }
   }
 
   &__input-audio {
@@ -112,6 +112,7 @@
     flex: 1 1;
     padding: 10px 15px;
     text-align: start;
+    max-width: fit-content;
 
     audio {
       filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
@@ -130,5 +131,5 @@
     &--unselected {
       opacity: 0.5;
     }
-  }  
+  }
 }

@@ -1,7 +1,7 @@
 //@import './fluid-type';
 
-$sans-serif: "Lato", "IBM Plex Sans Condensed", "Helvetica Neue", Arial, sans-serif;
-
+$sans-serif: "Lato", "IBM Plex Sans Condensed", "Helvetica Neue", Arial,
+  sans-serif;
 
 @mixin billboard {
   font-size: clamp(48px, 4vw, 80px);
@@ -158,5 +158,4 @@ h3 {
 audio {
   filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(11%);
   height: 42px;
-  margin-right: 20px;   
 }

@@ -10,6 +10,6 @@ export default function InputPreview(props) {
 
   if (task.inputType === TaskInputTypes.Text)
     return <InputPreviewText {...props} />;
-
+  
   return <InputPreviewImage {...props} />;
 }

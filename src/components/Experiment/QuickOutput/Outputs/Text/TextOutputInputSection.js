@@ -9,7 +9,7 @@ export default function TextOutputInputSection(props) {
       <h3 className={getElement("input-title")}>Input Text</h3>
 
       <textarea
-        value={props.input}
+        value={props.input.src}
         onChange={(e) => props.setInput(e.target.value)}
         className={getElement("input-container-text")}
       ></textarea>

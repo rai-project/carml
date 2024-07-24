@@ -31,7 +31,7 @@ export default function TrialOutputWrapper(props) {
 
   const getContent = () => {
     const hasNoInputs =
-      props.trial.inputs.length === 0 || props.trial.inputs[0] === "";
+      props.trial.inputs.length === 0 || props.trial.inputs[0]["src"] === "";
 
     if (props.processFailed) {
       return <TrialFailed />;
