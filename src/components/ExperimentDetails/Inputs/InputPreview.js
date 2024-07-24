@@ -7,7 +7,7 @@ import { InputPreviewText } from "./InputPreviewText";
 
 export default function InputPreview(props) {
   const task = props.task ?? Task.image_classification;
-console.log("task.inputType", task.inputType)
+
   if (task.inputType === TaskInputTypes.Text)
     return <InputPreviewText {...props} />;
   

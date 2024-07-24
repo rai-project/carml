@@ -66,7 +66,7 @@ export default function ModelListWithFilters(givenProps) {
     const props = {...defaultProps, ...givenProps};
 
     const selection = useModelListSelection();
-    console.log(props.frameworkOptions)
+    // console.log(props.frameworkOptions)
     const filtering = useModelListWithFilters(props.frameworkOptions, props.models, props.machineOptions, selection.selectedModels);
 
     return (
