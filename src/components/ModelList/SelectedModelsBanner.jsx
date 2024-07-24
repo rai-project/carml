@@ -54,7 +54,6 @@ export default function SelectedModelsBanner(givenProps) {
         }}/>)
     }
 
-    console.log(props, defaultProps, givenProps);
 
     return (
         <div className={getBlock()}>

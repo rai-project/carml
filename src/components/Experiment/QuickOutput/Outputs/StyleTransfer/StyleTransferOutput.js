@@ -30,6 +30,7 @@ export default function StyleTransferOutput(props) {
             </div>
 
             <div className={getElement("content")}>
+           
                 <MultiInputPreview inputs={inputs} onBackClicked={props.onBackClicked} />
 
                 <div className={getElement("output")}>
