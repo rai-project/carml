@@ -1,6 +1,9 @@
 @import "../../../../../App";
 
-.classification-output, .text-classification-output, .audio-classification-output {
+.classification-output,
+.text-classification-output,
+.audio-classification-output,
+.video-classification-output {
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.25);

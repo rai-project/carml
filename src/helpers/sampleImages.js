@@ -256,3 +256,21 @@ export const SampleTextToAudio = [
   "Traffic noise",
   "Roar of a tiger"
 ];
+
+export const SampleVideoClassificationInputs = [
+  {
+    description: "Video of a cat",
+    src: "https://xlab1.netlify.app/samples/video/cat.mp4"
+
+  },
+  {
+    description: "Video of a ocean",
+    src: "https://xlab1.netlify.app/samples/video/ocean.mp4"
+
+  },
+  {
+    description: "Video of a flower",
+    src: "https://xlab1.netlify.app/samples/video/flower.mp4"
+
+  },
+];

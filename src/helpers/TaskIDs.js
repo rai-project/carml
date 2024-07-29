@@ -20,4 +20,5 @@ export const imageToText = "image_to_text";
 export const textClassification = "text_classification";
 export const audioToAudio = "audio_to_audio";
 export const audioClassification = "audio_classification";
+export const videoClassification = "video_classification";
 export const pending = "pending";

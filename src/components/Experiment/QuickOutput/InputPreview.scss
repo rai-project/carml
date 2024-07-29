@@ -1,6 +1,7 @@
 @import "../../../App";
 
-.input-preview, .multi-input-preview {
+.input-preview,
+.multi-input-preview {
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.25);
@@ -26,19 +27,19 @@
     border-radius: 5px;
     margin-top: 16px;
     padding: 8px 16px;
-
   }
 
+  &__video {
+    max-width: 100%;
+  }
 
-
-  &__document{
-    
+  &__document {
     display: flex;
     align-items: end;
     justify-content: left;
     flex-grow: 1;
     border: 1px solid $gray;
-    gap:10px;
+    gap: 10px;
     padding: 7.5px 8px;
     text-align: start;
 
@@ -46,12 +47,11 @@
       margin-left: 4px;
     }
 
-
-    .icon{
+    .icon {
     }
-    & a{
-    color: $azul;
-  }
+    & a {
+      color: $azul;
+    }
   }
   &__back-button {
     @include secondaryButtonWithIconBefore("arrow-right.svg");

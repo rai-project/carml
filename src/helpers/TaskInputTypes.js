@@ -3,4 +3,5 @@ export const TaskInputTypes = {
   Image: "IMAGE",
   Audio: "AUDIO",
   Document: "DOCUMENT",
+  Video: "VIDEO",
 };

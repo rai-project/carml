@@ -6,6 +6,8 @@ import useBEMNaming from "../../../../../common/useBEMNaming";
 import { QuickInputType } from "../../quickInputType";
 import { ReactComponent as DocumentIcon } from "../../../../../resources/icons/icon-document.svg";
 import { imageTo3D } from '../../../../../helpers/TaskIDs';
+import URLInputPreview from '../URLInput/URLInputPreview';
+import { TaskInputTypes } from '../../../../../helpers/TaskInputTypes';
 
 
 export default function SampleInputsTab(props) {
@@ -24,6 +26,12 @@ export default function SampleInputsTab(props) {
         return className;
     };
 
+    const inputHandlerForPreview = (src) => {
+        props?.inputPreviewProps?.setURLValidity(true);
+        props?.inputPreviewProps?.setSelectedInputSrc(src);
+
+    };
+
     const makeSampleInput = (url, index) => {
         switch (sampleInputType) {
             case QuickInputType.Image:
@@ -34,16 +42,23 @@ export default function SampleInputsTab(props) {
                 return makeSampleAudioInput(url, index);
             case QuickInputType.Document:
                 return makeSampleDocumentInput(url, index);
+            case QuickInputType.Video:
+                return makeSampleVideoInput(url, index);
             default:
                 return makeDefaultErrorInput();
         }
+    };
+
+    const onSampleInputClickPreview = (index, url) => {
+        selectInput(index);
+        inputHandlerForPreview(url.src);
     };
 
     // TODO: Rename "url" to "input" or similar
     function makeSampleImageInput(url, index) {
         return (
             <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
-                <img src={url.src} alt={url.alt} />
+                <img src={url.src} alt={url.description} />
             </button>
         );
     }
@@ -76,6 +91,15 @@ export default function SampleInputsTab(props) {
         );
     }
 
+    function makeSampleVideoInput(url, index) {
+        return (
+            <button onClick={() => onSampleInputClickPreview(index, url)} key={index} className={getElement(getInputClassName(url))}>
+                <video src={url.src} alt={url.alt} autoPlay muted={true} loop className={getElement("sample-video-content")} />
+
+            </button>
+        );
+    }
+
     function makeDefaultErrorInput() {
         return (
             <div>No input type defined</div>
@@ -92,6 +116,9 @@ export default function SampleInputsTab(props) {
             <div className={getElement('list')}>
                 {sampleInputs.map(makeSampleInput)}
             </div>
+            {sampleInputType === QuickInputType.Video &&
+                <URLInputPreview inputPreviewProps={props.inputPreviewProps} inputType={TaskInputTypes.Video} selectedInputs={props.values} />
+            }
         </div>
     );
 
@@ -105,6 +132,8 @@ export default function SampleInputsTab(props) {
                 return "Select an audio file";
             case QuickInputType.Document:
                 return "Select a document";
+            case QuickInputType.Video:
+                return "Select a video";
             default:
                 return "Error: no input type set";
         }

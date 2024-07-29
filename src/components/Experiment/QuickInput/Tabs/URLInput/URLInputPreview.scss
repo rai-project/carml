@@ -1,14 +1,18 @@
 .url-inputs-preview {
   width: 100%;
   margin: 20px auto;
-}
 
-img {
-  margin: 10px auto;
-  display: block;
-}
+  &__img {
+    margin: 10px auto;
+    display: block;
+  }
 
-audio {
-  margin: 10px auto;
-  display: block;
+  &__audio {
+    margin: 10px auto;
+    display: block;
+  }
+
+  &__video {
+    max-width: min(100%, 1000px);
+  }
 }

@@ -11,10 +11,13 @@ const URLInputPreview = (props) => {
                 <h3 className={getElement("title")}> Input Preview</h3>
                 <div className={getElement("preview")}>
                     {props.inputType === TaskInputTypes.Image ? (
-                        <img src={props?.inputPreviewProps?.selectedInputSrc} alt="Preview" />
+                        <img src={props?.inputPreviewProps?.selectedInputSrc} alt="Preview" className={getElement("img")} />
                     ) : props.inputType === TaskInputTypes.Audio ? (
-                        <audio controls src={props?.inputPreviewProps?.selectedInputSrc} title="Preview" />
-                    ) : null}
+                        <audio controls src={props?.inputPreviewProps?.selectedInputSrc} title="Preview" className={getElement("audio")} />
+                    ) : props.inputType === TaskInputTypes.Video ? (
+                        <video src={props?.inputPreviewProps?.selectedInputSrc} controls className={getElement("video")} />
+                    ) :
+                        null}
 
                 </div>
             </div>}

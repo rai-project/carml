@@ -1,4 +1,5 @@
 import ImageVerifier from "../../../../../helpers/imageVerifier";
+import VideoVerifier from "../../../../../helpers/videoVerifier";
 import AudioVerifier from "../../../../../helpers/audioVerifier";
 import Task from "../../../../../helpers/Task";
 import { useState } from "react";
@@ -24,6 +25,9 @@ export default function useURLInputControl(props) {
           break;
         case TaskInputTypes.Audio:
           verifier = new AudioVerifier(tempUrl);
+          break;
+        case TaskInputTypes.Video:
+          verifier = new VideoVerifier(tempUrl);
           break;
         default:
           break;

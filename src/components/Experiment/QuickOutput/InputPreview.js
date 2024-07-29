@@ -1,7 +1,6 @@
 import React from "react";
 import "./InputPreview.scss";
 import useBEMNaming from "../../../common/useBEMNaming";
-
 const defaultProps = {
   className: "input-preview",
   input: "",
@@ -18,6 +17,7 @@ export default function InputPreview(givenProps) {
     audio: "Audio",
     text: "Text",
     document: "Document",
+    video: "Video",
   };
 
 
@@ -29,7 +29,9 @@ export default function InputPreview(givenProps) {
         return <audio className={getElement("audio")} controls src={props.input.src} />;
       case "image":
         return <img className={getElement("image")} src={props.input.src} />;
-      
+      case "video":
+        return <video className={getElement("video")} src={props.input.src} controls />;
+
       default:
         return <p>Not currently supported</p>;
     }
