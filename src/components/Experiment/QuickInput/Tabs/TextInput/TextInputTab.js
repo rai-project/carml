@@ -15,7 +15,7 @@ export default function TextInputTab(props) {
             <textarea
                 value={text}
                 className={getElement("input")}
-                onChange={(e) => textChanged(e)}
+                onChange={(e) => textChanged(e, props?.inputIndex)}
             ></textarea>
         </div>
     );
