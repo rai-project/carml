@@ -8,11 +8,14 @@ import { TaskInputTypes } from "../../../../../helpers/TaskInputTypes";
 const UrlMatcher = /https?:\/\/.+/;
 
 export default function useURLInputControl(props) {
+  const task = Task.getStaticTask(props.task);
+
   const [isInvalidUrl, setIsInvalidUrl] = useState([false]);
-  const inputType = Task.getStaticTask(props.task).inputType;
+    
   const urlChanged = async (event, index) => {
     if (event.persist)
       event.persist();
+    const inputType = task.useMultiInput ? task.inputs[index].inputType : task.inputType;
     let url = event.target.value;
     let tempUrl = event.target.value;
     if (tempUrl.match(UrlMatcher) === null)
@@ -21,6 +24,7 @@ export default function useURLInputControl(props) {
       let verifier;
       switch (inputType) {
         case TaskInputTypes.Image:
+        case TaskInputTypes.ImageCanvas:
           verifier = new ImageVerifier(tempUrl);
           break;
         case TaskInputTypes.Audio:
@@ -58,9 +62,6 @@ export default function useURLInputControl(props) {
   };
 
   const getUrlValidity = (index) => isInvalidUrl[index];
-
-  const task = Task.getStaticTask(props.task);
-
 
   let values = props.values;
   if (!values || values.length === 0) values = [""];

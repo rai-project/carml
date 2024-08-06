@@ -15,6 +15,7 @@ import {
   audioClassification,
   textConversation,
   videoClassification,
+  maskGeneration,
 } from "./TaskIDs";
 
 export const DefaultImageClassificationModel = {
@@ -1124,6 +1125,52 @@ export const DefaultVideoClassificationModel = {
   url: {
     github:
       "https://github.com/rai-project/tensorflow/blob/master/builtin_models/DeepLabv3_MobileNet_v2_DM_05_PASCAL_VOC_Train_Aug.yml",
+    citation: "https://arxiv.org/pdf/1802.02611v3.pdf",
+    link1: "https://arxiv.org/pdf/1706.05587.pdf",
+    link2: "",
+  },
+  version: "1.0",
+};
+
+// Copy/paste of SemanticSegmentation
+export const DefaultMaskGenerationModel = {
+  id: 187,
+  created_at: "2022-04-29T20:48:49.356047Z",
+  updated_at: "2022-04-29T20:48:49.356047Z",
+  attributes: {
+    Top1: "",
+    Top5: "",
+    kind: "CNN",
+    manifest_author: "Cheng Li",
+    training_dataset: "PASCAL VOC 2012",
+  },
+  description:
+    "TensorFlow Mask Generation model, which is trained on the COCO (Common Objects in Context) dataset. Use mobilenetv2_coco_voc_trainval(deeplabv3_mnv2_pascal_trainval_2018_01_29) from TensorFlow DeepLab Model Zoo.\n",
+  short_description:
+    "DeepLabv3 is a deep convolutional neural networks for Mask Generation. It employ atrous convolution in cascade or in parallel to capture multi-scale context by adopting multiple atrous rates.",
+  model: {
+    graph_checksum: "bfc503739d93cedf973f82a5df1901eb",
+    graph_path:
+      "https://s3.amazonaws.com/store.carml.org/models/tensorflow/models/deeplabv3_mnv2_pascal_trainval_2018_01_29/frozen_inference_graph.pb",
+    weights_checksum: "",
+    weights_path: "",
+  },
+  framework: {
+    id: 4,
+    name: "TensorFlow",
+    version: "1.14.0",
+    architectures: [{ name: "amd64" }],
+  },
+  input: { description: "image to be identified", type: "image" },
+  license: "Apache License, Version 2.0",
+  name: "DeepLabv3_MobileNet_v2_PASCAL_VOC_Train_Val",
+  output: {
+    description: "the output mask generated",
+    type: maskGeneration,
+  },
+  url: {
+    github:
+      "https://github.com/rai-project/tensorflow/blob/master/builtin_models/DeepLabv3_MobileNet_v2_PASCAL_VOC_Train_Val.yml",
     citation: "https://arxiv.org/pdf/1802.02611v3.pdf",
     link1: "https://arxiv.org/pdf/1706.05587.pdf",
     link2: "",

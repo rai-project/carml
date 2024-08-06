@@ -1,0 +1,11 @@
+@import "src/App";
+
+.mask-generation-output {
+    &__header {
+        padding: 32px 32px 32px 32px;
+    }
+
+    .rating {
+        padding: 32px 0 32px 0;
+    }
+}

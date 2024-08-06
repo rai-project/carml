@@ -5,7 +5,11 @@ import {semantic_segmentation} from "../../../../../../helpers/TaskIDs";
 export const TestImageSegmentationResult = {
   completed_at: '2022-04-19T16:19:38.616395Z',
   inputs: [
-    catDog
+    {
+      src: catDog,
+      alt: "cat & dog",
+      type: "IMAGE",
+    }
   ],
   model: {
     framework: {

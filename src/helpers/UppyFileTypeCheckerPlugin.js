@@ -13,7 +13,8 @@ import {
   textGuidedImageToImage,
   visualQuestionAnswering,
   imageToText,
-  audioClassification
+  audioClassification,
+  maskGeneration
 } from './TaskIDs';
 
 import fileTypeChecker from "file-type-checker";
@@ -35,6 +36,7 @@ export const getAllowedFileTypes = (task) => {
     case imageTo3D:
     case instance_segmentation:
     case imageToText:
+    case maskGeneration:  
       return {
         fileTypes: ['bmp', 'gif', 'ico', 'jpeg', 'pdf', 'png', 'psd'],
         mimeTypes: ['image/*']

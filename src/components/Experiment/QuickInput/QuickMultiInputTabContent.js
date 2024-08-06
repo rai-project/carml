@@ -25,6 +25,8 @@ export function QuickMultiInputTabContent(props) {
             values={props.selectedInputs} {...tab.props} 
             inputIndex={props.inputIndex}
             input={props.input}
+            inputPreviewProps={props?.inputPreviewProps}
+            {...props}
         />
     </div>
   )

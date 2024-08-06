@@ -8,6 +8,7 @@ import { QuickInputType } from "./quickInputType";
 import TextInputTab from "./Tabs/TextInput/TextInputTab";
 import UploadTextInputTab from "./Tabs/UploadTextInput/UploadTextInputTab";
 import Task from "../../../helpers/Task";
+import { maskGeneration } from "../../../helpers/TaskIDs";
 
 export default function useQuickInputControl(props) {
   const task = Task.getStaticTask(props.model.output.type);
@@ -16,12 +17,12 @@ export default function useQuickInputControl(props) {
   const [selectedTab, setSelectedTab] = useState(0);
 
   // Note: Uncomment for debugging
-  // useEffect(() => {
-  //   Because of how hooks/timing works with react, if you print these 
-  //   variables out below, such as in `selectInput`, you may see incorrect values
-  //   console.log('selectedInputs', selectedInputs)
-  //   console.log('selectedInputData', selectedInputData)
-  // }, [selectedInputs, selectedInputData]);
+  useEffect(() => {
+    // Because of how hooks/timing works with react, if you print these 
+    // variables out below, such as in `selectInput`, you may see incorrect values
+    // console.log('selectedInputs', selectedInputs)
+    // console.log('selectedInputData', selectedInputData)
+  }, [selectedInputs, selectedInputData]);
 
   const getTabs = (type = QuickInputType.Image) => {  // TODO: Remove this default
     if (task.useMultiInput) return getMultiInputTabs(task.inputs);
@@ -69,6 +70,7 @@ export default function useQuickInputControl(props) {
       case QuickInputType.Image:
       case QuickInputType.Document:
       case QuickInputType.Video:
+      case QuickInputType.ImageCanvas:
         return [{ id: 'url-input', title: 'URL', component: URLInputsTab }];
       case QuickInputType.Audio:
         return [
@@ -88,6 +90,7 @@ export default function useQuickInputControl(props) {
       case QuickInputType.Audio:
       case QuickInputType.Document:
       case QuickInputType.Video:
+      case QuickInputType.ImageCanvas:
         return { id: 'upload-input', title: 'Upload', component: UploadInputsTab };
       case QuickInputType.Text:
         return { id: 'upload-input', title: 'Upload', component: UploadTextInputTab };
@@ -101,7 +104,7 @@ export default function useQuickInputControl(props) {
       props.onRunModelClicked(selectedInputData.filter(input => input));
     }
   };
-  const selectInput = (url, index) => {
+  const selectInput = (url, index, additionalContext=null) => {
     let selected = selectedInputs;
     let selectedData = selectedInputs;
 
@@ -131,7 +134,7 @@ export default function useQuickInputControl(props) {
     setSelectedInputs(selected);
     setSelectedInputData(selectedData);
   };
-  const selectMultiInput = (url, inputIndex) => {
+  const selectMultiInput = (url, inputIndex, additionalContext=null) => {
     let selected = [...selectedInputs];
     let selectedData = [...selectedInputData];
 
@@ -142,12 +145,14 @@ export default function useQuickInputControl(props) {
       if (typeof url !== 'object') {
         selectedData[inputIndex] = {
           src: url,
-          inputType: task.inputs[inputIndex].inputType
+          inputType: task.inputs[inputIndex].inputType,
+          ...additionalContext
         };
       } else {
         selectedData[inputIndex] = {
           inputType: task.inputs[inputIndex].inputType,
-          ...url
+          ...url,
+          ...additionalContext
         };
       }
     }
@@ -191,6 +196,19 @@ export default function useQuickInputControl(props) {
   };
   const tabIsSelected = (index) => selectedTab === index;
 
+  const submitButtonIsDisabled = () => {
+    if (task.id === maskGeneration && (selectedInputData[0].src === '' || selectedInputData[0].xmin === null)) {
+      // Keep the button disabled if the Mask Generation task has an 
+      // image uploaded but no rectangle has been drawn yet
+      return true;
+    }
+
+    if (task.useMultiInput) {
+      return (selectedInputs.length < task.inputs.length || selectedInputs[0] === "")
+    } else {
+      return (selectedInputs.length === 0 || selectedInputs[0] === "")
+    }
+  }
 
   return {
     selectedInputs,
@@ -200,6 +218,7 @@ export default function useQuickInputControl(props) {
     addInput,
     removeInput,
     selectTab,
-    tabIsSelected
+    tabIsSelected,
+    submitButtonIsDisabled
   };
 }

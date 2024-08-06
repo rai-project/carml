@@ -1,9 +1,14 @@
 import {TestInstanceSegmentationMask} from "./TestMask";
 
+
 export const TestInstanceSegmentationOutput = {
   "id": "9d52d414-cc78-4cd5-a292-afdc0b9332ec",
   "inputs": [
-    "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/cats-dogs.png"
+    {
+      src: "https://s3.amazonaws.com/uploads.staging.mlmodelscope.org/cats-dogs.png",
+      alt: "cat & dog",
+      type: "IMAGE",
+    }
   ],
   "completed_at": "2022-06-03T18:17:14.513854Z",
   "results": {
@@ -80,7 +85,7 @@ export const TestInstanceSegmentationOutput = {
 export const TestInstanceSegmentationOutputNoFeatures = {
   id: "f5bbc476-1b25-497e-9e64-b2375b5f57c5",
   inputs: [
-    "http://www.experian.com/blogs/news/wp-content/uploads/2012/06/cars.png"
+    "http://www.experian.com/blogs/news/wp-content/uploads/2012/06/cars.png",
   ],
   completed_at: "2022-04-20T20:39:06.359287Z",
   results: {

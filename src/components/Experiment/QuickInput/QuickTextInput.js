@@ -18,6 +18,7 @@ export default function QuickTextInput(props) {
         selectInput,
         runModel,
         hideUpload,
+        submitButtonIsDisabled
     } = useQuickInputControl(props);
     const {getBlock, getElement} = useBEMNaming("quick-text-input");
     const task = Task.getStaticTask(props.model.output.type);
@@ -62,7 +63,7 @@ export default function QuickTextInput(props) {
 
 
             <button
-                disabled={selectedInputs.length === 0 || selectedInputs[0] === ""}
+                disabled={submitButtonIsDisabled()}
                 onClick={() => runModel()}
                 className={getElement("submit-button")}
             >

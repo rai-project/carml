@@ -13,8 +13,10 @@ import QuickMultiInput from "./QuickMultiInput";
 
 export default function QuickInput(props) {
   const task = Task.getStaticTask(props.model.output.type);
+  
   const [URLValidity, setURLValidity] = useState(false);
   const [selectedInputSrc, setSelectedInputSrc] = useState("");
+  
   const inputPreviewProps = {
     URLValidity,
     setURLValidity,
@@ -22,6 +24,7 @@ export default function QuickInput(props) {
     setSelectedInputSrc,
   };
   props = { ...props, inputPreviewProps };
+
   if (task.useMultiInput) {
     // TODO: At some point this should replace the switch statement below
     return <QuickMultiInput {...props} />;
@@ -35,6 +38,7 @@ export default function QuickInput(props) {
     case TaskInputTypes.Video:
       return <QuickVideoInput {...props} />;
     case TaskInputTypes.Image:
+    case TaskInputTypes.ImageCanvas:
     default:
       return <QuickImageInput {...props} />;
   }

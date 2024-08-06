@@ -4,4 +4,5 @@ export const QuickInputType = {
     Audio: "audio",
     Document: "document",
     Video: "video",
+    ImageCanvas: "image_canvas"
 };

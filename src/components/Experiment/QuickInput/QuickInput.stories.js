@@ -23,6 +23,7 @@ import {
   audioToAudio,
   audioClassification,
   videoClassification,
+  maskGeneration,
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -42,6 +43,7 @@ import {
   SampleAudioToAudioInputs,
   SampleAudioClassificationInputs,
   SampleVideoClassificationInputs,
+  SampleMaskGenerationInputs,
 } from "../../../helpers/sampleImages";
 import { QuickInputType } from "./quickInputType";
 import { TaskInputTypes } from "../../../helpers/TaskInputTypes";
@@ -114,6 +116,16 @@ ImageTo3D.args = {
   onRunModelClicked: (inputs) => {
     console.log('inputs: ', inputs);
   }
+};
+
+export const MaskGeneration = Template.bind({});
+MaskGeneration.args = {
+  sampleInputs: SampleMaskGenerationInputs,
+  model: {
+    output: {
+      type: maskGeneration,
+    },
+  },
 };
 
 export const Text = Template.bind({});

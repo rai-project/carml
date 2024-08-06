@@ -5,6 +5,7 @@ import {
   object_detection,
   semantic_segmentation,
   styleTransfer,
+  maskGeneration,
   imageTo3D,
   textToText,
   textToCode,
@@ -31,6 +32,7 @@ import { ReactComponent as InstanceSegmentation } from "../resources/icons/icon-
 import { ReactComponent as ImageEnhancement } from "../resources/icons/icon-imageEnhancement.svg";
 import { ReactComponent as StyleTransfer } from "../resources/icons/icon-styleTransfer.svg";
 import { ReactComponent as ImageTo3D } from "../resources/icons/icon-imageTo3D.svg";
+import { ReactComponent as MaskGeneration } from "../resources/icons/icon-maskGeneration.svg";
 import { ReactComponent as TextToText } from "../resources/icons/icon-textToText.svg";
 import { ReactComponent as TextToCode } from "../resources/icons/icon-textToCode.svg";
 import { ReactComponent as AudioToText } from "../resources/icons/icon-audioToText.svg";
@@ -54,6 +56,7 @@ import {
   DefaultObjectDetectionModel,
   DefaultSemanticSegmentationModel,
   DefaultStyleTransferModel,
+  DefaultMaskGenerationModel,
   DefaultImageTo3DModel,
   DefaultTextModel,
   DefaultAudioToTextModel,
@@ -78,6 +81,7 @@ import {
   SampleObjectDetectionInputs,
   SampleSegmentationInputs,
   SampleStyleTransferInputs,
+  SampleMaskGenerationInputs,
   SampleTextGuidedImageToImageInputs,
   SampleVisualQuestionAnsweringInputs,
   SampleDocumentQuestionAnsweringInputs,
@@ -101,6 +105,7 @@ import { TestTextToAudioOutput } from "../components/Experiment/QuickOutput/Outp
 import { TestTextConversationOutput } from "../components/Experiment/QuickOutput/Outputs/TextConversation/testData/testTextConversationOutput";
 import { TaskInputTypes } from "./TaskInputTypes";
 import { TestStyleTransferOutput } from "../components/Experiment/QuickOutput/Outputs/StyleTransfer/testData/testStyleTransferOutput";
+import { TestMaskGenerationOutput } from "../components/Experiment/QuickOutput/Outputs/MaskGeneration/testData/testMaskGenerationOutput"; 
 import TextInputTab from "../components/Experiment/QuickInput/Tabs/TextInput/TextInputTab";
 import { TestVisualQuestionAnswering } from "../components/Experiment/QuickOutput/Outputs/VisualQuestionAnswering/testData/testVisualQuestionAnsweringOutput";
 import { TestDocumentQuestionAnswering } from "../components/Experiment/QuickOutput/Outputs/DocumentQuestionAnswering/testData/testDocumentQuestionAnsweringOuput";
@@ -235,13 +240,28 @@ export default class Task {
     tutorialDescription:
       "3D conversion models produce a 3D version of the user's input.",
   });
+  static mask_generation = new Task({
+    name: "Mask Generation",
+    description: "Highlight an object in a picture and request identification of it",
+    id: maskGeneration,
+    useMultiInput: true,
+    inputs: [
+      {
+        inputText: 'identify a selected object.',
+        inputType: TaskInputTypes.ImageCanvas,
+      },
+    ],
+    outputText: "Identification of object",
+    icon: (props) => <MaskGeneration {...props} />,
+    sampleInputs: SampleMaskGenerationInputs,
+    tutorialDescription: "blah blah.",
+  });  
   static text_to_text = new Task({
     name: "Text to Text",
     description: "[insert text description here]",
     id: textToText,
     inputText: "[insert text input help text here]",
     outputText: "[insert text output help text here]",
-    icon: (props) => <TextToText {...props} />,
     icon: (props) => <TextToText {...props} />,
     sampleInputs: [],
     tutorialDescription: "[insert text tutorial page description here]",
@@ -253,7 +273,6 @@ export default class Task {
     id: textToCode,
     inputText: "[insert text to code input help text here]",
     outputText: "[insert text to code output help text here]",
-    icon: (props) => <TextToCode {...props} />,
     icon: (props) => <TextToCode {...props} />,
     sampleInputs: [],
     tutorialDescription: "[insert text to code tutorial page description here]",
@@ -533,6 +552,8 @@ export default class Task {
         return Task.style_transfer;
       case imageTo3D:
         return Task.image_to_3D;
+      case maskGeneration:
+        return Task.mask_generation;
       case textToText:
         return Task.text_to_text;
       case textToCode:
@@ -586,6 +607,8 @@ export default class Task {
         return DefaultStyleTransferModel;
       case imageTo3D:
         return DefaultImageTo3DModel;
+      case maskGeneration:
+        return DefaultMaskGenerationModel; 
       case textToText:
         return DefaultTextModel;
       case textToCode:
@@ -640,6 +663,8 @@ export default class Task {
         return TestStyleTransferOutput;
       case imageTo3D:
         return TestImageTo3DOutput;
+      case maskGeneration:
+        return TestMaskGenerationOutput;
       case textToText:
         return TestTextOutput;
       case audioToText:
@@ -684,6 +709,7 @@ export default class Task {
       this.getStaticTask(instance_segmentation),
       this.getStaticTask(styleTransfer),
       this.getStaticTask(imageTo3D),
+      this.getStaticTask(maskGeneration),
       this.getStaticTask(textToText),
       this.getStaticTask(textToCode),
       this.getStaticTask(textConversation),
