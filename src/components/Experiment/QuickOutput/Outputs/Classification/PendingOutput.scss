@@ -46,10 +46,74 @@
     margin-bottom: 16px;
   }
 
-  &__spinner-text {
+  &__spinner-text, &__ellipsis-text {
     @include headline3;
     color: $charcoalLightest;
     text-align: center;
+  }
 
+  &__ellipsis-container {
+    align-items: center;
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;    
+  }
+
+  &__ellipsis-speech-bubble {
+    height: 65px;
+    width: 100px;
+    position: relative;
+    background: $smokeDarker;
+    border-radius: .4em;    
+  }
+
+  &__ellipsis-speech-bubble:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border: 20px solid transparent;
+    border-top-color: $smokeDarker;
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -10px;
+    margin-bottom: -20px;    
+  }
+
+  &__ellipsis {
+    height: 65px;
+    color: $grayDarkest;
+    margin-top: -30px;
+    margin-left: 25px;
+    font-size: 70px;
+  }
+
+  &__ellipsis:after {
+    overflow: hidden;
+    display: inline-block;
+    -webkit-animation: ellipsis steps(4,end) 1900ms infinite;      
+    animation: ellipsis steps(4,end) 1900ms infinite;
+    content: "\2026"; /* ascii code for the ellipsis character */
+    width: 0px;
+  }
+  
+  @keyframes ellipsis {
+    to {
+      width: 1em;    
+    }
+  }
+  
+  @-webkit-keyframes ellipsis {
+    to {
+      width: 1em;    
+    }
+  }
+
+  &__ellipsis-text {
+    margin-top: 20px;
   }
 }

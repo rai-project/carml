@@ -10,6 +10,7 @@ import {
   semantic_segmentation,
   textToText,
   textToCode,
+  textConversation,
 } from "../../helpers/TaskIDs";
 import { TestObjectDetectionResult } from "../Experiment/QuickOutput/Outputs/ObjectDetection/testData/TestFeatures";
 import { TestImageSegmentationResult } from "../Experiment/QuickOutput/Outputs/SemanticSegmentation/testData/TestFeatures";
@@ -21,16 +22,16 @@ import { TestImageClassificationResult } from "../Experiment/QuickOutput/Outputs
 import { TestInstanceSegmentationOutput } from "../Experiment/QuickOutput/Outputs/InstanceSegmentation/testData/TestFeatures";
 import { TestTextOutput } from "../Experiment/QuickOutput/Outputs/Text/testData/testTextOutput";
 import { TestTextToCodeOutput } from "../Experiment/QuickOutput/Outputs/TextToCode/testData/testTextToCodeOutput";
+import { TaskInputTypes } from "../../helpers/TaskInputTypes";
 
 export default {
   title: "Models/Model Detail Page",
   component: ModelDetailPage,
 };
 
-const Template = (args) => <ModelDetailPage {...args} />;
+const Template = (args) => <ModelDetailPage key="StandardModelDetailPage" {...args} />;
 
 const makeArgs = (type, output = undefined) => ({
-  key: "StandardModelDetailPage",
   trialOutput: output,
   model: {
     id: 13,
@@ -201,6 +202,12 @@ export const TextPendingOutput = Template.bind({});
 TextPendingOutput.args = makeArgs(textToText, {
   id: "7618d464-b5ed-432f-8f88-b33504c6bb0a",
   inputs: ["Translate into Spanish: Hello, how are you?"],
+});
+
+export const TextConversationPendingOutput = Template.bind({});
+TextConversationPendingOutput.args = makeArgs(textConversation, {
+  id: "7618d464-b5ed-432f-8f88-b33504c6bb0a",
+  inputs: [{src: "What is the meaning of life?", inputType: TaskInputTypes.Text}],
 });
 
 export const TextOutput = Template.bind({});

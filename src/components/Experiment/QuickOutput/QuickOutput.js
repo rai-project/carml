@@ -68,6 +68,8 @@ export default function QuickOutput(givenProps) {
   const props = { ...defaultProps, ...givenProps };
   const { getElement, getBlock } = useBEMNaming(props.className);
 
+  console.log('QuickOutput props', props);
+
   const preview = props?.trialOutput?.inputs.length > 1 ? <MultiInputPreview inputs={props.trialOutput.inputs} onBackClicked={props.onBackClicked} /> : (
     <InputPreview
       input={props.input}
@@ -266,7 +268,7 @@ export default function QuickOutput(givenProps) {
       return (
         <>
           {preview}
-          <PendingOutput />
+          <PendingOutput outputType={props.outputType} />
         </>
       );
     }

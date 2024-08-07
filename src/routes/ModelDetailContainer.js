@@ -86,9 +86,13 @@ export function ModelDetailContainer(props) {
     }, []);
 
     return (
-        <ModelDetailPage model={model} onBackToModelClicked={backToModel}
-                         onRunModelClicked={runModel} trialOutput={trialOutput}
-                         compare={compareModels}/>
+        <ModelDetailPage 
+            model={model} 
+            onBackToModelClicked={backToModel}
+            onRunModelClicked={runModel} 
+            trialOutput={trialOutput}
+            compare={compareModels}
+        />
     )
 }
 

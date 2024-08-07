@@ -19,6 +19,8 @@ export default function TextConversationOutput(props) {
     props.trial
   );
 
+  console.log('TextConversationOutput props', props);
+
   const task = Task.getStaticTask(textConversation);
 
   const [conversation, setConversation] = useState([

@@ -1,6 +1,7 @@
 import React from 'react';
 import './PendingOutput.scss';
 import useBEMNaming from "../../../../../common/useBEMNaming";
+import { textConversation } from '../../../../../helpers/TaskIDs';
 
 const defaultProps = {
     className: 'pending-output'
@@ -17,10 +18,25 @@ export default function PendingOutput(givenProps) {
             {props.unsupportedModel &&
                 <div className={getElement('subtitle')}>Warning: unsupported model</div>
             }
-            <div className={getElement('spinner-container')}>
-                <div className={getElement('spinner')}></div>
-                <p className={getElement("spinner-text")}>This could take a few minutes...</p>
-            </div>
+            { props.outputType !== textConversation ?
+                (
+                    <div className={getElement('spinner-container')}>
+                        <div className={getElement('spinner')} />
+                        <p className={getElement("spinner-text")}>
+                            This could take a few minutes...
+                        </p>
+                    </div>
+                ) : (
+                    <div className={getElement('ellipsis-container')}>
+                        <div className={getElement('ellipsis-speech-bubble')} >
+                            <div className={getElement('ellipsis')} />
+                        </div>
+                        <p className={getElement("ellipsis-text")}>
+                            This could take a few minutes...
+                        </p>
+                    </div>
+                )
+            }
         </div>
     );
 }
