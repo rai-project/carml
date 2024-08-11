@@ -5,6 +5,7 @@ import useSampleInputControl from "./useSampleInputControl";
 import useBEMNaming from "../../../../../common/useBEMNaming";
 import { QuickInputType } from "../../quickInputType";
 import { ReactComponent as DocumentIcon } from "../../../../../resources/icons/icon-document.svg";
+import { ReactComponent as CsvIcon } from "../../../../../resources/icons/icon-csv-file.svg";
 import { imageTo3D } from '../../../../../helpers/TaskIDs';
 import URLInputPreview from '../URLInput/URLInputPreview';
 import { TaskInputTypes } from '../../../../../helpers/TaskInputTypes';
@@ -48,6 +49,8 @@ export default function SampleInputsTab(props) {
                 return makeSampleVideoInput(url, index);
             case QuickInputType.ImageCanvas:
                 return makeSampleImageCanvasInput(url, index);
+            case QuickInputType.Csv:
+                return makeSampleCsvInput(url, index);
             default:
                 return makeDefaultErrorInput();
         }
@@ -58,7 +61,7 @@ export default function SampleInputsTab(props) {
         inputHandlerForPreview(url.src);
     };
 
-    // TODO: Rename "url" to "input" or similar
+    // TODO: Should we rename "url" to "input" or similar
     function makeSampleImageInput(url, index) {
         return (
             <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
@@ -111,6 +114,17 @@ export default function SampleInputsTab(props) {
         );
     }
 
+    function makeSampleCsvInput(url, index) {
+        return (
+            <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
+                <CsvIcon className='icon' />
+                <a href={url.src} target='_blank' >
+                    <span>{url.description ?? "CSV File"}</span>
+                </a>
+            </button>
+        );
+    }    
+
     function makeDefaultErrorInput() {
         return (
             <div>No input type defined</div>
@@ -147,6 +161,8 @@ export default function SampleInputsTab(props) {
                 return "Select a video";
             case QuickInputType.ImageCanvas:
                 return "Draw a rectangle";
+            case QuickInputType.Csv:
+                return "Select a csv file";
             default:
                 return "Error: no input type set";
         }

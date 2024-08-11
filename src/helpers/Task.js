@@ -23,6 +23,7 @@ import {
   audioToAudio,
   audioClassification,
   videoClassification,
+  tableEditing
 } from "./TaskIDs";
 import React from "react";
 import { ReactComponent as ImageClassification } from "../resources/icons/icon-imageClassification.svg";
@@ -48,6 +49,7 @@ import { ReactComponent as TextClassification } from "../resources/icons/icon-te
 import { ReactComponent as AudioToAudio } from "../resources/icons/icon-audioToAudio.svg";
 import { ReactComponent as AudioClassification } from "../resources/icons/icon-audioClassification.svg";
 import { ReactComponent as VideoClassification } from "../resources/icons/icon-videoClassification.svg";
+import { ReactComponent as TableEditing } from "../resources/icons/icon-tableEditing.svg";
 
 import {
   DefaultImageClassificationModel,
@@ -73,6 +75,7 @@ import {
   DefaultAudioToAudioModel,
   DefaultAudioClassificationModel,
   DefaultVideoClassificationModel,
+  DefaultTableEditingModel
 } from "./DefaultModels";
 import {
   SampleAudioToTextInputs,
@@ -93,6 +96,7 @@ import {
   SampleAudioToAudioInputs,
   SampleAudioClassificationInputs,
   SampleVideoClassificationInputs,
+  // SampleTableEditingInputs
 } from "./sampleImages";
 import { TestImageClassificationResult } from "../components/Experiment/QuickOutput/Outputs/Classification/Features";
 import { TestImageEnhancementData } from "../components/Experiment/QuickOutput/Outputs/ImageEnhancement/testData/TestFeatures";
@@ -119,6 +123,7 @@ import { TestTextClassificationOutput } from "../components/Experiment/QuickOutp
 import { TestAudioToAudioOutput } from "../components/Experiment/QuickOutput/Outputs/AudioToAudio/testData/testAudioToAudio";
 import { TestAudioClassificationOutput } from "../components/Experiment/QuickOutput/Outputs/AudioClassification/testData/testAudioClassification";
 import { TestVideoClassificationOutput } from "../components/Experiment/QuickOutput/Outputs/VideoClassification/testData/testVideoClassification";
+// TestTableEditingOutput
 
 export default class Task {
   static image_classification = new Task({
@@ -509,6 +514,23 @@ export default class Task {
     inputType: TaskInputTypes.Video,
   });
 
+  static table_editing = new Task({
+    name: "Table Editing",
+    description: "Submit a CSV and get an edited version of it",
+    id: tableEditing,
+    useMultiInput: true,
+    inputs: [
+      {
+        inputText: 'get a new of a csv',
+        inputType: TaskInputTypes.Csv,
+      },
+    ], 
+    outputText: "Summarized CSV file",
+    icon: (props) => <TableEditing {...props} />,
+    sampleInputs: [],  // SampleTableEditingInputs
+    tutorialDescription: "blah blah.",
+  });    
+
   constructor(options) {
     this.name = options.name ?? "";
     this.id = options.id ?? this.name;
@@ -586,6 +608,8 @@ export default class Task {
         return Task.audio_classification;
       case videoClassification:
         return Task.video_classification;
+      case tableEditing:
+        return Task.table_editing;
       default:
         return new Task({ name: "unknown", description: "unknown task name" });
     }
@@ -642,6 +666,8 @@ export default class Task {
         return DefaultAudioClassificationModel;
       case videoClassification:
         return DefaultVideoClassificationModel;
+      case tableEditing:
+        return DefaultTableEditingModel
       default:
         return undefined;
     }
@@ -695,6 +721,8 @@ export default class Task {
         return TestAudioClassificationOutput;
       case videoClassification:
         return TestVideoClassificationOutput;
+      case tableEditing:
+        // return TestTableEditingOutput
       default:
         return undefined;
     }
@@ -726,6 +754,7 @@ export default class Task {
       this.getStaticTask(audioToAudio),
       this.getStaticTask(audioClassification),
       this.getStaticTask(videoClassification),
+      this.getStaticTask(tableEditing),
     ];
   }
 

@@ -3,6 +3,7 @@ import StyleTransferStyle from "../resources/taskSample/styleTransferStyle.jpg";
 import Chairs from "../resources/taskSample/imageTo3D1.png";
 // import Drums from "../resources/taskSample/imageTo3D2.png";
 import catDog from "../stories/assets/catdog.jpg";
+import tableEditing from "../../src/resources/taskSample/tableEditing.csv";
 
 export const SampleImageEnhancementInputs = [
   {
@@ -283,4 +284,18 @@ export const SampleVideoClassificationInputs = [
     src: "https://xlab1.netlify.app/samples/video/flower.mp4"
 
   },
+];
+
+export const SampleTableEditingInputs = [
+  [
+    // TODO: Add more?
+    {
+      src: tableEditing,
+      description: "Client List"
+    },
+    {
+      src: tableEditing,
+      description: "Client List 2"
+    },
+  ]
 ];

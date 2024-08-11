@@ -56,8 +56,6 @@ import {
 const ModelDetailPage = (props) => {
   const jumpRef = useRef();
 
-  console.log('ModelDetailPage props', props);
-
   const outputType = props.model?.output?.type || "";
 
   const getSampleInputs = () => {

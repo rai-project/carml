@@ -24,6 +24,7 @@ import {
   audioClassification,
   videoClassification,
   maskGeneration,
+  tableEditing
 } from "../../../helpers/TaskIDs";
 import {
   SampleImageClassificationInputs,
@@ -44,8 +45,9 @@ import {
   SampleAudioClassificationInputs,
   SampleVideoClassificationInputs,
   SampleMaskGenerationInputs,
+  SampleTableEditingInputs
 } from "../../../helpers/sampleImages";
-import { QuickInputType } from "./quickInputType";
+// import { QuickInputType } from "./quickInputType";
 import { TaskInputTypes } from "../../../helpers/TaskInputTypes";
 
 export default {
@@ -315,6 +317,16 @@ VideoClassification.args = {
   model: {
     output: {
       type: videoClassification,
+    },
+  },
+};
+
+export const TableEditing = Template.bind({});
+TableEditing.args = {
+  sampleInputs: SampleTableEditingInputs,
+  model: {
+    output: {
+      type: tableEditing,
     },
   },
 };
