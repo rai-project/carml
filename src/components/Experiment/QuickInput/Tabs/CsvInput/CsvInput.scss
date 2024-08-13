@@ -1,0 +1,80 @@
+@import "src/App";
+
+.csv-input-preview {
+    width: 700px;
+    margin-left: 50px;
+
+    &__table {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid $charcoalLightest;
+        font-size: 13px;
+    }
+    &__header {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid $charcoalLightest;
+        font-weight: 800;
+        background-color: $smokeDarkest;
+    }
+    &__row {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid $charcoalLightest;
+    }
+    &__row:last-of-type {
+        border-bottom: none;
+    }
+    &__cell {
+        // display: flex;
+        // flex-grow: 1;
+        border-right: 1px solid $charcoalLightest;
+
+
+        // flex-grow: 1;
+        // flex-shrink: 1;
+        // flex-basis: 0px;
+        // min-width: 80px;
+        // max-width: 80px;
+        padding: 5px;
+        // flex: 1 1 0px;
+
+        width: 90px;
+
+        // text-overflow: ellipsis; 
+        // overflow: hidden;
+        // white-space: nowrap;
+    }
+    &__cell:last-of-type {
+        border-right: none;
+    }
+    &__cell-text {
+        text-overflow: ellipsis; 
+        overflow: hidden;
+        white-space: nowrap;
+    }
+    &__cell-tooltip {
+        position: relative;
+        display: inline-block;
+    }
+    .tooltip-text {
+        visibility: hidden;
+        // width: 120px;
+        min-width: 120px;
+        background-color: $charcoalLightest;
+        color: #fff;
+        // text-align: center;
+        padding: 5px;
+        border-radius: 6px;
+        position: absolute;
+        z-index: 1; 
+        
+        // width: 120px;
+        bottom: 100%;
+        left: 50%;
+        // margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+    }
+    &__cell:hover .tooltip-text {
+        visibility: visible;
+    }
+}

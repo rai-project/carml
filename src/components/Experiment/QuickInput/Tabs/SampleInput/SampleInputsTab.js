@@ -10,6 +10,7 @@ import { imageTo3D } from '../../../../../helpers/TaskIDs';
 import URLInputPreview from '../URLInput/URLInputPreview';
 import { TaskInputTypes } from '../../../../../helpers/TaskInputTypes';
 import CanvasInput from '../CanvasInput/CanvasInput';
+import CsvSamplePreview from '../CsvInput/CsvSamplePreview';
 
 
 export default function SampleInputsTab(props) {
@@ -117,10 +118,14 @@ export default function SampleInputsTab(props) {
     function makeSampleCsvInput(url, index) {
         return (
             <button onClick={() => selectInput(index)} key={index} className={getElement(getInputClassName(url))}>
-                <CsvIcon className='icon' />
-                <a href={url.src} target='_blank' >
-                    <span>{url.description ?? "CSV File"}</span>
-                </a>
+                <div className='csv-file-container'>
+                    <CsvIcon className='icon' />
+                    <a href={url.src} target='_blank' >
+                        <span>{url.description ?? "CSV File"}</span>
+                    </a>
+                </div>
+
+                <CsvSamplePreview url={url.src} />
             </button>
         );
     }    
