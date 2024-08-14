@@ -24,6 +24,8 @@ export default function CsvSamplePreview(props) {
             if (results.errors.length === 0) {       
                 let data = results.data;
                 // setCsvHeaders(data.splice(0, 1));
+
+                // TODO: Should we want to truncate the data for the preview? First 10 lines for example?
                 setCsvData(data);
                 // console.log('csvData', csvData)
             } else {

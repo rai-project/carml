@@ -106,6 +106,11 @@ The project is structured as follows:
 
 - If the task requires new input type(s), you will need to add those:
   - Add the new input type to `TaskInputTypes` and `QuickInputType`
+  - Open `useQuickInputControl.js` 
+    - Update `getInputTabType` and `getUploadTabType` with the new `QuickInputType`
+    - Create a new `[InputType]InputTab` file
+      - You can look at the closed/merged Pull Requests for tasks like Table Editing or  Audio to Text for examples of new Input Tabs.
+    - You can temporarily switch the default state for `selectedTab` to the index of your new tab, so that you don't need to repeatedly switch tabs through page refreshes
   - Update `SampleInputsTab`:
     - Open `sampleImages.js` and add `Sample[TaskName]Inputs`. If your task is using `useMultiInput` then you will need to make a parent array, and then for each input type another array of sample input objects.
     - Add the new input type to `makeSampleInput`
@@ -113,13 +118,11 @@ The project is structured as follows:
     - Add the new input type with appropriate text to `makeTaskTitle`
     - Update the `SampleInputsTab.scss` file with styling for what the selected/unselected states of the new input type should look like
   - Update `UploadInputsTab` as necessary
-    - If the user is able to upload files for this task, add the task ID to `UppyFileTypeCheckerPlugin` so that Uppy will only allow the correct file types to be selected/sent to the server  
-    - WIP...
+    - If the user is able to upload files for this task, add the task ID to `getAllowedFileTypes` in `UppyFileTypeCheckerPlugin` so that Uppy will only allow the correct file types to be selected/sent to the server
   - Update `URLInputsTab` as necessary
     - Be sure to read the `IMPORTANT` comment before editing the inputs
-    - WIP...
-
-
+      - There are multiple paths in the render function depending on if your input is a `useMultipleInput`, `multiple`, etc. - if you change one, you will likely need to update all of them.
+      ...WIP?
 
 - Add the new task to `ModelDetailPage` in `getSampleInputs` and `getInputType`
 

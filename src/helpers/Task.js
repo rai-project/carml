@@ -521,7 +521,7 @@ export default class Task {
     useMultiInput: true,
     inputs: [
       {
-        inputText: 'get a new of a csv',
+        inputText: 'get a new version of the csv',
         inputType: TaskInputTypes.Csv,
       },
     ], 

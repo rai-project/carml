@@ -14,7 +14,8 @@ import {
   visualQuestionAnswering,
   imageToText,
   audioClassification,
-  maskGeneration
+  maskGeneration,
+  tableEditing
 } from './TaskIDs';
 
 import fileTypeChecker from "file-type-checker";
@@ -46,9 +47,10 @@ export const getAllowedFileTypes = (task) => {
         fileTypes: ['bmp', 'gif', 'ico', 'jpeg', 'pdf', 'png', 'psd', 'mp4', 'm4a', 'wav', 'webm'],
         mimeTypes: ['image/*', 'video/*']
       };
+    case tableEditing:
     case documentQuestionAnswering:
     default:
-      // Allow all file types? Or disallow all file types?
+      // Some file types are unfortunately not supported by the file checker
       return {
         fileTypes: ['*'],
         mimeTypes: '*/*'
