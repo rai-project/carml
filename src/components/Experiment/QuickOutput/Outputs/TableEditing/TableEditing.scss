@@ -1,0 +1,109 @@
+@import "../../../../../App";
+
+.table-editing {
+    &__content {
+        display: flex;
+        flex-direction: column;
+        // flex-direction: row;
+
+        .multi-input-preview {
+            flex-grow: 1;
+            &__container {
+                display: flex;
+                flex-direction: column;
+                img {
+                    margin-bottom: 16px;
+                    max-width: 300px;
+                }      
+                @include maxWidth(700px) {
+                    flex-direction: row;
+                    justify-content: space-between;
+                    img {
+                        max-height: 200px;
+                    }
+                }                              
+            }
+        }
+        @include maxWidth(700px) {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &__output {
+        flex-grow: 1;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 0 15px -2px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+        // margin-left: 16px;
+        margin-top: 16px;
+        padding: 32px;
+      
+        @include maxWidth(700px) {
+          margin-left: 0;
+        }     
+        
+        &-title-row {
+            margin-bottom: 0;
+        
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+    
+            @include maxWidth(575px) {
+            h3 {
+                margin-top: 8px;
+            }
+            }
+        }
+        &-subtitle {
+            @include body;
+            border-bottom: 1px solid $smokeDarkest;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+        
+            @include mobileWidth-lg {
+              @include bodySmall;
+            }
+        }
+
+        .csv-input-preview {
+            // margin-left: 0 !important;
+        }
+        // &-image {
+        //     display: flex;
+        //     justify-content: center;
+        //     margin-bottom: 16px;
+        //     img {
+        //         width: 70%;
+        //     }
+        // }    
+        &-download {
+            border: 1px solid $charcoalLightest;
+            // border: 1px solid red;
+            border-radius: 5px;
+            margin-top: 20px;
+            padding: 5px;
+            // font-weight: 00;
+            // color: $charcoalLightest;
+            // color: red;
+            width: 69px;
+            // margin: 0 auto;
+            a {
+                text-decoration: none;
+            }
+            img {
+                height: 50px;
+            }
+            p {
+                margin-top: 5px;
+                font-size: 12px;
+                color: $charcoalLightest;
+                font-weight: 600;
+            }            
+        }       
+    }      
+}

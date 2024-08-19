@@ -4,7 +4,7 @@ import Papa from 'papaparse';
 import useBEMNaming from "../../../../../common/useBEMNaming";
 import sampleCsv from '../../../../../resources/taskSample/tableEditing.csv'; 
 
-import "./CsvInput.scss";
+import "./CsvPreview";
 import "./CsvInputsTab.scss";
 import Task from '../../../../../helpers/Task';
 
@@ -32,7 +32,6 @@ export default function CsvInputsTab(props) {
         ["", "", "", "", "", ""],
     ];
     const emptyCsvString = ',,,,,\n,,,,,\n,,,,,\n,,,,,\n,,,,,\n,,,,,';
-
     
     const [csvData, setCsvData] = useState(emptyCsv);
 

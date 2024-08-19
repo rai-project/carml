@@ -53,6 +53,31 @@
       color: $azul;
     }
   }
+
+  &__csv {
+    border: 1px solid $charcoalLightest;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 5px;
+    font-weight: 600;
+    color: $charcoalLightest;
+    margin: 0 auto;
+    text-decoration: none;
+    display: inline-block;
+    // height: 81px;
+    // a {
+    //   text-decoration: none;
+    //   color: $charcoalLightest;
+    // }
+    img {
+        height: 50px;
+    }
+    p {
+        margin-top: 5px;
+        font-size: 12px;
+    }
+  }
+
   &__back-button {
     @include secondaryButtonWithIconBefore("arrow-right.svg");
     align-self: flex-start;

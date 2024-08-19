@@ -10,7 +10,7 @@ import { imageTo3D } from '../../../../../helpers/TaskIDs';
 import URLInputPreview from '../URLInput/URLInputPreview';
 import { TaskInputTypes } from '../../../../../helpers/TaskInputTypes';
 import CanvasInput from '../CanvasInput/CanvasInput';
-import CsvSamplePreview from '../CsvInput/CsvSamplePreview';
+import CsvPreview from '../CsvInput/CsvPreview';
 
 
 export default function SampleInputsTab(props) {
@@ -125,7 +125,7 @@ export default function SampleInputsTab(props) {
                     </a>
                 </div>
 
-                <CsvSamplePreview url={url.src} />
+                <CsvPreview url={url.src} />
             </button>
         );
     }    

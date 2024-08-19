@@ -1,8 +1,7 @@
 @import "src/App";
 
-.csv-input-preview {
-    width: 700px;
-    margin-left: 50px;
+.csv-preview {
+    width: 902px;  // 90px per cell * 10 cells per row + 2px border
 
     &__table {
         display: flex;
@@ -76,5 +75,9 @@
     }
     &__cell:hover .tooltip-text {
         visibility: visible;
+    }
+    &__truncated {
+        padding: 10px 5px;
+        color: $darkRed;
     }
 }

@@ -126,7 +126,13 @@ The project is structured as follows:
 
 - Add the new task to `ModelDetailPage` in `getSampleInputs` and `getInputType`
 
+- If you haven't already done so, create the various `Output` files above, then:
+  - Update `QuickOutput` with your new Output
+    - In the `makeOutput` function, add a new case statement for your new Output
+      - Generally you will only need to pass through the `trialOutput` and `onBackClicked` but if you need to be able to re-run the trial on the same page (for example with Conversations) then you would also add a prop here for `runTrial`.
+
 - ...to be continued
+
 - Additional Notes:
   - To test the upload dashboard in storybook, open `useUploadInputControl` and:
     - Find the text `COMMENT THIS OUT BEFORE COMMITTING` and uncomment it.
