@@ -1,9 +1,7 @@
 import React from "react";
 import "./InputPreview.scss";
 import useBEMNaming from "../../../common/useBEMNaming";
-
 import CsvIcon from "../../../../src/resources/icons/icon-csv-file.svg";
-// import CsvIcon from "../../../../../resources/icons/icon-csv-file.svg";
 
 
 const defaultProps = {

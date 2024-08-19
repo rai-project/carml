@@ -114,7 +114,11 @@
 
     .csv-file-container {
       // border: 1px solid red;
-      margin-right: 50px;
+      margin-right: 20px;
+      width: 55px;
+      a { 
+        font-size: 12px;
+      }
     }
 
     // align-items: end;
